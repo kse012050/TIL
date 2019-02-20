@@ -21,3 +21,9 @@
 
 # $ git push origin master
 ### commit 해두었던 파일들을 원격 저장소에 올립니다
+
+# $ git remote set-url origin repository 주소
+### 기존 원격 저장소 URL을 변경합니다
+
+# $ git log
+### commit 메시지를 보여줍니다
