@@ -10,7 +10,7 @@
 ### 모든 파일을 다 Push할 경우 add . 
 ### 특정 파일만 업로드 add 파일명 or 폴더명
 
-# $ git commit -m "Push 메시지명
+# $ git commit -m "Push 메시지명"
 ### Push시 원하는 메시지를 등록하고 commit을 해줍니다.
 
 # $ git remote add origin repository 주소
