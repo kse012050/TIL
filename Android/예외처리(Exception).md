@@ -148,7 +148,31 @@ public class ExceptionTest {
 4. ```MyException``` 을 받은 main 함수는 catch에서 해당 예외를 받아서, 예외의 메시지를 출력합니다 "내가 만든 예외"
 5. 최종적으로 finally가 실행되어 "시스템 종료"가 출력됩니다
 
+## Try Catch Finally return 주의사항
+1. try 안에 return문
+    + return은 정상 동작으로 종료가 되었다는 의미이므로 finally 구문을 거쳐 정상 종료합니다
+
+2. catch 안에 return 문
+    + catch 안에 return문은 거의 쓸일이 없습니다 
+    + 똑같이 finally 구문을 거쳐 정상 종료합니다
+
+3. finally 안에 return문
+ + 문제!!!
+    + finally 안에 return을 할 경우, return이 정상 종료를 의미 하므로 try 구문에서 발생한 Exception이 출력이 되지 않습니다
+    + 따라서, Exception이 발생했지만 발생 하지 않은
+    것으로 간주 되는 것입니다
+
+
+4. finally 안에 또 다른 try catch문
+    + 이 부분도 생각 많이 해야합니다
+    + finally 구문에서 생기는 Exception이 그 전에 생긴
+    Exception을 잡아 먹어버립니다
+    + 그래서 try 안에서 발생한 부분을 파악 할 수 없을가능성이 있습니다
+
+
 
 [예외처리(Exception) 내용 출처](https://coding-factory.tistory.com/280)
 
 [Throw/Throws 내용 출처](https://hyeonstorage.tistory.com/203)
+
+[Try Catch Finally return 주의사항 내용 출처](https://gogorchg.tistory.com/entry/JAVA-try-catch-finally-%EC%82%AC%EC%9A%A9-%EC%8B%9C-%EB%AC%B8%EC%A0%9C%EC%A0%90)
