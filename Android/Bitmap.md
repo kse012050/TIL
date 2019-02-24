@@ -37,4 +37,10 @@ Options 객체를 생성하고 설정하고자 하는 옵션을 넣은후 Bitmap
 
 > 더 자세한 내용은 써보면서 다시 정리하겠습니다
 
+## createBitmap
+createBitmap 내용이 많고 어렵고 자료가 많지 않습니다  
+홈페이지를 통해 확인하겠습니다  
+[createBitmap 내용](https://developer.android.com/reference/android/graphics/Bitmap)
+
+
 [Bitmap 내용 출처](https://mainia.tistory.com/468)
