@@ -21,6 +21,9 @@ Camera.PictureCallback 에서 들어오는 데이터가 byte[] 배열로 들어�
 로컬에 존재하는 파일을 그대로 읽어올 때 씁니다  
 파일경로를 파라미터로 넘겨주면 FileInputStream 을 만들어서 decodeStream을 합니다
 
+### BitmapFactory.decodeResource()
+Resource 폴더에 저장된 그림파일을 Bitmap으로 만들어 리턴해줍니다
+
 ### BitmapFactory.decodeStream()
 InputStream 으로부터 Bitmap 을 만들어 줍니다
 

@@ -1,6 +1,6 @@
 # requestWindowFeature()
 > 예전 extend 'Activity'를 사용할 때 쓰던 메서드   
-현재는 entend 'AppCompatAcivity'를 사용하면서 다른 메서드로 바뀌었습니다
+현재는 entend 'AppCompatAcivity'를 사용하면서 다른 메서드(ActionBar)로 바뀌었습니다
 
 ## requestWindowFeature(속성) 속성 정리
 > 현재 안쓰드라도 정리해 놓겠습니다
