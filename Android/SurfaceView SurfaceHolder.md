@@ -14,8 +14,20 @@ public abstract Canvas lockCanvas ()
 __Callback.surfaceCreated__ Surface를 사용할 수 있는 시기를 찾으려면 일반적으로 구현해야 합니다    
 Surface의 내용은 __unlockCanvas()__ 와 __lockCanvas() 사이에서 절대로 보존되지 않기 때문에__ Surface 영역 내의 모든 픽셀을 작성해야합니다
 
+## unlockCanvasAndPost()
+포면의 픽셀 편집을 마칩니다  
+이 호출 후에 표면의 현재 픽셀이 화면에 표시되지만 내용은 손실됩니다  
+특히 lockCanvas()가 다시 호출 될 때 Surface의 내용이 변경되지 않는다고 보장 할 수 없습니다
+
+~~~
+사실 무슨 이야기 인지 정확히 모르겠습니다
+앞으로 써보면서 다시 정리하고 이해하도록 하겠습니다
+~~~
+
 [안드로이드 디벨로퍼](https://developer.android.com/reference/android/view/SurfaceHolder)
 
 [안드로이드 SDK API](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/android/view/SurfaceHolder.html)
 
-[lockCanvas()](https://developer.android.com/reference/android/view/SurfaceHolder.html#lockCanvas())
+[lockCanvas() 출처](https://developer.android.com/reference/android/view/SurfaceHolder.html#lockCanvas())
+
+[unlockCanvasAndPost() 출처](http://skyswim42.egloos.com/tag/unlockCanvasAndPost/page/1)
