@@ -9,7 +9,8 @@
 ### this()
 현재 클래스에 정의된 생성자를 부를 때 사용합니다  
 
->사용 예제 
+>사용 예제  
+
 ![this()의 사용예제](https://t1.daumcdn.net/cfile/tistory/2340333E57A89C5B2D)
 
 ## super와 super()의 차이점
@@ -21,7 +22,8 @@
 ### super()
 자식 클래스가 자신을 생성할 때 부모클래스의 생성자를 불러 __초기화__ 할 때 사용됩니다
 
->사용 예제
+>사용 예제  
+
 ![super() 사용 예제](https://t1.daumcdn.net/cfile/tistory/24148C4457A89D2135)
 
 > 실행 결과
