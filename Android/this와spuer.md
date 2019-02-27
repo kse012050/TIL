@@ -26,8 +26,9 @@
 
 ![super() 사용 예제](https://t1.daumcdn.net/cfile/tistory/24148C4457A89D2135)
 
-> 실행 결과
-!(super() 실행 결과)[https://t1.daumcdn.net/cfile/tistory/2777B64457A89D2303]
+> 실행 결과  
+
+![super() 실행 결과](https://t1.daumcdn.net/cfile/tistory/2777B64457A89D2303)
 
 ## 정리
 this는 현재클래스에 있는 멤버변수 나 메서드(생성자)를 사용하는 것이고  
