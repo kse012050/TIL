@@ -35,6 +35,6 @@ super는 현재클래스에서 부모클래스의 멤버변수나 메서드(생�
 
 [this와 super 참고 자료](https://neoroid.tistory.com/10)
 
-[this와 super 내용 출처]([https://ithub.tistory.com/66)
+[this와 super 내용 출처](https://ithub.tistory.com/66)
 
 
