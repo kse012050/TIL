@@ -25,7 +25,7 @@
 ### FEATURE_PREGRESS
 > 타이틀 바에 막대모양 프로그래스를 표시한다.
 
-### FEATURE_RIGHT_ICON
+### FEATURE_RIGHT_ICON 
 > 아이콘을 오른쪽에 넣는다.
 
 [requestWindowFeature(속성) 속성 출처](https://karukaru22.blog.me/140123990760)
