@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.1 HTML*Element 개체 개요</title>
+</head>
+<body>
+    <!--
+    HTML 문서 내의 각 element들은 고유한 성질을 가지며, 각자 element 를 DOM 트리 내이 노드 개체로 인스턴스화하는고유한 JavaScript 생성자를 가진다
+        예를 들어 <a> element는 HTMLAnchorElement() 생성자를 통해 DOM 노드로 만들어진다.
+        -->
+    <a></a>
+    <script>
+        // DOM에서 <a> element 노드를 가져와 생성하는 데 사용된 생성자의 이름을 물어본다
+        console.log(document.querySelector('a').constructor);
+        // function HTMLAnchorElement(){[native code]} 가 출력된다.
+
+        // 요점은 DOM에서 각 element가 고유한 JavaScript 인터페이스/생성자를 통해 만들어진다는 것이다. 
+        // HTML element를 생성하는 데 사용되는 인터페이스 / 생성자들을 알 수 있다.
+        // 전체 목록은 http://bit.ly/YIV4RR에 있다. 이 목록에서 각 HTML*Element는 HTMLElement, Element, Node, Object로부터 속성 및 메서드를 상속 받는다는 것을 유념한다.
+    </script>
+</body>
+</html>

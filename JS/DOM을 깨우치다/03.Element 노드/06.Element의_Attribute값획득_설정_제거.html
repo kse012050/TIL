@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.6 Element의 Attribute 값 획득 설정 제거</title>
+</head>
+<body>
+    <!--
+        element의 attribute 값을 가져오고, 설정 및 제거하기 위한 가장 일관된 방법은 getAttribute(), setAttribute(), removeAttribute() 매서드를 사용하는 것이다.
+    -->
+
+    <a href="#" title="title" data-foo="dataFoo" style="margin:0;" class="yes" foo="boo" hidden="hidden">#link</a>
+    
+    <script>
+        var atts = document.querySelector('a');
+
+        // attribute 제거
+        atts.removeAttribute('href');
+        atts.removeAttribute('title');
+        atts.removeAttribute('style');
+        atts.removeAttribute('data-foo');
+        atts.removeAttribute('class');
+        atts.removeAttribute('foo');            // 사용자 정의 attribute
+        atts.removeAttribute('hidden');         // boolean attribute
+
+        // attribute 설정(실제로는 재설정임)
+        atts.setAttribute('href','#');
+        atts.setAttribute('title', 'title');
+        atts.setAttribute('style', 'margin:0;');
+        atts.setAttribute('data-foo', 'dataFoo');
+        atts.setAttribute('class', 'yes');
+        atts.setAttribute('foo', 'boo');
+        atts.setAttribute('hidden', 'hidden');
+
+        // attribute 가져오기
+        console.log(atts.getAttribute('href'));
+        console.log(atts.getAttribute('title'));
+        console.log(atts.getAttribute('style'));
+        console.log(atts.getAttribute('data-foo'));
+        console.log(atts.getAttribute('class'));
+        console.log(atts.getAttribute('foo'));
+        console.log(atts.getAttribute('hidden'));
+
+        // setAttribute()를 사용하여 attribute 값을 null이나 ''로 설정하지 말고 removeAttribute()를 사용하기 바란다.
+        // 일부 element attribute는 element 노드에서 개체 속성으로 존재한다(예: document.body.id나 document.body.className). 작성자는 이 속성을 사용하지 말고
+        // attribute에 대한 remove, set, get 메서드를 사용하도록 권고하고 있다.
+    </script>
+</body>
+</html>

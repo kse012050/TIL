@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DOM 내의 노드 탐색</title>
+</head>
+<body>
+    <ul><!-- comment11 -->
+        <li id="A"></li>
+        <li id="B"></li>
+        <!-- comment -->
+    </ul>
+    <script>
+        // ul을 선택해서 저장
+        var ul = document.querySelector('ul');
+
+        // ul의 parentNode는 ?
+        console.log(ul.parentNode.nodeName);        // body가 출력됨
+
+        // ul의 첫 번째 자식은?
+        console.log(ul.firstChild.nodeName);        // comment가 출력됨
+
+        // ul의 마지막 자식은?
+        console.log(ul.lastChild.nodeName);         // 줄 바꿈이 있기 떄문에 comment가 아닌 text가 출력됨
+
+        // 첫 번째 li의 nextSibling은?
+        console.log(ul.querySelector('#A').nextSibling.nodeName);       // text가 출력됨
+
+        // 마지막 li의 previousSibling은?
+        console.log(ul.querySelector('#B').previousSibling.nodeName);       // atext가 출력됨
+
+        // DOM애 대해 익숙하다면, DOM을 탐색하는 것에는 element 노드뿐만 아니라 text와 comment 노드도 포함된다는 것이 별로 놀랍지 않은데, 사실 이는 이상적이지 않다.
+        // 다음 속성들을 사용하면, text와 comment 노드를 무시하고 DOM을 탐색하는 것이 가능하다.
+        /*
+        1. firstElementChild
+        2. lastElementChild
+        3. nextElementSibling
+        4. previousElementSibling
+        5. children
+        6. parentElement
+        */
+
+        // childElentCount가 언급되지 않았지만, 노드가 가지고 있는 자식 element의 개수를 게산할 때 유용한 속성이므로 알아두는 것이 좋다.
+
+        // ul의 첫 번째 자식은?
+        console.log(ul.firstElementChild.nodeName);     // li가 출력됨
+
+        // ul의 마지막 자식은?
+        console.log(ul.lastElementChild.nodeName);          // li가 출력됨
+
+        // 첫 번째 li의 nextSibling은?
+        console.log(ul.querySelector('#A').nextElementSibling.nodeName);        // li가 출력됨
+
+        // 마지막 li의 previousSibling은?
+        console.log(ul.querySelector('#B').previousElementSibling.nodeName);     // li가 출력됨
+
+        // ul의 자식 노드 중 element만을 가져오려면?
+        console.log(ul.children);   // HTMLCollection이며, 모든 자식 노드는 text 노드를 가짐.
+
+        // 첫 번째 li의 부모 element는?
+        console.log(ul.firstElementChild.parentElement);        // ul가 출력됨
+    </script>
+</body>
+</html>

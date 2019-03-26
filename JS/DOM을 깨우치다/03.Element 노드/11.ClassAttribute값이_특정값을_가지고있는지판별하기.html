@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.11 Class Attribute 값이 특정값을 가지고 있는지 판별하기</title>
+</head>
+<body>
+    <!--
+    classList.contains() 메서드를 사용하면, class attribute 값이 특정 하위 값을 가지고 있는지를 판별(즉 true 나 false)할 수 있다.
+        -->
+
+    <div class="big brown bear"></div>
+
+    <script>
+        var elm = document.querySelector('div');
+
+        console.log(elm.classList.contains('brown'));       // true가 출력됨
+    </script>
+</body>
+</html>

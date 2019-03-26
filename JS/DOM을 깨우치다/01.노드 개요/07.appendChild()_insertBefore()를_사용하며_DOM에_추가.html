@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>appendChild() insertBefore()를 사용하며 DOM에 추가</title>
+</head>
+<body>
+    <p>Hi</p>
+    
+    <script>
+        // 임시 element 노드와 text 노드를 생성.
+        var elementNode = document.createElement('strong');
+        var textNode = document.createTextNode(' Dude');
+
+        // 앞의 노드들을 DOM에 추가
+        document.querySelector('p').appendChild(elementNode);
+        document.querySelector('strong').appendChild(textNode);
+
+        // <p>Hi<strong> Dude</strong></p>이 출력됨.
+        console.log(document.body.innerHTML);
+
+        // 자식 노드 목록 끝에 노드를 추가하는 것 외에 삽입 위치를 조정하는 것이 필요하면 insertBefore()를 사용하면 된다.
+    </script>
+
+    <ul>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <script>
+        //텍스트 노드와 li element 노드를 생성해서 li에 텍스트를 추가한다.
+        var text1 = document.createTextNode('1');
+        var li = document.createElement('li');
+        li.appendChild(text1);
+
+        // 문서에서 ul을 선택한다.
+        var ul = document.querySelector('ul');
+
+        /*
+        앞에서 생성한 li element를 DOM에 추가한다.
+        <ul>에 대해 ul.firstChild를 호출해서 <li>2</li>에 대한 참조를 전달하고 있다.
+        */
+
+        ul.insertBefore(li, ul.firstChild);
+
+        console.log(document.body.innerHTML);
+        /*다음과 같이 출력됨
+        <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        </ul>
+        */
+
+        // insertBefore() 메서드는 2개의 매개변수를 필요로 하는데, 삽입될 노드와 해당 노드를 삽입하고자 하는 문서 내의 참조 노드다.
+        // insertBefore() 메서드의 두번째 매개변수를 전달하지 않으면, 이 메서드는 appendChild()처럼 동작한다.
+    </script>
+</body>
+</html>

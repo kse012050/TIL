@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>9.10 HTML문서에 외부 스타일시트를 프로그래밍적으로 추가하기</title>
+</head>
+<body>
+    <!--
+    HTML 문서에 CSS파일을 프로그래밍적으로 추가하려면, 적절한 attribute로 <link> element 노드를 생성해서 DOM에 추가한다.
+
+    다음 코드에서는 새로운 <link> element를 만들고 DOM에 추가하여 외부 스타일시트를 프로그래밍적으로 포함시킨다.
+    -->
+
+    <script>
+        // <link>를 생성하고 attribute를 추가
+        var linkElm = document.createElement('link');
+        linkElm.setAttribute('rel', 'stylesheet');
+        linkElm.setAttribute('type', 'text/css');
+        linkElm.setAttribute('id', 'linkElement');
+        linkElm.setAttribute('href', 'http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css');
+
+        // DOM에 추가
+        document.head.appendChild(linkElm);
+
+        // DOM에 추가되었는지 확인
+        console.log(document.querySelector('#linkElement'));
+    </script>
+</body>
+</html>

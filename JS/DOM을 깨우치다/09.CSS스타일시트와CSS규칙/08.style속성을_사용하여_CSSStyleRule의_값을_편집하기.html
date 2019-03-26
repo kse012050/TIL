@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>9.8 style속성을 사용하여 CSSStyleRule의 값을 편집하기</title>
+</head>
+<body>
+    <!--
+    element노드의 인라인 스타일을 조작할 수 있게 해주는 .style 속성이 있듯이, 스타일시트에서 스타일을 조작할 수 있도록
+        CSSStyleRule 개체에도 .style 속성이 존재한다.
+
+    다음 코드에서는 .style 속성을 활용하여 인라인 스타일 시트에 포함된 CSS 규칙의 값을 설정하고 가져온다
+    -->
+
+    <style id="styleElement">
+        p {color: blue; }
+        strong{color:green;}
+    </style>
+
+    <p>Hey <strong>Dude!</strong></p>
+
+    <script>
+        var styleSheet = document.querySelector('#styleElement').sheet;
+
+        // 스타일시트 내의 CSS 규칙을 설정.
+        styleSheet.cssRules[0].style.color = 'red';
+        styleSheet.cssRules[1].style.color = 'purple';
+
+        // CSS 규칙을 가져옴
+        console.log(styleSheet.cssRules[0].style.color);            // 'red'가 출력됨
+        console.log(styleSheet.cssRules[1].style.color);            // 'purple'가 출력됨
+    </script>
+</body>
+</html>

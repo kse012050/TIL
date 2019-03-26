@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DOM트리일부를 JavaScript 문자열로 추출</title>
+</head>
+<body>
+    <div id="A"><i>Hi</i></div>
+    <div id="B">Dude<strong> !</strong></div>
+
+    <script>
+        console.log(document.getElementById('A').innerHTML);    //'<i>Hi</i>'가 출력됨
+        console.log(document.getElementById('A').outerHTML);    //<div id="A"><i>Hi</i></div>가 출력됨
+
+        //자식 요소 노드 내에 있는 경우 (예: <strong>!</strong>에는 모든 텍스트가 반전됨)
+        console.log(document.getElementById('B').textContent); //'Dude!'가 출력됨
+
+        // 다음의 innerText는 비표준 확징임.
+
+        console.log(document.getElementById('B').innerText)     // 'Dude!'가 출력됨.
+        console.log(document.getElementById('B').outerText)     // 'Dude!'가 출력됨.
+
+        // textContent, innerText, outerText 속성은 선택된 노드 내에 포함된 모든 텍스트 노드들을 반환한다. 
+        // 예를 들어 document.body.textContent는 첫 번째 텍스트 노드 뿐만 아니라 body요소 내에 포함된 모든 텍스트 노드를 가져온다
+    </script>
+</body>
+</html>

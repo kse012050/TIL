@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>9.5 CSSStyleRule의 속성 및 메서드</title>
+</head>
+<body>
+    <!--
+    CSSStyleRule 노드에서 사용 가능한 속성 및 메서드에 관련된 정확한 정보를 얻으려면,
+        사용서를 무시하고 브라우저에 직접 물어보는 것이 가장 좋다.
+
+        다음 코드에서 생성되는 배열을 살펴보면 CSSStyleRule 노드에서 사용 가능한 속성 및 메서드에 대해 자세히 알 수 있다.
+    -->
+    <style id="styleElement">
+        body { background-color: #fff; }
+    </style>
+
+
+    <script>
+        var styleSheetRule = document.querySelector('#styleElement').sheet.cssRules;
+        console.log(styleSheetRule);
+
+        // 고유 속성을 출력.
+        console.log(Object.keys(styleSheetRule).sort());     
+
+        // 고유 속성 및 상속받는 속성을 출력
+        var styleSheetPropertiesIncludeInherited = [];
+        for (var p in styleSheetRule) {
+            styleSheetPropertiesIncludeInherited.push(p);
+        }
+        console.log(styleSheetPropertiesIncludeInherited.sort());
+
+        var styleSheetPropertiesOnlyInherited = [];
+        for (var p in styleSheetRule) {
+            if (!styleSheetRule.hasOwnProperty(p)) {
+                styleSheetPropertiesOnlyInherited.push(p);
+            }
+        }
+        console.log(styleSheetPropertiesOnlyInherited.sort());
+
+        /*
+        cssRules 개체를 사용하여 시타일내에 포함되는 규칙(예: body{background-color:red;})을 스트립트로 작성할 수 있따.
+        .cssText
+        .parentRule
+        .parentStylesheet
+        .selectorText
+        .style
+        .type
+        */
+    </script>
+</body>
+</html>

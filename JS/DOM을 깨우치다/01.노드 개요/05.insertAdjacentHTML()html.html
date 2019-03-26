@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>insertAdjacentHTML()</title>
+</head>
+<body>
+    <!--
+        insertAdjacentHTML() 메서드는 이전에 언급된 메서드들에 비해 보다 세밀하게 다룰 수 있다.
+        시작 태그의 앞, 시작 태그의 뒤, 종료 태그 앞, 종료 태그 뒤에 노드를 삽입하는 것이 가능하다
+        -->
+
+    <i id="elm">how</i>
+
+    <script>
+        var elm = document.getElementById('elm');
+
+        elm.insertAdjacentHTML('beforebegin', '<span>Hey-</span>');
+        elm.insertAdjacentHTML('afterbegin', '<span>dude-</span>');
+        elm.insertAdjacentHTML('beforeend', '<span>-are</span>');
+        elm.insertAdjacentHTML('afterend', '<span>-you?</span>');
+
+        console.log(document.body.innerHTML);
+        /*다음이 출력됨
+        <span>Hey-</span><i id="elm"><spna>dude-</span>how<span>-are</span></i>
+        <span>-you?<span>
+        */
+
+        // insertAdjacenthtml의 beforebegin 및 afterend 옵션은 노드가 DOM 트리 내에 존재하고 부모 요소를 가진 경우에만 동작한다.
+
+        // innerHTML 속성은 문자열 내에서 발견된 HTML 요소를 실제 DOM 노드로 변환하는 반면, textContent는 텍스트 노드를 생성하는 데만 사용 가능하다.
+        // HTML 요소를 포함하고 있는 문자열을 textContent에 전달하면, 단순히 텍스트로만 출력된다.
+
+        // innetHTML이 무겁고 비싼 대가를 치르는 HTML 파서를 호출하는데 비해, 텍스트 노드 생성은 간단하게 처리되므로, innetHTML 계열의 사용을 삼가야 한다.
+
+        // Firefox를 제외한 모든 최신 부라우저들에서는 insertAdjacentElement() 및 insertAdjacentText()를 사용할 수 있다.
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.1 DOM 이벤트 개요</title>
+</head>
+    <!--
+    DOM의 이벤트는 DOM내의 element, document 개체, window 개체와 돤련되어 발생하는 사전 정의된 시점이나 사용자 정의 시작을 말한다.
+    이 시점은 통상적으로 사전에 결정되어 있으며, 이 시점이 발생할 떄 실행될 기능(핸들러/콜백)을 연관시킴으로써 프로그래밍적으로 알 수 있다.
+    이 시점은 UI의 상태(예: 입력란에 포커스가 갔거나 무엇인가가 드래그되어 있을 때), JavaScript 프로그래밍을 실행하는 환경의 상태(예: 페이지가 로드 되거나 XHR요청이 완료되었을 떄),
+    프로그램 자체의 상태(예: 페이지가 로드된 후 30초 동안 모든 마우스 클릭을 모니터링)에 의해 발생된다.
+
+    이벤트를 설정하는 것은 인리안 attribute 이벤트 핸들러, 속성 이벤트 핸들러, addEventListener() 메서드를 사용하여 수행될 수 있다.
+
+    다음 코드에서는 이 세 가지 패턴을 사용하여 이벤트를 설정하는 예쩨를 보여준다.
+    세 가지 패턴 모두 HTML 문서 내의 <div>가 마우스로 클릭될 때 마다 호출되는 click 이벤트를 추가한다.
+        -->
+
+    <!-- 인라인 attribute 이벤트 핸들러 패턴 -->
+<body onclick="console.log('fire/trigger attribute event handler1">
+
+    <div>click me</div>
+    <p>p click me</p>
+
+    <script>
+        var elementDiv = document.querySelector('div');
+
+        // 속성 이벤트 핸들러 패턴
+        elementDiv.onclick = function () { console.log('fire/trigger attribute event handler2') };
+
+        // addEventListener 메서트 패턴
+        elementDiv.addEventListener('click', function () {
+            console.log('fire/trigger attribute event handler3')
+        }, false);
+
+        /*
+        이벤트 중 하나로 <body> element에 연결되어 있다는 점에 유의한다. <div> element를 클릭할 때 <body>의 attribute 이벤트 핸들러가 발생되는 것이 이상하게 생각한다면,
+        <div>가 클릭될 때, <body> element도 클릭하고 있다는 것을 고려하기 바란다. <div>를 제외한 다른 곳을 클릭하면, <body> element도 클릭하고 있다는 것을 고려하기 바란다.
+        <div>를 제외한 다른곳을 클릭하면, <body> element의 attribute 핸들러만이 발생되는 것을 알 수 있다.
+
+        DOM에 프로그래밍적으로 이벤트를 연결하는 이 세 가지 페턴 모두 이벤트를 예약하는 것이지만, addEventListener()만이 견고하고 조작화된 솔루션을 제공한다.
+        인라인 attribute 이벤트 핸들러는 JavaScript와 HTML을 혼합하게 되는데, 이 둘을 분리해서 유지하는 것이 가장 바람직하다.
+
+        속성 이벤트 핸들러를 사용할 때의 단점은 한 번에 한 개의 값만 이벤트 속성에 할당할 수 있다는 것이다.
+        이는 이벤트를 속성 값으로 할당할 때 하나 이상의 속성 이벤트 핸들러를 DOM에 추가할 수 없다는 것을 의미한다.
+
+        다음 코드는 onclick 속성에 값을 두 번 할당해서 이것에 대한 예를 보여주는데, 이벤트가 호출될 때 마지막 값 설정만이 사용된다.
+        */
+
+        var elementP = document.querySelector('p');
+        elementP.onclick = function () { console.log('I\'m first, but i get overridden/replaced') };
+
+        //이전 값을 재정의 교체
+        elementP.onclick = function () { console.log('I win') };
+
+        /*
+        뿐만 아니라 속성 이벤트 핸들러를 인라인으로 사용하면, 이벤트가 호출하는 함수의 영역 체인으 활용하려는 시도를 영역문제를 겪을 수 있다.
+        addEventListener() 메서드는 이러한 문제점을 수월하게 해주므로, 이번 장에서 널리 사용할 것이다.
+        */
+
+        /*
+        통상적으로 Element 노드는 인라인 이벤트 핸들러(예:<div onclick=""></div>), 속성 이벤트 핸들러(예: document,querySelector('div).onclick = function(){}), addEventListener 메서드의 사용을 지원한다.
+        Document 노드는 속성 이벤트 핸들러(예: document.onclick = function())와 addEeventListener() 매서드를 지원한다
+
+        window 개체는 <body>나 <frameset> element를 통해 인라인 이벤트 핸들러를 지원하며(예: <body onload=""><body>), 속성 이벤트 핸들러(예: window.load = fuction(){})와 addEventListener() 메서드를 사용도 지원한다.
+
+        속성 이벤트 핸들러는 "DOM 레벨 0 이벤트"로, addEventListener()는 종종 "DOM 레벨 2 이벤트"라고 불려왔다. 레벨 0 이벤트나 레벨 1 이벤트 사양에 존재하지 않는다는 점을 감안하면 약간 혼동되기도 한다.
+        뿐만 아니라 인라인 이벤트 핸들러는 "HTML 이벤트 핸들러"로 불리기도 한다.
+        */
+    </script>
+</body>
+</html>

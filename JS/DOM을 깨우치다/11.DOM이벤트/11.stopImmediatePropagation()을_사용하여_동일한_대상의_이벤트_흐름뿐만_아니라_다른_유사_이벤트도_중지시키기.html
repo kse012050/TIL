@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.11 stopImmediatePropagation()을 사용하여 동일한 대상의 이벤트 흐름뿐만 아니라 다른 유사 이벤트도 중지시키기</title>
+</head>
+<body>
+    <!--
+    이벤트 핸들러/수신기 내에서 stopImmediatePropagation()을 호출하면, 이벤트 흐름 단계를 중지시키는 것(즉 stopPropagation()) 뿐만 아니라,
+    stopImmediatePropagation() 메서드를 호출한 이벤트 수신기 이후에 연결되어 호출되는 이벤트 대상의 다른 유사한 이벤트도 중지시킨다.
+
+    다음의 예제 코드에서, <div>에 연결된 두 번째 이벤트 수신기에서 stopImmediatePropagation()을 호출하면, 후속되는 click 이벤트가 발생되지 않는다.
+    -->
+
+    <div>click me</div>
+
+    <script>
+        // 첫 번째 이벤트 연결
+        document.querySelector('div').addEventListener('click', function () {
+            console.log('I get invoked because I was attached first');
+        }, false);
+
+        // 두 번째 이벤트 연결
+        document.querySelector('div').addEventListener('click', function (event) {
+            console.log('I get invoked, but stop any other click events on this target');
+            event.stopImmediatePropagation();
+        }, false);
+
+        // 세 번째 이벤트가 연결되나, 앞에서 stopImmediatePropagation()에 호출되어 이 이벤트가 발생되지 않는다
+        document.querySelector('div').addEventListener('click', function () {
+            console.log('I get stopped from the previous click event listener / 나는 이전의 클릭 이벤트 리스너');
+        }, false);
+
+        // stopImmediatePropagation이 호출된 것처럼 이벤트 흐름 역시 취소된다.
+        document.body.addEventListener('click', function () {
+            console.log('What, denied from being invoked! / 무엇, 부름에서 부정!');
+        }, false);
+
+        /*
+        stopImmediatePropagation()을 사용하더라도 기본 이벤트는 막지 않는다.
+        브라우저 기본 이벤트는 여전히 호출되며, stopImmediatePropagation()를 호출해야만 이 이벤트를 막을 수 있다.
+        */
+    </script>
+</body>
+</html>

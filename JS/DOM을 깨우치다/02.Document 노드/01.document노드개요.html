@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.1 document 노드 개요</title>
+</head>
+<body>
+    <script>
+        console.log(window.document.constructor);   // function HTMLDocument() {[native code]} 가 출력된다.  constructor:건설자
+
+        console.log(window.document.nodeType);      // DOCUMENT_NODE에 대한 숫자 키 매핑인 9가 출력된다.
+
+        // 이 코드를 통해 HTMLDocument 생성자 함수가 window.document 노드 개체를 생성하며, 이 노드가 DOCUMENT_NODE 개체라는 결론이 내려진다.
+
+        // Document 및 HTMLDocument 생성자는 보통 HTML 문서를 로드 시 브라우저에 의해 인스턴스가 만들어진다.
+        // 하지만 document.implementation.createHTMLDocument()를 사용하면, 브라우저 내에 현재 로드된 문서 외부에 직접 HTML 문서를 생성할 수 있다.      implementation:이행
+        // createHTMLDocument() 외에 createDocument()를 사용하여 HTML 문서로 설정된 document 개체를 생성할 수 있다. 이 메서드들을 사용하는 예로 프로그래밍적인 방법으로 iframe에 HTML 문서를 제공하는 것을 들 수 있다.
+    </script>
+</body>
+</html>

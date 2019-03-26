@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>8.4 DocumentFragment에서 innerHTML 사용하기</title>
+</head>
+<body>
+    <!--
+    노드 메서드를 사용하여 메모리상에서 DOM 구조를 생성하는 것은 지루한데다 많은 노력을 필요로 한다.
+    이를 피하기 위한 방법 중 하나는 DocuymentFragment를 생성해서 <div> 를 추가(DocumentFragment에서는 innerHTML이 동작하지 않음)한 다음.
+    HTML문자열로 갱신하기 위해 innerHTML 속성을 사용하는 것이다. 그러면 결과적으로 HTML 문자열로부터 DOM 구조가 만들어진다.
+
+    다음 코드에서는 JavaScript 문자열이 아니라 노드 트리처럼 다룰 수 있는 DOM 구조를 생서한다
+    -->
+
+    <script>
+        // <div>와 DocumentFragment를 생성
+        var divElm = document.createElement('div');
+        var docFrag = document.createDocumentFragment();
+
+        // DocumentFragment에 div 추가
+        docFrag.appendChild(divElm);
+
+        // 문자열로부터 DOM 구조를 생성
+        docFrag.querySelector('div').innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+
+        // 이 문자열은 querySelectorAll()과 같은 메서드를 호출 가능한 DOM 구조가 된다
+        // DOM 구조가 <div>로 감싸져 있다는 것을 명심한다.
+        console.log(docFrag.querySelectorAll('li').length);     // 2가 출력됨
+
+        /*
+        DocumentFragment와 <div>를 사용해서 만든 DOM 구조를 추가할 떄는 <div>를 삽입하지 않고 해당 구조를 추가하고싶을 것이다.
+        */
+    </script>
+
+    <div></div>
+    
+    <script>
+        // <div>와 DocumentFragment를 생성
+        /*
+        var divElm = document.createElement('div');
+        var docFrag = document.createDocumentFragment();
+        */
+
+        // div를 DocumentFragment에 추가
+        docFrag.appendChild(divElm);
+
+        // 문자열로부터 DOM 구조를 생성
+        docFrag.querySelector('div').innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+
+        // <div> 내에 포함된 첫 번째 자식 노드부터 시작해서 추가.
+        document.querySelector('div').appendChild(docFrag.querySelector('div').firstChild);
+
+        // <ul><li>foo</li><li>bar</li></ul>
+        console.log(document.querySelector('div').innerHTML);
+
+        /*
+        DocumentFragment 외에 DOMParser가 추가되기를 기대하고 있다. DOMParser는 문자열로 저장된 HTML을 DOM 문서로 해석할 수 있다.
+        이 책을 쓰는 시점에는 Opera 와 Firefox에서만 지원되지만, 외부 구현 (https://github.com/1129031)이 제공되고 있다.
+        만약 HTML을 DOM으로 변환하는 독립 스크립트가 필요하다면 domify(https://github.com/component/domify)를 시도해보기 바란다.
+        */
+    </script>
+</body>
+</html>

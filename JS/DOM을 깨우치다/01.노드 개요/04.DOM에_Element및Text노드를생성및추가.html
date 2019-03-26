@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>04.DOM에 Element및 Text노드를 생성 및 추가</title>
+</head>
+<body>
+    <div id="A">A</div>
+    <div id="B">b</div>
+    <span id="C">C</span>
+    <div id="D">D</div>
+    <div id="E">E</div>
+    
+    <script>
+        // strong element 와 text 노드를 생성해서 DOM에 추가
+        document.getElementById('A').innerHTML = '<strong>Hi<strong>';
+
+        // div element와 text 노드를 생성해서 <span id ='B'></span>을 바꾼다 (span#B가 교체된다)
+        document.getElementById('B').outerHTML = '<div id="B" class="new">whats Shaking</div>';
+
+        // Text 노드를 생성해서 div#C를 갱신한다.
+        document.getElementById('C').textContent = 'dude';
+
+        // innerText와 outerText는 비표준 확장이다.
+
+        //Text 노드를 생성해서 div#D를 갱신한다.
+        document.getElementById('D').innerText = 'Keep it';
+
+        //Text 노드를 생성해서 div#E를 Text 노드로 바꾼다(div#E가 사라진다는 점에 유의)
+        document.getElementById('E').outerText = 'real!';
+
+        console.log(document.body.innerHTML);
+        // 다음이 출력됨
+        /*
+        <div id="A"><strong>Hi</strong></div>
+        <div id="B" class="new">Whats Shaking</div>
+        <span id="C">dude</span> real!
+        */
+
+        // Firefox 버전 11 이전까지는 outerHTML에 대한 지원이 직접 제공되지 않았으며, 외부 구현이 존재한다(http://gist.github.com/1044128).
+        // textContent는 <script> 및 <style> 요소를 비롯한 모든 요소의 내용을 가져올 수 있지만, innetText는 그렇지 않다.
+        // innettext는 스타일에 대해서는 알고 있지만, textContent와는 달리 숨겨진 요소들의 텍스트는 반환하지 않는다.
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.7 복수의 형제 텍스트노드가 발생하는 경우</title>
+</head>
+<body>
+    <!--
+    브라우저에서 생성한 DOM 트리가 지능적으로 텍스트 노드들을 결합하기에, 통상적으로는 형제 Text노드가 인접해서 나타나지 않는다.
+    하지만 형제 텍스트 노드가 발생 가능한 두가지 경우가 존재한다.
+    
+    첫 번째 경우는 다소 명확하다. 텍스트 노드가 Element노드를 포함하면(예:<p>Hi, <strong>cody</strong> welcome!</p>),
+    덱스트가 적절한 노드 그룹으로 분할된다. 복잡하게 들릴 수 있으므로, 예제 코드를 살펴보는 것이 가장 좋다.
+
+    다음 코드에서 <p> element의 내용은 단일 Text 노드가 아니며, 실제로 세 개의 노드(Text 노드, element 노드, 또 하나의 Text 노드)로 되어 있다.
+    -->
+
+    <p>Hi, <strong>cody</strong> welcome!</p>
+
+    <div></div>
+
+    <script>
+        var pElement = document.querySelector('p');
+
+        console.log(pElement.childNodes.length);        // 3이 출력됨
+
+        console.log(pElement.firstChild.data);      // 텍스트 노드 'Hi,'
+        console.log(pElement.firstChild.nextSibling);       // Element노드 <strong>
+        console.log(pElement.lastChild.data);       // 텍스트 노드 'welcome!'
+
+        /*
+        두 번째 경우는 코드로 생성한 element에 프로그래밍적으로 Text 노드를 추가할 때 발생한다.
+
+        다음 코드에서는 <p> element를 생성한 후, 이 element에 두 개의 Text 노드를 추가한다.
+        결과적으로 형제 Text 노드가 만들어진다
+        */
+
+        var pElementNode = document.createElement('p');
+        var textNodeHi = document.createTextNode('Hi ');
+        var textNodeCody = document.createElement('cody');
+
+        pElementNode.appendChild(textNodeHi);
+        pElementNode.appendChild(textNodeCody);
+
+        document.querySelector('div').appendChild(pElementNode);
+
+        console.log(document.querySelector('div p').childNodes.length);     // 2가 출력됨
+    </script>
+</body>
+</html>

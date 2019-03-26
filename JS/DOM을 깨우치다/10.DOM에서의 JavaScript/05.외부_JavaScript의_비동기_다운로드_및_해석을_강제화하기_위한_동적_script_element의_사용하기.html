@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>10.5 외부 JavaScript의 비동기 다운로드 및 해석을 강제화하기 위한 동적 script element의 사용하기</title>
+</head>
+<body>
+    <!--
+        async attribute를 사용하지 않고 웹 브라우저에 JavaScript의 비동기 다운로드 및 해석을 강제화 하려면, 프로그래밍적으로 외부 JavaScript파일을 포함하는
+        <script> element를 생성해서 DOM에 삽입하는 기법이 널리 알려져 있다.
+
+        다음 코드에서는 <script> element를 프로그래밍적으로 생성한 후 <body> element에 추가해서 브라우저로 하여금 <script> element를 비동기로 처리하도록 강제한다.
+     -->
+    <!-- 차단하지 않고, 다운로드를 시작한 후 완료되면 파일을 해석한다. -->
+    <script>
+        var underscoreScript = document.createElement('script');
+        underscoreScript.src = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js";
+
+        document.body.appendChild(underscoreScript);
+    </script>
+    <!-- 차단하지 않고, 다운로드를 시작한 후 완료되면 파일을 해석한다. -->
+    <script>
+        var jqueryScript = document.createElement('script');
+        jqueryScript.src = "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js";
+        document.body.appendChild(jqueryScript);
+    </script>
+
+    <!-- 차단하지 않고, 다운로드를 시작한 후 완료되면 파일을 해석한다. -->
+    <script>
+        var mouseWheelScript = document.createElement('script');
+        mouseWheelScript.src = "http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js";
+
+        document.body.appendChild(mouseWheelScript);
+    </script>
+    
+    <script>
+        // 모든 것이 로드된 후에야 jQuery가 로드되고 해석되었따고 안전하게 결론을 내릴 수 있다, 
+        document.body.onload = function () { console.log(jQuery().jquery) };
+
+        /*
+        동적 <script> element를 사용 사의 주요 단점은 JavaScript 파일이 DOM에 포함된 순서와 다르게 해석된다는 것이다.
+        이는 종속성 관리 문제를 유발한다.
+        */
+
+    </script>
+    
+
+
+</body>
+</html>

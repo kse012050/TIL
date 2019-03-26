@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.7 문서내에서 포커스를 가지고 있거나 활성 상태인 노드에 대한 참조를 얻기</title>
+</head>
+<body>
+    <textarea></textarea>
+    <script>
+        // <textarea>에 포커스 설정.
+        document.querySelector('textarea').focus();
+
+        // 문서 내에서 포커스를 가지고 있거나 활성 상태인 element에 대한 참조 얻기
+        console.log(document.activeElement);    // <textarea>가 출력됨
+
+        // 노드를 선택하는 것(마우스를 사용하여 HTML 페이지 내에서 반전된 영역), 키스트로크, 스페이스바, 마우스로 무엇인가를 입력하기 위해 
+        // 포커스를 받은 element를 혼동하지 말자.
+    </script>
+</body>
+</html>

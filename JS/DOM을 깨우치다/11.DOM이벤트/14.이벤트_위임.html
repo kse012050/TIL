@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.14 이벤트 위임</title>
+</head>
+<body>
+    <!--
+    이벤트 위임(delegate)은 간단히 말해 이벤트 흐름을 활용하여 단일 이벤트 수신기가 여러 개의 이벤트 대상을 처리할 수 잏게 하는 프로그래밍 행위를 말한다.
+    이벤트 위임의 부수 작용은 이벤트가 생성될 때 이벤트에 응답하기 위해 이벤트 대상이 DOM 내에 있을 필요가 없다는 것이다.
+    이는 DOM을 업데이트하는 XHR 응답을 처리할 때보다 편리해진다. 이벤트 위임을 구현함으로써, JavaScript가 로드되어 해석된 후에 새로운 콘텐츠가 DOM에
+    추가되어도 즉시 이벤트에 응답할 수 있게 된다. 무한한 개수의 행과 열을 가진 테이블이 있다고 가정해보자.
+    이벤트 위임을 사용하면, 이벤트의 최초 대상인 노드나 개체에 대해 위임으로 동작하는 단일 이벤트 수신기를 <table> 노드에 추가할 수 있다.
+
+    다음의 예제 코드에서는 이벤트의 대상인 <td> 중 아무것이나 클릭하면, 해당 이벤트를 <table>의 click 수신기로 위임한다.
+    이것이 가능한 이유는 이벤트 흐름 때문이며, 특히 그 중에서 버블링 단계임을 잊지 말기 바란다.
+    -->
+
+    <p>Click a table cell</p>
+
+    <table border="1">
+        <tbody>
+            <tr><td>row 1 column 1</td><td>row 1 column 2</td></tr>
+            <tr><td>row 2 column 1</td><td>row 2 column 2</td></tr>
+            <tr><td>row 3 column 1</td><td>row 3 column 2</td></tr>
+            <tr><td>row 4 column 1</td><td>row 4 column 2</td></tr>
+            <tr><td>row 5 column 1</td><td>row 5 column 2</td></tr>
+            <tr><td>row 6 column 1</td><td>row 6 column 2</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.querySelector('table').addEventListener('click', function (event) {
+            if (event.target.tagName.toLowerCase() === 'td')     // 대상이 td인 경우에만 코드를 실행한다
+                console.log(event.target.textContent);          // event.target을 사용하여 이벤트 대상(td)에 대해 접근을 얻는다
+        });
+
+        /*
+        예제 코드에서 테이블에 새로운 행을 추가하면 화면에 랜더링되자마자 click 이벤트에 반응하게 되는데, click 이벤트가 <table> element 노드로 위임되기 때문이다
+        */
+
+        /*
+        이벤트 위임은 click, mousedown, mouseup, keydown, keyup, keypress 이벤트 형식을 처리할떄 활용하면 이상적이다.
+        */
+    </script>
+        
+</body>
+</html>

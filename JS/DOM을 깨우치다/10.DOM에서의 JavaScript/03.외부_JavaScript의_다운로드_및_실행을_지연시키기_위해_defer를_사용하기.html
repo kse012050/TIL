@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>10.3 외부 JavaScript의 다운로드 및 실행을 지연시키기 위해 defer를 사용하기</title>
+</head>
+<body>
+    <!--
+    <script> element는 부라우저가 </html> 노드를 해석할 때까지 외부 JavaScript 파일을 블로킹, 다운로드, 실행을 지연시켜주는 defer라는
+    attribute를 가진다. 이 atribute를 사용하면, 일반적으로 웹 브라우저가 <script> 노드를 만나게 될 때 발생하는 것들을 간단하게 지연시킬 수 있다.
+
+    다음 코드에서는 마지막의 <html>을 만날 때 까지 외부 javaScript파일을 지연시킨다.
+        -->
+
+    <!-- <html> element 노드가 해석될 때까지 지연시키고 차단이 발생하지 않도록 무시한다. -->
+    <script defer src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+
+    <!-- <html> element노드가 해석될 때까지 지연시키고 차단이 발생하지 않도록 무시한다. -->
+    <script defer src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <!-- <html> element 노드가 해석될 때까지 지연시키고 차단이 발생하지 않도록 무시한다.-->
+    <script defer src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js"></script>
+
+    <script>
+        // <html> element가 닫히기 전까지 jQuery가 존재하지 않으므로 다음과 같이 된다.
+        console.log(window['jQuery'] === undefined);        // true가 출력됨
+
+        // 모든 것이 로드된 후 jQuery가 로드되어 해석되었다는 결론을 내릴 수 있다.
+        document.body.onload = function () { console.log(jQuery().jquery) };        // function이 출력됨
+    </script>
+</body>
+</html>

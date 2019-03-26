@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.1 Text 개체 개요</title>
+</head>
+<body>
+    <!--
+    HTML 문서에서 텍스트는 text 노드를 만들어내는 Text() 생성자 함수의 인스턴스로 표현된다.
+    HTML 문서가 해석될 때, HTML 페이지의 element 사이에 섞여있는 텍스트는 text 노드로 변환된다.
+    -->
+
+    <p>hi</p>
+
+    <script>
+        // 'hi' text 노드 선택.
+        var textHi = document.querySelector('p').firstChild;
+
+        console.log(textHi.constructor);        //Text()가 출력됨   constructor 건설자
+
+        // Text {textContent="Hi", length=2, wholeText="hi", ...} 가 출력됨
+        console.log(textHi);
+
+        /*
+        이 코드가 Text() 생성자 함수가 text 노드를 생성한다는 결론을 내려 주지만, Text가 CharacterData, Node, Object로부터 상속받는다는 점을 명심해야 한다.
+        */
+    </script>
+</body>
+</html>

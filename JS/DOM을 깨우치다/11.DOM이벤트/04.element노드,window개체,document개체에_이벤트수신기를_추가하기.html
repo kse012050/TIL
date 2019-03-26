@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.4.element노드, window개체, document개체에 이벤트수신기를 추가하기</title>
+</head>
+<body>
+    <!--
+    addEventListener() 메서드는 모든 Elemenbt 노드, window 개체, document 개체에 존재하며, DOM 및 브라우저 개체 모델(Browesr Object Model, BOnM)과
+    관련된 JavaScript 개체 뿐만 아니라 HTML 문서의 일부에도 이벤트 수신기를 추가할 수 있는 기능을 제공한다.
+
+    다음 코드에서는 이 메서드를 활용하여 <div> element, document 개체, window 개체에 mousemove 이벤트를 추가한다. 이벤트 흐름 때문에, <div> 위에서
+    마우스를 움직이면 움직임이 발생할 떄 마다 세 가지 수신기가 모두 호출된다.
+    -->
+
+    <div>mouse over me</div>
+
+    <script>
+        // 버블링 단계에서 이벤트가 호출되도록 window 개체에 mousemove 이벤트를 추가한다.
+        window.addEventListener('mousemove', function () { console.log('moving over winow'); }, false);
+
+        // 버블링 단계에서 이벤트가 호출되도록 document 개체에 mousemove 이벤트를 추가한다.
+        document.addEventListener('mousemove', function () { console.log('moving over document'); }, false);
+
+        // 버블링 단계에서 이벤트가 호출되도록 <div> document 개체에 mousemove 이벤트를 추가한다.
+        document.querySelector('div').addEventListener('mousemove', function () {
+            console.log('moving over div');
+        }, false);
+
+        /*
+        이전 예제 코드에서 addEventListener() 메서드는 세 개의 인수를 받는다.
+        첫 번째 인수는 수신할 이벤트 형식이다, 이벤트 형식 문자열은 이벤트 핸들러에서 필요로 하는 "on" (예: onmousemove)를 가지지 않는다는 점에 유의한다.
+        두 번째 인수는 이벤트가 발생했을 때 호출될 함수다.
+        세 번째 매개변수는 이벤트가 이벤트 흐름의 캡처 단계에서 발생될지, 버블링 단계에서 발생될지를 가리키는 Boolean 값이다.
+        */
+
+        /*
+        addEventListener()의 사용을 권장하기 위해, 의도적으로 인라인 이벤트 핸들러와 속성 이벤트 핸들러를 다루지 않았다.
+        통상적으로, 개발자는 DOM으로 이벤트가 버블링되기 전에 개체가 이벤트가 처리하도록 버블링 단꼐 도중에 이벤트가 발생되기를 원한다.
+        이 떄문에, addEventListener()의 마지막 인수는 거의 대부분 false 값을 주게 된다.
+        요즘 브라우저에서는 세 번째 매개변수가 지정되지 않았을 경우, 기본 값이 false가 된다.
+        XMLHttpRequest 개체에서도 addEventListener() 메서드를 사용할 수 있다는 점을 알아두자.
+        */
+    </script>
+</body>
+</html>

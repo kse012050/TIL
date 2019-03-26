@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.8 이벤트가 호출된 노드나 개체가 아닌 이벤트의 대상을 참조</title>
+</head>
+<body>
+    <!--
+    이벤트 흐름 때문에 <body> element 내에 포함된 <div>를 클릭했을 때 <body> element에 연결된 click 이벤트 수신기가 호출되도록 하는 것이 가능하다.
+    이러한 상황이 발생했을 떄, <body>에 연결된 이벤트 수신기 함수에 전달되는 이벤트 개체는 이벤트가 발생된 노드나 개체(즉, 대상)에 대한 참조(event.target)를 재공한다.
+
+    다음 코드에서는 <div>가 클릭됐을 떄, <body> element의 click 이벤트 수신기가 호출되며, event.target 속성은 click 이벤트의 대상인 원래의 <div>를 참조한다.
+    이벤트 흐름에서 이벤트의 진원지를 알아야 하므로, event.target은 이벤트가 발생했을 때 매우 유용할 수 있다.
+    -->
+
+    <div>click me</div>
+
+    <script>
+        document.body.addEventListener('click', function (event) {
+            // <div>가 클릭되면, <div>가 이벤트 흐름에서 대상이므로 '<div>'가 출력된다.
+            console.log(event.target);
+        }, false);
+
+        /*
+        예제 코드에서 <div> 대신 <body> element가 클릭되면, 이벤트 대상과 이벤트 수신기가 호출된 element 노드가 동일하게 된다.
+
+        따라서 event.target, this.currentTarget은 모두 <body>> element에 대한 참조를 가지게 된다.
+        */
+    </script>
+</body>
+</html>

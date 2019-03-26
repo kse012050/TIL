@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>4.1 특정 Element노드 선택하기</title>
+</head>
+<body>
+    <!--
+    단일 element 노드에 대한 참조를 얻는데 가장 흔히 사용되는 메서드는 다음과 같다.
+    querySelector()
+    getElementById()
+    -->
+
+    <ul>
+        <li>Hello</li>
+        <li>big</li>
+        <li>bad</li>
+        <li id="last">world</li>
+    </ul>
+
+    <script>
+        console.log(document.querySelector('li').textContent);      // Hello를 출력
+        console.log(document.getElementById('last').textContent);   // world를 출력
+    /*
+        getElementById() 메서드는 querySelector() 메서드에 비해 매우 단순하다.
+        querySelector() 메서드는 CSS selector 문법 형식의 매개 변수를 허용한다.
+        이 메서드에 CSS3 selector(예: #score>tbody>tr>td:nth-of-type(2))를 전달하면, DOM에서 단일 element를 선택하는 데 사용된다.
+        */
+
+        /*
+        querySelector()는 selector를 기반으로 문서 내에서 발견되는 첫 번째 노드 element를 반환한다.
+        예를 들어, 앞에 코드에서는 CSS내의 모든 <li> element를 선택하도록 elector를 전달했지만, 첫 번째 것만 반환된다
+
+        querySelector()는 element 노드에도 정의되어 있다. 그 덕분에 메서드의 결과를 DOM 트리의 특정 부분에 한정할 수 있어서 상황에 맞는 쿼리를 할 수 있게 해준다.
+        */
+    </script>
+</body>
+</html>

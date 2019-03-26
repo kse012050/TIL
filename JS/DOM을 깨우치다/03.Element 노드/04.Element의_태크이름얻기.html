@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.4 Element의 태크 이름 얻기</title>
+</head>
+<body>
+    <!--
+    tagName 속성을 사용하면, element의 이름에 접근할 수 있다. tagName 속성은 nodeName이 반환하는 것과 동일한 값을 반환한다.
+    원본HTML 문서에서의 대소문자 여부에 관예없이 둘 다 값을 대문자로 변환한다.
+    -->
+    <a href="#">Hi</a>
+    
+    <script>
+        console.log(document.querySelector('a').tagName);       // A가 출력됨
+
+        // nodeName 속성도 동일한 값을 반환한다.
+        console.log(document.querySelector('a').nodeName);      // A가 출력됨
+    </script>
+</body>
+</html>

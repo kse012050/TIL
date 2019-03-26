@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.3 이벤트 흐름</title>
+</head>
+<body>
+    <!--
+    이벤트가 발생되면 DOM을 따라 흘러가거나 전파되면서 다른 노드와 JavaScript 개체들에서 동일한 이벤트를 발생시킨다.
+    이벤트 흐름은 캡처 단계나(즉 DOM 트리 줄기 -> 가지)이나 버블링 단계(DOM 트리 가지 -> 줄기), 혹은 양쪽 모두로 발생하도록 프로그래밍 할 수 있다.
+
+    다음 코드에서는 HTML 문서에는 <div> element를 클릭하면 이벤트 흐름을 따라 10개의 이벤트 수신기가 모두 호출되도록 구성하였다.
+    <div>가 클릭되면 window 개체에서 캡처단계가 시작되고, 이벤트 대상에 도달할 떄까지 DOM 트리를 따라 내려가면서 전파되어 각 개체에서 click 이벤트를
+    발생 시킨다(예: window > document > <html> > <body> > 이벤트 대상). 캡처 단계가 끝나면, 대상 단계가 시작되어 대상 element에서 click 이벤트가 발생한다.
+    다음으로, click 이벤트가 발생된 이벤트 대상으로부터 window 개체에 도달할 때까지 전파된다(예: 이벤트 대상 > <body> > <html> > document > window ).
+    이 내용을 알면, 코드 예제에서 <div>를 클릭하면 콘솔에 1,2,3,4,5,6,7,8,9,10이 출력되는 이유가 명확해 진다.
+        -->
+
+    <div>click me to start event flow</div>
+
+    <script>
+        /*
+        이벤트를 버블링하는 것뿐만 아니라 캡처 이벤트도 발생하도록 addEventListner()의 boolenan 매개변수로 true를 전달하고 있음에 유의.
+        */
+
+        // 1 캡처 단계
+        window.addEventListener('click', function () { console.log(1); }, true);
+
+        // 2 캡처 단계
+        document.addEventListener('click', function () { console.log(2); }, true);
+
+        // 3 캡처 단계
+        document.documentElement.addEventListener('click', function () { console.log(3); }, true);
+
+        // 4 캡처 단계
+        document.body.addEventListener('click', function () { console.log(4); }, true);
+
+        // 5 캡처 단계 도중에 대상 단계가 발생
+        document.querySelector('div').addEventListener('click', function () { console.log(5); }, true);
+
+        // 6 버블링 단계 도중에 대상 단계가 발생
+        document.querySelector('div').addEventListener('click', function () { console.log(6); }, false);
+
+        // 7 버블링 단계
+        document.body.addEventListener('click', function () { console.log(7); },false);
+
+        // 8 버블링 단계
+        document.documentElement.addEventListener('click', function () { console.log(8); }, false);
+
+        // 9 버블링 단계
+        document.addEventListener('click', function () { console.log(9); }, false);
+
+        // 10버블링 단계
+        window.addEventListener('click', function () { console.log(10); }, false);
+
+        /*
+        <div>가 클릭된 후, 이벤트 흐름이 다음 순서로 진행된다.
+
+        1. 캡처 단계에서 캡처를 발생시키도록 설정된 window의 click 이벤트가 호출된다.
+
+        2. 캡처 단계애서 캡처를 발생시키도록 설정된 document의 click 이벤트가 호출된다.
+
+        3. 캡처 단계애서 캡처를 발생시키도록 설정된 <html> element 의 click 이벤트가 호출된다.
+
+        4. 캡처 단계애서 캡처를 발생시키도록 설정된 <body> element 의 click 이벤트가 호출된다.
+
+        5. 캡처 단계애서 캡처를 발생시키도록 설정된 <div> element 의 click 이벤트가 호출된다.
+
+        6. 캡처 단계애서 버블링을 발생시키도록 설정된 <div> element 의 click 이벤트가 호출된다.
+
+        7. 버블링 단계애서 버블링을 발생시키도록 설정된 <body> element의 click 이벤트가 호출된다.
+
+        8. 버블링 단계애서 버블링을 발생시키도록 설정된 <html> element 의 click 이벤트가 호출된다.
+
+        9. 버블링 단계애서 버블링을 발생시키도록 설정된 document의 click 이벤트가 호출된다.
+
+        10. 버블링 단계애서 버블링을 발생시키도록 설정된 window 의 click 이벤트가 호출된다.
+
+        캡처 단계는 이를 지원하지 않는 브라우저가 있기 때문에 널리 사용되지는 않는다. 통상적으로 이벤트는 버블링 단계 도중에 호출되는 것으로 가정된다.
+
+        다음코드에서는 이전 코드 예제에서 캡처 단계를 제거하여 이벤트 호출 도중에 통상적으로 어떤 일이 일어나는지를 예시하고 있다.
+        */
+    </script>
+
+    <p>click me to start event flow</p>
+    
+    <script>
+        // 1 버블링 단계 도중에 대상 단계가 발생
+        document.querySelector('div').addEventListener('click', function () { console.log(1); }, false);
+
+        // 2 버블링 단계
+        document.body.addEventListener('click', function () { console.log(2); }, false);
+
+        // 3 버블링 단계
+        document.documentElement.addEventListener('click', function () { console.log(3); }, false);
+
+        // 4 버블링 단계
+        document.addEventListener('click', function () { console.log(4); }, false);
+
+        // 5 버블링 단계
+        window.addEventListener('click', function () { console.log(5); }, false);
+
+        /*
+        이 예제 코드에서는 <body> element에서 click 이벤크가 발생하면 (<p>를 제외한 다른 위치를 클릭), <p>에 연결된 click 이벤트는 호출되지 않으며,
+        버블링 호출은 <body> 에서 시작된다. 이벤트 대상이 더 이상 <p>가 아니라 <body> element 이기 떄문이다.
+        */
+
+        /*
+        최신 브라우저들에서는 캡처 단계 사용을 지원하고 있으므로, 예전에 신뢰할 수 없다고 간주된 것도 요즘에는 가치가 있을 수도 있다.
+        예를 들어, 이벤트 대상에서 이벤트가 발생하기 전에 이를 가로채는 것이 가능하다. 이번장에서 이벤트 위임(delegation) 절을 읽으려면,
+        이벤트 캡처와 버블링에 대한 개념을 사전에 알고 있어야 한다.
+        이벤트 수신기 함수에 전달되는 이벤트 개체는 이벤트가 어느 단계에서 호출되었는지를 가리키는 숫자를 가지고 있는 eventPhase 속성을 가진다.
+        값이 1이면 캡처 단계이며, 2이면 대상 단계, 3이면 버블링 단계를 가르킨다.
+        */
+    </script>
+</body>
+</html>

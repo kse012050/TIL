@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>두 노드가 동일한지 판단하기</title>
+</head>
+<body>
+    <!--
+    DOM3 사양에 따르면, 두 노드는 다음 조건들이 만족되는 경우에만 동일하다.
+        두 노드가 동일한 형식이다.
+        nodeName, localName, namespaceURI, prefix, nodeValue 문자열 특성이 동일하다. 즉 둘 다 null이거나, 동일한 길이와 동일한 문자를 가져야 한다.
+        NamedNodeMaps 특성이 동일하다. 즉 둘 다 null이거나 길이가 동일해야 하며, 하나의 맵 내에 존재하는 각 노드들과 다른 맵에 존재하는 노드가 동일해야 하되 인덱스가 동일 할 필요는 없다.
+        childNodes NodeLists가 동일하다. 즉 둘 다 null이거나, 동일한 길이를 가지고 같은 인덱스의 노드가 동일해야 한다. 정규화(normalization)가 동일성에 영향을 미칠 수 있으므로, 이를 피하기 위해서는 비교를 수행하기 전에 노드를 정규화해야 한다.
+        -->
+    <!--
+    DOM 내의 노드에 대해 isEqualNode() 메서드를 호출하면, 매개변수로 전달하는 노드와 동일한지를 물어보게 된다.
+    -->
+
+    <input type="text" />
+    <input type="text" />
+
+    <textarea>foo</textarea>
+    <textarea>bar</textarea>
+    
+    <script>
+        // 완전히 동일하므로 true가 출려된다
+        var input = document.querySelectorAll('input');
+        console.log(input[0].isEqualNode(input[1]));        //Equal 같은  isEqualNode 동일노드
+
+        // 자식 text 노드가 동일하지 않으므로 false가 출력됨.
+        var textarea = document.querySelectorAll('textarea');
+        console.log(textarea[0].isEqualNode(textarea[1]));
+
+        // 두 노드가 완전히 동일한지가 아니라, 두 노드 참조가 동일한 노드를 참조하고 있는지 알고 싶다면, === 연산자를 사용하여 간단하게 확인해볼 수 있다(예: document, body === document.body).
+        // 이 연산자는 동일하지는 않아도 참조가 일치하는지를 알려준다.
+    </script>
+</body>
+</html>

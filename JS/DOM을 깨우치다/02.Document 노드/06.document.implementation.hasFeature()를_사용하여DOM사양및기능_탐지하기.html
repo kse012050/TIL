@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.6 document.implementation.hasFeature()를 사용하여 DOM사양/기능 탐지하기</title>
+</head>
+<body>
+    <!--
+    document.implementation.hasFeature()를 사용하면 현재 문서에 대해 브라우저가 구현/지원하는 기능 및 수준에 대해 물어볼 수 있다.
+    예를 들어, 브라우저가 Core DOM Level 3 사양을 구현했는지를 물어보려면, hasFeature() 매서드에 기능 명칭과 버전을 전달한다.   Feature:특색
+    -->
+    <script>
+        console.log(document.implementation.hasFeature('core', '2.0'));
+        console.log(document.implementation.hasFeature('core', '3.0'));
+
+        // 아직 이것까지 이해하기엔 너무 벅참 나중에 책 참조
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.8 Class Attribute 값 리트스 얻기</title>
+</head>
+<body>
+    <!--
+    element 노드에 존재하는 classList 속성을 사용하면 className 속성에서 반환되는 공백으로 구분된 문자열 값을 사용하는 것보다 훨씬 쉽게 
+    class attribute 값 리스트(예: DOMTokenList)에 접근할 수 있다. 다음 코드에서는 classList를 사용하는 것과 className을 비교하고 있다.
+        -->
+
+    <div class="big brown bear"></div>
+
+    <script>
+        var elm = document.querySelector('div');
+
+        console.log(elm.classList);     // big brown bear {0="big" , 1="brown" , 2="bear" , length=3 , ...}
+
+        console.log(elm.className);     // 'big brown bear'가 출력됨
+
+        // classList는 유사 배열 컬렉션이며, 읽기 전용인 length 속성을 가진다.
+        // classList는 읽기 전용이지만 add() , remove() , contains() , toggle() 메서드를 사용해서 변경할 수 있다.
+        // IE 9은 classList를 지원하지 않으며, IE 10부터 지원된다. https://github.com/eligrey/classList.js 나 https://gist.github.com/1381839 와 같은 외부 구현 코드(polyfill)가 존재한다.
+    </script>
+</body>
+</html>

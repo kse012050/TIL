@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.9 textContent와 innerText 간의 차이</title>
+</head>
+<body>
+    <!--
+    Firefox를 제외한 대부분의 최근 브라우저들은 textContent와 유사해 보이는 innerText라는 속성을 지원한다. 하지만 이 속성들은 동일하지 않다.
+    textContent와 innerText간에는 다음과 같은 차이가 있다는 점에 유의해야 한다.
+       1. innerText에는 CSS가 반영된다. 즉 숨겨진 텍스트가 있는 경우 innerText는 이 텍스트를 무시하는 반면, textContent는 무시하지 않는다
+       2. innerText는 CSS의 영향을 받으므로 리플로우(reflow)가 발생되는 반면, textContent는 그렇지 않다.
+       3. innerText는 script 와 style element 내의 포함된 text 노드를 무시한다.
+       4. textContent와 달리 innerText는 텍스트를 정규화해서 반환한다. textContent는 문서 내에 있는 것을 마크업만 제거해서 그대로 반환하는 것으로 생각하면된다. 
+          여기에는 공백, 줄 바꿈, 개행 문자가 초함된다.
+       5. innerText는 비표준이고 브라우저에 국한된 것으로 간주되지만, textContent는 DOM사양으로 구현된다
+
+    innerText를 사용하고자 한다면, Firefox에 대한 우회방안이 있어야 한다.
+   -->
+</body>
+</html>

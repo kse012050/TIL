@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.6 이벤트 개체에서 이벤트 속성 얻기</title>
+</head>
+<body>
+    <!--
+    기본적으로, 이벤트에서 호출되는 핸들러나 콜백 함수에는 이벤트와 관련된 모든 정보를 가지고 있는 매개변수가 전송된다.
+
+    다음 코드에서는 이 이벤트 개체에 접근하여, load 이벤트와 click 이벤트의 모든 속성과 값을 출력하는 예를 보여준다.
+    click 이벤트와 관련된 속성을 보려면 <div>를 클릭해야 한다는 점에 유의한다.
+    -->
+    
+    <div>click me</div>
+
+    <script>
+        document.querySelector('div').addEventListener('click', function (event) {
+            Object.keys(event).sort().forEach(function (item) {
+                console.log(item + ' = ' + event[item]);        // 이벤트 속성 및 값을 출력
+            });
+        }, false);
+
+        // 'this'가 window라고 가정.
+        this.addEventListener('load', function (evet) {
+            Object.keys(event).sort().forEach(function (item) {
+                console.log(item + ' = ' + event[item]);        // 이벤트 속성 및 값을 출력
+            })
+        }, false);
+
+        /*
+        각 이벤트는 이벤트 형식에 따라 약간 다른 속성을 가질 수 있다(예: MouseEvent, keyboardEvent, WheelEevent)
+        */
+
+        /*
+        event 개체는 stopPropagation(), stopImmediatePropagation(), preventDefault() 메서드도 제공한다.
+
+        이 책에서 event라는 인수명은 이벤트개체를 가리킨다. 사실 원하는 아무 이름이나 써도 상관 없으며, e나 evt로 쓰는것도 흔히 볼 수 있다.
+        */
+    </script>
+</body>
+</html>

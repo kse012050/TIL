@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.3 Element 생성</title>
+</head>
+<body>
+    <!--
+    Element 노드는 브라우저가 HTML 문서를 해석해서 문서 콘텐츠를 기반으로 대응되는 DOM이 만들어질 때 인스턴스화된다.
+    이것 외에 createElement()를 사용하여 프로그래밍적으로 Element 노드를 생성할 수도 있다.    
+    -->
+    <script>
+        var elementNode = document.createElement('textarea');       // HTMLTextAreaElement() 는 <textarea>를 생성한다.
+
+        document.body.appendChild(elementNode);         // append Child 자식 추가
+
+        console.log(document.querySelector('textarea'));        // 이제 DOM 내에 존재하는지 확인한다.
+
+        // createElement() 매서드에 전다로디는 값은 생성할 Element의 형식(태그 이름)을 지정하는 문자열이다.
+        // createElement에 전달되는 값은 element가 생성되기 전에 소문자 문자열로 변경된다.
+    </script>
+</body>
+</html>

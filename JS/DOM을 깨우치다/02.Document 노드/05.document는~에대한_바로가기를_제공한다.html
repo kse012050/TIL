@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.5 document는 ~ 에대한 바로가기를 제공한다</title>
+</head>
+<body>
+    <!--
+            ~ => <!DOCTYPE> / <html lang="en"> / <head> / <body>
+    다음 속성들을 사용하면, 각 노드에 대한 바로가기 참조를 얻을 수 있다.
+        document.doctype은 <!DOCTYPE>을 참조한다.
+        document.documentElement는 <html lang="en">을 참조한다.
+        docuemnt.head는 <head>를 참조한다.
+        document.body는 <body>를 참조한다.
+    -->
+    <script>
+        console.log(document.doctype);          // DocumentType {nodeType=10, ownerDocument=document, ...} 가 출력됨
+
+        console.log(document.documentElement);      // <html lang="en">이 출력됨
+
+        console.log(document.head);         // <head>가 출력됨
+
+        console.log(document.body)          // <body>가 출력됨
+
+        // doctype 이나 DTD의 nodeType은 10 또는 DOCUMENT_TYPE_NODE이며, DOCUMENT_NODE(즉 HTMLDocument()로부터 생성된 window.docuemnt)와 혼동해서는 안된다.
+        // doctype은 DocumentType() 생성자로부터 생성된다.
+        // Safari, Chrome, Opera에서는 document.doctype이 document.childNodes 리스트에 나타나지 않는다.
+    </script>
+</body>
+</html>

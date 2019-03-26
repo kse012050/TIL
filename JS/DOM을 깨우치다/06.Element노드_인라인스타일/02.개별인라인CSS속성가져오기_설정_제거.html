@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>6.2 개별 인라인 CSS속성 가져오기 설정 제거</title>
+</head>
+<body>
+    <!--
+    인라인 CSS 스타일 element 노드 개체에 존재하는 style 개체의 속성으로 각자 표현된다.
+    단순히 개체의 속성 값을 설정하는 것으로 element의 개별 CSS 속성을 가져오거나 설정 제거하는 인터페이스가 제공되는 것이다.
+    다음 코드에서는 style 개체의 속성을 조작하여 <div>의 스타일을 설정하고, 가져오며, 제거한다.
+        -->
+
+    <div id="div"></div>
+
+    <div id="div2"></div>
+
+    <script>
+        var divStyle = document.querySelector('#div').style;
+
+        // 설정
+        divStyle.backgroundColor = 'red';
+        divStyle.border = '1px solid black';
+        divStyle.width = '100px';
+        divStyle.height = '100px';
+
+        // 가져오기
+        console.log(divStyle.backgroundColor);
+        console.log(divStyle.border);
+        console.log(divStyle.width);
+        console.log(divStyle.height);
+
+        // 제거
+        /*
+        divStyle.backgroundColor = "";
+        divStyle.border = '';
+        divStyle.width = '';
+        divStyle.height = '';
+        */
+
+
+        /*
+        style 개체에 포함된 속성명에는 CSS 속성명에서 사용되는 일반적인 하이픈이 포함되지 않는다. 변환 규칙은 매우 간단한데,
+        하이픈을 제거하고 카멜케이스(camelCase)를 사용하면 된다(예:font-size = fontSize , background-image = backgroundImage).
+        CSS 속성명이 JavaScript 키워드인 경우, JavaScript CSS 속성명에는 css라는 접투어가 붙는다 (예:cssFloat).
+        약칭 속성도 속성으로 사용 가능하다. 즉 marginTop뿐만 아니라 margin도 설정 가능하다.
+
+        측정 단위가 필요한 CSS 속성의 경우, 적절한 단위를 포함시켜야 한다(예: style.width = '300px'; 이며, style.width = '300';이 아님).
+        문서가 표준 모드로 랜터링될 때에는 측정 단위가 반드시 필요하며, 그렇지 않은 경우에는 무시된다.
+        유연 모드(quirks mode)에서는 측정 단위가 포함되지 않았다고 가정된다.
+        */
+
+        /*
+        style 개체는 CSSStyleDeclaration 개체로 개별 CSS 속성에 대한 접근뿐만 아니라 element노드의 개별 CSS 속성을 조작하는 데 사용되는
+        setPropertyValue(propertyName), getPropertyValue(propertyName,value), removeProperty() 매서드에 대한 접근도 제공한다.
+        다음 코드에서는 이 메서드들을 사용하여 <div>의 개별 CSS 속성을 성정하고 가져오며 제거한다.
+        */
+
+
+        var divStyle2 = document.querySelector('#div2').style;
+
+        // 설정           setProperty 속성 설정
+        divStyle2.setProperty('background-color', 'blue');
+        divStyle2.setProperty('border', '1px solid black');
+        divStyle2.setProperty('width', '100px');
+        divStyle2.setProperty('height', '100px');
+
+        // 가져오기
+        console.log(divStyle2.getPropertyValue('background-color'));
+        console.log(divStyle2.getPropertyValue('border'));
+        console.log(divStyle2.getPropertyValue('width'));
+        console.log(divStyle2.getPropertyValue('height'));
+
+        // 제거
+        /*
+        divStyle2.removeProperty('background-color')
+        divStyle2.removeProperty('border');
+        divStyle2.removeProperty('width');
+        divStyle2.removeProperty('height');
+        */
+
+
+        /*
+        setProperty()와 getPropertyValue() 메서드에 전달되는 속성명은 하이픈이 포함된 CSS명을 사용한다(예:backgroundColor가 아니라 hackground-color).      하이픈 -
+        setProperty(), getPropertyValue(), removeProperty() 메서드에 대한 자세한 정보와 추가적인 속성 및 메서드에 대한 내용은 Mozilla 문서(https://developer.mozilla.org/en/DOM/CSSStyleDeclaration)를 참조
+        */
+    </script>
+</body>
+</html>

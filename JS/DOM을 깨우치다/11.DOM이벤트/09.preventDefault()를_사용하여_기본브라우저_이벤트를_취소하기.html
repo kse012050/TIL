@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.9 preventDefault()를 사용하여 기본브라우저 이벤트를 취소하기</title>
+</head>
+<body>
+    <!--
+    브라우저는 HTML 페이지를 사용자에게 보여줄 때 사전에 구성된 여러 이벤트를 제공한다.
+    예를 들어, 링크를 클릭하는 것은관련된 이벤트를 가지고 있다(즉 URL로 이동하게 된다).
+    체크박스를 크릭하거나(박스가 체크된다), 텍스트 필드에 텍스트를 입력하는 것도(텍스트가 입력되어 스크린에 표시된다) 마찬가지다.
+    이러한 브라우저 이벤트는 부라우저 기본 이벤트를 호출하는 노드나 개체에 연결된 이벤트 핸들러 함수 내부에서 preventDefault() 메서드를
+    호출해서 막을 수 있다.               preventDefault:기본값방지
+
+    다음 코드에서는 <a>, <input>, <textarea>에서 발생하는 기본 이벤트를 막는다.
+    -->
+
+    <a href="http://www.naver.com">no go</a>
+
+    <input type="checkbox" />
+
+    <textarea></textarea>
+
+    <script>
+        document.querySelector('a').addEventListener('click', function (event) {
+            event.preventDefault();     // url을 로드하는 <a>의 기본 이벤트를 중지시킴
+        }, false);
+
+        document.querySelector('input').addEventListener('click', function (event) {
+            event.preventDefault();     // 체크박스 상태를 전환하는 체크박스의 기본 이벤트를 중지시킨
+        }, false);
+
+        document.querySelector('textarea').addEventListener('click', function (event) {
+            event.preventDefault();     // 입력한 문자를 추가하는 textarea의 기본 이벤트를 중지시킴
+        }, false);
+
+        /*
+        이 html 문서 내에서 링크를 클릭하면, 기본 이벤트는 중지되었지만 이벤트 버블링이 중지되지 않았으므로, 이벤트가 여전히 전파된다는 것에 유의한다
+        */
+        document.body.addEventListener('click', function () {
+            console.log('the event flow still flows!');
+        }, false);
+
+        /*
+        이 예제 코드에서는 element에 대한 기본 이벤트가 발생하는 것을 막아 두었기 때문에,
+        링크를 클릭하거나 체크박스를 체크하거나 텍스트 입력 영역에 입력을 하더라도 실패하게 된다.
+        */
+
+        /*
+        preventDefalult() 메서드는 이벤트가 전파되는 것(버블링이나 갭처 단계)를 중지 시키지는 않는다.
+
+        이벤트 수신기의 끝부분에서 false를 반환하면 preventDefault() 메서드를 호출하는 것과 동일한 결과를 가진다.
+
+        이벤트 수신기 함수에 전달되는 이벤트 개체는 이벤트가 preventDefault() 메서드에 응답하여 기본 동작을 취소할 것인지를 가리키는 cancelable이라는
+        Boolean 속성을 가진다
+
+        이벤트 수신기 함수에 전다뢰는 이벤트 개체는 버블링 이벤트에 대해 preventDefault()가 호출된 경우 true 값을 가지는 defaultPrevented 속성을 가진다.
+        */
+    </script>
+</body>
+</html>

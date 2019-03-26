@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>5.4 뷰포트에서 element의 크기(테두리+패딩+내용)얻기</title>
+</head>
+<body>
+    <!--
+    getBoundingClientRect() 메서드는 top, right, bottom, left 속성/값뿌만 아니라 heigh와 width 속성/값도 가지고 있는 개체를 반환단다.
+    height와 width 속성은 element의 크기를 가리키는데, 전체 크기는 div의 내용, 패딩, 테두리를 모두 더한 것이다.
+        -->
+    <style>
+        div{height:25px; width:25px; background-color:rebeccapurple; border:25px solid gray; padding:25px;}
+    </style>
+    <div>
+
+    </div>
+    <script>
+        var div = document.querySelector('div').getBoundingClientRect();
+
+        console.log(div.height, div.width);      //'125 125'가 출력됨
+        // 테두리 25px + 패딩 25px + 내용 25 + 패딩 25 + 테두리 25 = 125이기 떄문임.
+
+        // offsetHeight와 offsetWidth 속성을 사용해도 동일한 크기 값을 얻을 수 있다. 
+        //다음 코드에서는 이 속성들을 활용하여 getBoundingClientRect()에서 제공되는 값과 동일한 높이와 너비를 얻는다
+
+        var divOffSet = document.querySelector('div');
+        console.log(divOffSet.offsetHeight, divOffSet.offsetWidth);     //'125 125'가 출려됨
+        // 테두리 25px + 패딩 25px + 내용 25 + 패딩 25 + 테두리 25 = 125이기 떄문임.
+    </script>
+</body>
+</html>

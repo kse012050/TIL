@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.8 문서 혹은 문서 내의 특정노드가 포커스를 가지고 있는지 판별</title>
+</head>
+<body>
+    <!--
+    코드에서는 코드를 실행한 후 다른 창/탭/애플리케이션에 포커스를 가져가면, hasFocus()가 false를 반환한다.    
+    -->
+    <script>
+        // 문서가 로드된 창/탭에 계속 포커스를 두면 true가 반환된다. 그렇지 않을 경우, false가 반환된다.
+        setTimeout(function () { console.log(document.hasFocus()) }, 5000);
+    </script>
+</body>
+</html>

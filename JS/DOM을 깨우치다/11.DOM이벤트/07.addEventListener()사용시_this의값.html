@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.7 addEventListener() 사용시 this의 값</title>
+</head>
+<body>
+    <!--
+    addEventListener() 메서드에 전달되는 이벤트 수신기 함수 내부에서 this 값은 이벤트가 연결된 노드나 개체에 대한 참조가 된다.
+
+    다음 코드에서는 <div>에 이벤트를 연결한 후, 이벤트 수신기 내에서 this를 사용하여 이벤트가 연결된 <div> element에 대해 접근한다.
+    -->
+
+    <div>click me</div>
+
+    <script>
+        document.querySelector('div').addEventListener('click', function () {
+            // 'this'는 이벤트 수신기가 연결된 element나 노드가 된다
+            console.log(this);      // '<div>'가 출력됨
+        }, false);
+
+        /*
+        이벤트 흐름의 일부로 이벤트가 호출되면, this 값은 이벤트 수신기가 연결된 노드나 개체의 값이 된다.
+
+        다음 코드에서는 <body> 에 click 이벤트 수신기를 연결하였기에 <div>나 <body> 중 아무거나 클릭하더라도 this 값은 항상 <body>가 가리키게 된다.
+        */
+    </script>
+
+    <script>
+        // <div>나 <body>를 클릭해도, this 값은 <body> element 노드로 유지 된다.
+        document.body.addEventListener('click', function () {
+            console.log(this);      // <body>..</body>가 출력됨
+        }, false);
+
+        /*
+        추가적으로, event.currentTarget 속성을 사용하여 this 속성이 제공하는 것과 동일하게 이벤트 수신기를 호출하는 노드가 개체에 대한 참조를 얻을 수 있다.
+
+        다음 코드에서는 event.currentTarget 이벤트 개체 속성을 활용하여 this와 동일한 값을 반환한다는 것을 보여준다
+        */
+    </script>
+
+    <p>click me</p>
+
+    <script>
+        //document.addEventListener('click', function () {
+        //    console.log(event.currentTarget);       // '#document'가 출력됨
+        //    // 동일하게 출력됨
+        //    console.log(this);
+        //}, false);
+
+        document.body.addEventListener('click', function (event) {
+            console.log(event.currentTarget);       // '<body>'가 출력됨
+            // 동일하게 출력됨
+            console.log(this);
+        }, false);
+
+        document.querySelector('div').addEventListener('click', function (event) {
+            console.log(event.currentTarget);       // 'div'가 출력됨
+            // 동일하게 출력됨
+            console.log(this);
+        }, false);
+    </script>
+</body>
+</html>

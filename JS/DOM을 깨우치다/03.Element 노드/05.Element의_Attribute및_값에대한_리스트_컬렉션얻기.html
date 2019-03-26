@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.5 Element의 Attribute 및 값에 대한 리스트/컬렉션 얻기</title>
+</head>
+<body>
+    <!--
+    attributes 속성(element 노드가 Node로부터 상속받음)을 사용하면, 현재 element에 정의된 Attr 노드의 컬렉션을 얻을 수 있다.
+    바놘된 리스트는 NamedNodeMap 이다.
+    -->
+    <a href="#" title="title" data-foo="dataFoo" class="yes" style="margin:0;" foo="boo"></a>
+
+    <script>
+        var atts = document.querySelector('a').attributes;
+
+        for (var i = 0; i < atts.length; i++) {
+            console.log(atts[i].nodeName + '=' + atts[i].nodeValue);
+        }
+
+        /*
+        attributes 속성을 통해 반환되는 배열은 라이브 상태라는 점을 고려해야 한다. 이는 내용물이 언제든지 변경될 수 있다는 것을 의미한다.
+
+        반환된 배열이 상속받고 있는 NamedNodeMap은 getNamedItem(), setNamedItem(), removeNamedItem()과 같이 배열을 조작하기 위한 메서드를 제공한다.
+        이 메서드들을 사용하여 attributes를 조작하는 것보다는 getAttribute(), setAttribute(), hasAttribute(), removeAttribute()를 사용하는 것이 좋다.
+        필자의 의견으로 Attr 노드들을 다루는 것은 귀찮은 작업이다. attributes를 사용할 때의 유일한 이점은 라이브 상태의 attributes 목록을 반환한다는 것뿐이다.
+        attributes 속성은 유사 배열 컬렉션이며, 읽기 전용인 length 속성을 가진다
+
+        Boolean attribute(예: <option selected>foo</option>)가 attributes 목록에 나타나더라도, 값을 지정하기 전에는 값이 없는 상태다(예: <option selected="selected">foo</option>)
+        */
+    </script>
+</body>
+</html>

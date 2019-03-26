@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>4.6 선택될 Element를 검증하기 위해 matchesSelector()를 사용하기</title>
+</head>
+<body>
+    <!--
+    matchesSelector() 매서드를 사용하면, element가 selector 문자열에 들어맞는지를 관별할 수 있다.
+    예를 들어, <li>가 <ul>의 첫 번째 자식 element인지를 판별하고 싶다고 가정해보자.
+    다음의 예제 코드에서는 <ul> 내의 첫 번째 <li>를 선택한 후, 이 element가 selector인 li:first-child에 들어 맞는지를 물어본다.
+    실제로 그러하므로, matchesSelector() 메서드는 true를 반환한다.
+    -->
+
+    <ul>
+        <li>Hello</li>
+        <li>world</li>
+    </ul>
+
+    <script>
+        // 최신 브라우저에서는 브라우저 접두어인 moz, webkit, o, ms 를 사용하지 않으면 실패한다.
+        console.log(document.querySelector('li').MatchesSelector('li:first-child'));      //false가 출력됨
+
+        // 접두어 moz
+        console.log(document.querySelector('li').mozMatchesSelector('li:first-child'));
+
+        // 접두어 webkit
+        console.log(document.querySelector('li').webkitMatchesSelector('li:first-child'));
+
+        // 접두어 o
+        console.log(document.querySelector('li').oMatchesSelector('li:first-child'));
+
+        // 접두어 ms
+        console.log(document.querySelector('li').msMatchesSelector('li:first-child'));
+
+        /*
+        mozMatchesSelector() , webkitMatchesSelector() , oMatchesSelector() , msMatchesSelector() 와 같은 브라우저 접두어를 사용하는 것을 보면,
+        matchesSelector()는 브라우저로부터 그다지 환영받지 못해온 것을 알 수 있다.
+        향후, matchesSelector()는 matches()로 이름이 변경될 것 이다.
+        */
+    </script>
+</body>
+</html>

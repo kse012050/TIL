@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>8.5 복제를 사용하여 Fragment의 노드를 메모리상에서 유지하기</title>
+</head>
+<body>
+    <!--
+    DocumentFragment를 추가하면, Fragment 내에 포함된 노드들을 추가하는 구조로 이동된다.
+    노드를 추가한 이후에도 Fragment의 내용을 메모리상에서 유지하려면, cloneNode()를 사용하여 추가할 DocumentFragment를 복제하면 된다.
+
+    다음 코드에서는 DocumentFragment로부터 li 들을 옮겨가는 대신, li들을 복제하여 DocumentFragment노드 내에 계속 유지 시킨다.
+    -->
+
+    <ul></ul>
+
+        <script>
+            // ul element와 DocumentFragment를 생성
+            var ulElm = document.querySelector('ul');
+            var docFrag = document.createDocumentFragment();
+
+            // li DocumentFragment에 추가
+            ["blue", "green", "red", "blue", "pink"].forEach(function (e) {
+                var li = document.createElement("li");
+                li.textContent = e;
+                docFrag.appendChild(li);
+            });
+
+            // 복제된 DocumentFragment를 라이브 DOM의 ul에 추가
+            ulElm.appendChild(docFrag.cloneNode(true));
+
+            // <li>blue</li><li>green</li><li>red</li><li>blue</li><li>pink</li>
+            console.log(document.querySelector('ul').innerHTML);
+
+            // [li,li,li,li,li]가 출력됨
+            console.log(docFrag.childNodes);
+        </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.9 document.defaultView는 최상위 및 전역개체에 대한 바로가기다</title>
+</head>
+<body>
+    <!--
+    defaultView 속성은 JavaScript 최상위 개체, 혹은 전역 개체라고 불리는 것에 대한 바로가기다. 웹 브라우저에서 최상위 개체는 window 대체이므로.
+    JavaScript 브라우저 환경에서 defaultView는 이 개체를 가리킨다.
+    -->
+    <script>
+        console.log(document.defaultView);       // 최상위 JS개체에 대한 참조 브라우저에서는 window 개체다.
+
+        // 최상위 개체가 없는 DOM이나 웹 브라우저 내에서 실행되지 않는 JavaScript 환경(예:Node.js)의 경우, 이 속성은 최상위 개체 영역에 접근할 수 있게 해준다.
+    </script>
+</body>
+</html>

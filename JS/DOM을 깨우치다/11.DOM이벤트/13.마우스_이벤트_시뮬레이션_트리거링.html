@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.13 마우스 이벤트 시뮬레이션/트리거링</title>
+</head>
+<body>
+    <!--
+    이벤트를 시뮬레이션하는 것은 사용자 정의 이벤트와 별반 다를 바 없다. 마우스 이벤트를 시뮬레이션하려면, document.createEvent()를 사용하여
+    MouseEvent를 생성한 후 initMouseEvent()를 사용하여 발생할 마우스 이벤트를 구성한다. 다음으로, 이벤트를 시뮬레이션하고자 하는 element
+    (예: HTML 문서 내의 <div>)에 전달한다.
+
+    다음 코드에서는 페이지 내의 <div>에 click 이벤트를 연결한다. <div>를 클릭해서 click 이벤트를 발생시키는 대신, 마우스 이벤트를 프로그래밍적으로 구성해서
+    이벤트를 트리거링 / 시뮬레이션하여 <div>에 전달한다.
+    -->
+
+    <div>no need to click, we programmatically trigger it</div>
+
+    <script>
+        var divElement = document.querySelector('div');
+
+        // 시뮬레이션할 click 이벤트를 구성
+        divElement.addEventListener('click', function (event) {
+            console.log(Object.keys(event));
+        }, false);
+
+        // 시뮬레이션된 'click' 마우스 이벤트 생성
+        var simulateDivClick = document.createEvent('MouseEvents');
+
+        // 시물레이션된 마우스 'click'을 구성
+        // initMouseEvent(type,bubbles,cancelable,view,detail,screenx,screeny,clientx,clienty,ctrlKey,altKey,shiftKey,metaKey,button,relatedTarget)
+        simulateDivClick.initMouseEvent('click', true, true, document.defaultView, 0, 0, 0, 0, 0, false, false, false, 0, null, null);
+
+        // 시뮬레이션된 click 이벤트 발생
+        divElement.dispatchEvent(simulateDivClick);
+
+        /*
+        이 글을 쓰는 시점에, 마우스 이벤트를 시뮬레이션/트리거시키는 것은 최신 브라우저에서 모두 작동된다. 다른 이벤트 형식을 시뮬레이션하는 것은 보다 복잡해질 수 있으므로,
+        simulate.js 나 jQuery(예; jQuery의 trigger() 메서드)를 활용하는 것이 필요해질 것이다.
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.5 .data 나 nodeValue로 text노드값 가져오기</title>
+</head>
+<body>
+    <!--
+    text 노드로 표현되는 텍스트 값과 데이터는 .data나 nodeValue 속성을 사용하여 노드에서 추출할 수 있다.
+    두 속성 모두 Text 노드에 포함된 텍스트를 반환한다.
+
+    다음 코드에서는 두 속성을 사용하여 <div>에 포함된 값을 가져오는 예를 보여준다.
+    -->
+
+    <p>Hi, <strong>cody</strong></p>
+    
+    <script>
+        console.log(document.querySelector('p').firstChild.data);   //'Hi,'가 출력됨
+        console.log(document.querySelector('p').firstChild.nodeValue);      //'Hi, '가 출력됨
+
+        /*
+        <p>가 두 개의 Text노드와 두 개의 element 노드 (<strong>)을 가진다는 점에 주목하자.
+        또한 <p>에 포함된 첫 번째 자식 노드 값만을 가져오고 있다는 점에 유의한다.
+        */
+
+        /*
+        Text 노드에 포함된 문자의 길이를 가져오려면, 노드 자체 또는 노드의 실제 텍스트 값/데이터의 length 속성에 접근하면 된다
+        (예: document.querySelector('p').firstChild.length 또는 document.querySelector('p').firstChild.data.length 또는
+        document.querySelector('p').firstChild.nodeValue.length).
+        */
+    </script>
+</body>
+</html>

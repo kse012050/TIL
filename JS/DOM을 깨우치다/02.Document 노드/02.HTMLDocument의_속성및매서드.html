@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.2.HTMLDocument의 속성 및 매서드</title>
+</head>
+<body>
+    <script>
+        // document 고유 속성
+        console.log(Object.keys(document).sort());      // sort 종류
+
+        // document 고유 속성 및 상속받는 속성
+        var documentPropertiesIncludeInherited = [];
+        for (var p in document) {
+            documentPropertiesIncludeInherited.push(p);     // Properties Include Inherited 속성 포함 상속 된
+        }
+        console.log(documentPropertiesIncludeInherited.sort());
+
+        // document가 상속받는 속성만
+        var documentPropertiesOnlyInherited = [];
+        for (var p in document) {
+            if (
+                !document.hasOwnProperty(p)) { documentPropertiesOnlyInherited.push(p) };
+        }
+        console.log(documentPropertiesOnlyInherited.sort());
+
+        // 수많은 속성이 존재하기에, 상속된 속성은고려되지도 않았다.? 이번 장의 맥락에 맞게 주목해야 할 속성과 메서드를 골라보았다
+        /*
+        doctye
+        documentElement
+        implementation.*    implementation 이행
+        activeElement
+        body
+        head
+        title
+        lastModified        last Modified 최종 수정일
+        referrer            referrer 추천인
+        URL
+        defaultview
+        compatMode
+        ownerDocument
+        hasFocus()      has있다 Focus 초점
+        */
+
+        // HTMLDocument 노드 개체 (예:window.document)는 DOM를 다룰 때 사용 가능한 수 많은 메서드오 속성(예:document.querySelectorAll())에 접근하는 데 사용된다.
+    </script>
+</body>
+</html>

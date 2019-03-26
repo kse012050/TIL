@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>contains()와 compareDocumentPosition()으로 DOM트리내의 Node위치를 확인하기</title>
+</head>
+<body>
+    
+    <script>
+        // <body>가 <html lang="en"> 내에 있는가?
+
+        var inside = document.querySelector('html').contains(document.querySelector('body'));
+
+        console.log(inside);        // true가 출력됨
+
+        // DOM 트리 내에서 주변 노드와 연관된 노드 위치에 대해 보다 정확한 정보를 얻고 싶은경우 compareDocumentPosition() 매서드를 사용하면 된다.
+        /*
+        0   동일한 Element임
+        1   DOCUMENT_POSITION_DISCONNECTED 선택된 노드와 전달된 노드가 동일한 문서에 존재하지 않음    DISCONNECTED:연결이 끊어짐
+        2   DOCUMENT_POSITION_PRECEDING 전달된 노드가 선택된 노드 앞에 있음    PRECEDING:선행
+        4   DOCUMENT_POSITION_FOLLOWING 전달된 노드가 선택된 노드 뒤에 있음    FOLLOWING:수행원
+        8   DOCUMENT_POSITION_CONTAINS  전달된 노드가 선택된 노드의 조상(ancestor)임   CONTAINS:포함
+        16,10   DOCUMENT_POSITION_CONTAINED_BY (16진수 16,10) 전달된 노드가 선택된 노드의 자손(descendant)임
+        */
+
+        // contains()는 선택된 노드와 전달된 노드가 동일한 경우 true를 반환한다.
+        //compareDocumentPosition()은 특정 노드가 다른 노드와 하나 이상의 관계를 가질 수 있기 때문에, 다소 혼동될 수 있다. 예를 들어, 노드가 포함 관계(16)이자 앞에 있는 경우(4), compareDocumentPosition()는 20을 반환한다.
+    </script>
+</body>
+</html>

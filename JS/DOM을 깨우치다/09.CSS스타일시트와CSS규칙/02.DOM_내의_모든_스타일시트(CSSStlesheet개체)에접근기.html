@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>9.2 DOM 내의 모든 스타일시트(CSSStlesheet개체)에 접근하기기</title>
+</head>
+<body>
+    <!--
+    dicument.styleSheets는 HTML 문서 내에 명시적으로 연결(예:<link>)되거나 내장 <예:style>된 모든 스타일시트 개체(CSSStylesheet 개체)리스트에 접근 할 수 있게 해준다.
+
+    다음 코드에서는 styleSheets를 활용하여 문서 내에 포하된 모든 스타일시트에 대한 접근을 얻는다.
+        -->
+
+    <link href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        body { background-color: red; }
+    </style>
+
+    <script>
+        console.log(document.styleSheets.length);       // 2가 출력됨
+        console.log(document.styleSheets[0]);           // <link>
+        console.log(document.styleSheets[1]);           // <style>
+
+                /*
+                styleSheets는 다른 노드 리스트와 마찬가지로 라이브 상태다
+
+                length 속성은 인텍스 0부터 시작하는 리스트에 포함된 스타일시트의 개수를 반환한다 (예:document.styleSheets.length).
+
+                styleSheets 리스트에 포함된 스타일시트에는 <style> element를 ㅏ용하거나 rel이 스타일시트로 설정된 <link> element를 사용하여 생성된 모든 시타일시트가 표함된다.
+                */
+
+                /*
+                styleSheets를 사용하여 문서의 스타일시트에 접근하는 것뿐만 아니라, DOM 내의 element(<style> 또는 <link>)를 선택한 후 .sheep 속성을 사용하여 CSSStylesheet 개체에 접근할 수도 있다.
+
+                다음 코드에서는 먼저 스타일시트를 포함하기 위해 사용된 elemenbt를 선택한 후 .sheet 속성을 활용하여 스타일시트에 접근한다.
+                */
+
+
+    </script>
+
+    <link id="linkElement" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css" />
+
+    <style id="styleElement">
+        body { background-color: red; }
+    </style>
+
+    <script>
+        // <link>에 해당하는 CSSStylesheet 개체를 얻는다.
+        console.log(document.querySelector('#linkElement').sheet);
+        // document.styleSheets[0]와 동일
+
+        // <style>에 해당하는 CSSStylesheet 개체를 얻는다.
+        console.log(document.querySelector('#styleElement').sheet);
+        // document.styleSheets[1]와 동일
+    </script>
+</body>
+</html>

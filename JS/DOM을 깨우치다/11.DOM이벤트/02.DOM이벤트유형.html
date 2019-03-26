@@ -1,0 +1,571 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>11.2 DOM 이벤트 유형</title>
+</head>
+<body>
+    <!--
+    다음 표는 Element 노드, document 개체, window 개체에 연결될 수 있는 사전 정의된 이벤트 중 가장 흔히 사용되는 것들을 자세히 나열하였다.
+    물론, 모든 이벤트가 연결 가능한 노드나 개체에 직접 적용 가능한 것은 아니다. 이벤트에 오류없이 연결해서 이벤트를 호출할 수 있다고 해서(예: window의 onchange 이벤트를 버블링),
+    window.onchange와 같은 이벤트를 추가하는 것이 논리적으로 올바른 것은 아니다. 디자인상 이 이벤트는 window 개체를 위한 수단이 아니기 때문이다.
+    -->
+
+    <table>
+        <caption>사용자 인터페이스 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>load</td>
+            <td>Event, UIEvenet</td>
+            <td>HTML 페이지, 이미지, CSs frameset, object JavaScript 파일이 로드될 때 발생</td>
+            <td>Element,Document, XMLHttpRequest, XMLHttpRequestUpload</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>unload</td>
+            <td>UIEvent</td>
+            <td>user agent가 리소스(document, element, defaultView)나 종속 리소스(이미지,CSS,파일 등)를 제거할 때 발생</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Abort</td>
+            <td>Event, UIEvent</td>
+            <td>리소스(개체/이미지)가 완전히 로드 되기 전에 로드를 중지할때 발생</td>
+            <td>Element, XMLHttpRequest, XMLHttpRequestUpload</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>error</td>
+            <td>Event, UIEvent</td>
+            <td>리소스 로드가 실패했거나, 로드되었지만 유효하지 않은 이미지, 스크립트 실행 오류,올바른 형식이 아닌 XML과 같은 문맥 상 해석이 불가능할 때 발생</td>
+            <td>Element, XMLHttpRequest, XMLHttpRequestUpload</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>resize</td>
+            <td>UIEvent</td>
+            <td>문서 뷰의 크기가 변경되었을 때 발생, 이 이벤트 유형은 사용자 에이전트에 의해 특정 이벤트 대상의 크기를 조정하는 모든 효과가 실행된 이후에 전파된다</td>
+            <td>window, body, frameset</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>scroll</td>
+            <td>UIEvent</td>
+            <td>사용자가 문서나 element를 스크롤 할 때 발생</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>no</td>
+        </tr>
+        <tr>
+            <td>context, menu</td>
+            <td>UIEvent</td>
+            <td>사용자가 문서나 element를 스크롤할 때 발생</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Focus 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>blur</td>
+            <td>Focus Event</td>
+            <td>마우스나 탭을 통해 element가 포커스를 잃었을 때 발생</td>
+            <td>Element body와 frameset은 제외, Document</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>focus</td>
+            <td>Focus Event</td>
+            <td>element가 포커스를 받았을 때 발생</td>
+            <td>Element body와 frameset은 제외, Document</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>focusin</td>
+            <td>Focus Event</td>
+            <td>이벤트 대상이 포커스를 받으려고 하나 아직 포커스가 전환되기 이전일 때 발생. 이 이벤트는 focus 이벤트 직전에 일어난다.</td>
+            <td>Element</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>focusout</td>
+            <td>Focus Event</td>
+            <td>이벤트 대상이 포커스를 잃으려고 하나 아직 포커스가 전환되기 이전일 떄 발생. 이벤트는 blur 이벤트 직전에 일어난다.</td>
+            <td>Element</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Form 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>change</td>
+            <td>HTML form에 국한</td>
+            <td>컨트롤이 입력 포커스를 잃고 포커스를 얻은 후 값이 변경되었을 때 발생</td>
+            <td>Element</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>reset</td>
+            <td>HTML form에 국한</td>
+            <td>폼이 리셋될 때 발생</td>
+            <td>Element</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>submit</td>
+            <td>HTML form에 국한</td>
+            <td>폼이 전송될 때 발생</td>
+            <td>Element</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>select</td>
+            <td>HTML form에 국한</td>
+            <td>사용자가 input 및 textarea를 비롯한 텍스트 필드에서 텍스트를 선택할 때 발생</td>
+            <td>Element</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Mouse 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>click</td>
+            <td>Mouse Event</td>
+            <td>
+                element 위에서 마우스 포인터를 클릭할 때(혹은 사용자가 Enter 키를 눌렀을 때) 발생. click은 동일한 스크린 위치에서의 mousedown 및 mouseup으로 정의된다.
+                이벤트들의 순서는 mousedown>mouseup>click이다.
+                환경 설정에 따라, 포인팅 디바이스 버튼을 눌렀다뗴는 동안 하나 이상의 mouseover, mousemove, mouseout 이벤트 유형이 발생되는 경우 click 이벤트가 전달 될 수도 있다.
+                click 이벤트는 dblclick 이벤트에 후속해서도 발생된다.
+            </td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>dblclick</td>
+            <td>Mouse Event</td>
+            <td>마우스 포인터를 element 위에서 두 번 클릭할 때 발생. 더블 클릭의 정의는 mousedown, mouseup, dblclick 간 이벤트 대상이 동일해야 한다는 점을 제외하고는 환경 설정에 달려 있다. 이 이벤트 유형은 클릭과 더블 클릭이 동시에 발생한 경우 click이후에, 그렇지 않으면 mouseup 이후에 발생해야 한다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>mousedown</td>
+            <td>Mouse Event</td>
+            <td>마우스 포인터를 element에서 눌렀을 때 발생</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>mouseenter</td>
+            <td>Mouse Event</td>
+            <td>마수으 포인터가 element나 하위 element 중 하나의 경계 내로 들어올 때 발생. 이 이벤트 유형은 mouseover와 유사하지만, 버블링되지 않으며 포인터 장치가 element에서 하위 element중 하나의 경계로 이동될 때 전파되지 않아야 한다는 차이가 있다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>mouseleave</td>         <!-- mouseleave  leave:떠나다-->
+            <td>Mouse Event</td>
+            <td>마우스 포인터가 element 및 하위 element의 경계를 벗어날 때 발생한다. 이 이벤트 유형은 mouseout과 유사하지마느 버블링되지 않으며 포인팅 장치가 element 및 하위 자식의 경계를 벗어날 때까지 전파되지 않아야 한다는 차이가 있다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>mousemove</td>
+            <td>Mouse Event</td>
+            <td>마우스 포인터가 element위에서 이동할 때 발생한다. 포인팅 장치가 이동하는 동안 이벤트가 발생하는 빈도율은 구현/장치/플랫폼에 따라 다르지만, 각 마우스 이동에 대해 단일 이벤트가 아닌 여러 개의 연속된 mousemove 이벤트가 발생되어야 한다. 반응성과 성능 간에 균형을 이루도록 최적의 빈도율을 결정하도록 구현하는 것이 권장된다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>mouseout</td>
+            <td>Mouse Event</td>
+            <td>마우스 포인터가 element의 경계를 벗어날 때 발생된다. 이 이벤트 유형은 mouseleave와 유사하지만, 버블링되며 포인터 장치가 element에서 하위 element중 하나의 경계로 이동될 때 전파되어야 한다는 차이가 있다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>mouseup</td>
+            <td>Mouse Event</td>
+            <td>element 위에서 마우스 포인터 버튼을 뗄 때 발생한다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>mouseover</td>
+            <td>Mouse Event</td>
+            <td>마우스 포인터를 element 위에서 움직일 때 발생한다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Wheel 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>wheel(브라우저에서는 mousewheel을 사용하나 사영서에서는 wheel을 사용)</td>
+            <td>wheelEvent</td>
+            <td>마우스 휠이 축을 따라 회전하거나 상용되는 입력 장치(마우스볼, 태블릿, 터치패드 등)가 해당 동작을 흉내낼 때 발생한다. 플랫폼 및 입력 장치에 따라 대각선 반향의 휠 변동 값은 여러 개의 0이 아닌 축으로 이루어진 단일 wheel 이벤트로 전달될 수도 있고, 각각의 0이 아닌 축에 대해 별도의 wheel 이벤트로 전달될 수도 있다. 브라우저 지원에 대한 유용한 정보는 http://bit.ly/YIZI84 에서 찾을 수 있다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Keyboard 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>keydown</td>
+            <td>KeyboardEven</td>
+            <td>키가 처음 눌려질 때 발생된다. 키 매핑이 수행된 후에 발새오디지만, 입력 수단 편집기가 keypress를 받기 이전이다. 이 이벤트는 문자코드를 발생시키지 않는 키를 포함한 모든 키에서 발생된다.</td>
+            <td>Element, Document</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>keypress</td>
+            <td>KeyboardEven</td>
+            <td>문자 값을 발생시키는 키가 처음 눌려질 때 발생된다.키 매핑이 수행된 이후, 입력 수단 편집기가 ketpress를 받기 이전에 발생된다</td>
+            <td>Element, Document</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>keyup</td>
+            <td>KeyboardEven</td>
+            <td>키를 뗄 때 발생된다. 키 매핑이 수행된 이후에 발생되며, 항상 관련된 keydown 및 keypress이벤트에 후속한다.</td>
+            <td>Element, Document</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Touch 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>touchstart</td>
+            <td>TouchEvent</td>
+            <td>사용자가 터치 표면에 터치 포인트를 두었을 때 발생되는 이벤트</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>touchend</td>
+            <td>TouchEvent</td>
+            <td>사용자가 더치 표면에서 터치 포인트를 제거했을 떄 발생되는 이벤트, 화면을 드래그하는 것과 같은 터치 포인트가 터치 표면을 물리적으로 벗어난 경우도 포함된다.</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>touchmove</td>
+            <td>TouchEvent</td>
+            <td>사용자가 터치 표면을 따라 터치 포인트를 이동할 때 발생되는 이벤트</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>touchenter</td>
+            <td>TouchEvent</td>
+            <td>터치 포인트가 DOM element에서 정의된 상호 작용 역역으로 이동했을 때 발생되는 이벤트</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>touchleave</td>
+            <td>TouchEvent</td>
+            <td>터치 포인트가 DOM element에서 정의된 상호 작용 역역을 벗어날 때 발생되는 이벤트</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>touchcancel</td>
+            <td>TouchEvent</td>
+            <td>동기 이벤트나 터치 취소 동작과 같이 구현에 따라 다른 수단에 의해 터치 포인트가 방해를 받았거나, 문서 창을 떠나 사용자 상호 작용을 처리할 수 있는 비문서 영역으로 터치 포인트를 옮겼을 때 발생되는 이벤트</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </table>
+    <!-- Touch 이벤트는 통상적으로 IOS, Android, BlackBerry 브라우저, 혹은 터치 모드로 전환할 수 있는 브라우저(예:Chrome)에서만 지원된다.-->
+
+
+    <table>
+        <caption>window, body, 프레임 관련 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>afterprint</td>
+            <td>N/A</td>
+            <td>개체와 관련된 문서가 인쇄되거나 인쇄 미리 보기된 직후에 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>beforeprint</td>
+            <td>N/A</td>
+            <td>개체와 관련된 문서가 인쇄되거나 인쇄 미리보기되저 직전에 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>beforeunload</td>
+            <td>N/A</td>
+            <td>문서가 언로드되기 전에 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>hashchange</td>
+            <td>HashchangeEvent</td>
+            <td>사용자가 문서 간 메시지를 보내거나 Worker로부터 postMessage로 메시지를 전송하는 경우에 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>message</td>
+            <td>N/A</td>
+            <td>사용자가 문서 간 메시지를 보내거나 Worker로부터 postMessage로 메시지를 전송하는 경우에 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>offline</td>
+            <td>NavigatorOffLine</td>
+            <td>브라우저가 오프라인으로 동작할 떄 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>online</td>
+            <td>NavigatorOffLine</td>
+            <td>브라우저가 온라인으로 동잘할 때 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>pagehide</td>
+            <td>PageTransitionEvent</td>
+            <td>세션 이력 항목에서 이동해갈 때 발생된다</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>pageshow</td>
+            <td>PageTransitionEvent</td>
+            <td>세션 이력 항목으로 이동해왔을 때 발생</td>
+            <td>window, body, frameset</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Document 관련 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>readystatechange</td>
+            <td>Event</td>
+            <td>readyState가 변경될 때 발생된다</td>
+            <td>Document, XMLHttpRequest</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>DOMContentLoaded</td>
+            <td>Event</td>
+            <td>웹 페이지의 해석은 끝났지만, 모든 리소스가 완전히 다운로드 되기 전에 발생된다</td>
+            <td>Document</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Drag 이벤트</caption>
+        <tr>
+            <th>이벤트 유형</th>
+            <th>이벤트 인터페이스</th>
+            <th>설명</th>
+            <th>이벤트 대상</th>
+            <th>버블?</th>
+            <th>취소 가능?</th>
+        </tr>
+        <tr>
+            <td>drag</td>
+            <td>DragEvent</td>
+            <td>드래그 동작 도중에 원본 개체에서 계속 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>dragstart</td>
+            <td>DragEvent</td>
+            <td>사용자가 선택한 텍스트나 선택된 개체를 드래그하기 시작할 때 원본 개체에서 발생된다. 사용자가 마우스를 드래그할 떄는 ondragstart 이벤트가 먼저 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>dragend</td>
+            <td>DragEvent</td>
+            <td>사용자가 드래그 동작을 종료하면서 마우스를 놓을 때 원본 개체에서 발생된다. 대상 개체에서는 ondragleave 이벤트 다음에 ondragend 이벤트가 마지막으로 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>dragenter</td>
+            <td>DragEvent</td>
+            <td>사용자가 개체를 유효한 드롭 대상으로 드래그 했을 때 대상 element에서 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>dragleave</td>
+            <td>DragEvent</td>
+            <td>사용자가 드래그 동작 도중에 유효한 드롭대상에서 벗어나도록 마우스를 옮겼을 때 대상 개체에서 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>dragover</td>
+            <td>DragEvent</td>
+            <td>사용자가 개체를 유효한 드롭 대상 위로 드래그하는 동안 대상 element에서 계속해서 발생된다. 대상 개체에서는 ondragenter 이벤트가 발생된 후 dragover 이벤트가 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>drop</td>
+            <td>DragEvent</td>
+            <td>드래그-앤-드롭 동작 도중 마우스 버튼을 떼었을 때 대상 개체에서 발생된다. ondrop 이벤트는 ondragleave와 ondragend 이벤트 이전에 발생된다</td>
+            <td>Element, Document, window</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <!--
+    표 11-1 ~ 11-10은 다음 리소스에 ㄷ있는 내용을 가공한 것이다
+        Document Object Model(DOM) Level 3 Events Specification 5 User Event Module
+        DOM event reference
+        HTML Living Standard 7.1.6 Event handlers on elements, Document objects, and Window objects,
+        Event compatibility tables
+
+        이번 절에서는 가장 널리 사용되는 이벤트 유형들만을 언급했다. 그리고 수많은 HTML5 APi들은 제외되었는데, 그 중에는 <video> 및 <audio> element용의 media 이벤트와 XMLHttpRequest Level 2.의 모든 상태 변경 이벤트가 포함되어 있다.
+
+        copy, cut, textinput 이벤트는 DOM3 이벤트뿐만 아니라 HTML5에도 정의되어 있지 않다.
+
+        mouseover와 mouseout 대신 mouseenter, mouseleave를 사용하는 것이 좋지만, 불행히도 Chrome과 Safari는 아직도 이 이벤트들을 추가하지 않고 있다. 이책은 2009년도 출판신고 하였고, 초판 1쇄 발행은 2013년 11월에 발행한 책이다
+    -->
+</body>
+</html>

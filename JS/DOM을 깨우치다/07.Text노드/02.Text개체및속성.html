@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.2 Text 개체 및 속성</title>
+</head>
+<body>
+    <!--
+    Text 노드에 존재하는 속성과 메서드에 관련된 정확한 정보를 얻으려면, 사양을 무시하고 브라우저에 직접 물어보는 것이 가장 좋다.
+    다음 코드에서 생성되는 배열을 살펴보면, text 노드에 존재하는 속성과 메서드에 대한 상세한 내용을 알 수 있다.
+    -->
+
+    <p>Hi</p>
+
+    <script>
+        var text = document.querySelector('p').firstChild;
+
+        // text의 고유 속성
+        console.log(Object.keys(text).sort());
+
+        // text의 고유 속성과 상속받는 속성
+        var textPropertiesIncludeInherited = [];
+        for (var p in text) {
+            textPropertiesIncludeInherited.push(p);
+        }
+
+        console.log(textPropertiesIncludeInherited.sort());
+
+        // text가 상속받은 속성만
+        var textPropertiesOnlyInherited = [];
+        for (var p in text) {
+            if (!text.hasOwnProperty(p)) {
+                textPropertiesOnlyInherited.push(p);
+            }
+        }
+        console.log(textPropertiesOnlyInherited.sort());
+
+        // 상속받은 속성을 고려하지 않더라도, 여러 속성이 존재한다. 이번 장에서 주목할 만한 속성 및 메서드는 다음과 같다
+        /*
+        textContent
+        splitText()             splitText:텍스트 분할
+        appendData()            appendData:데이터추가
+        deleteData()            deleteData:데이터삭제
+        insertData()            insertData:데이터삽입
+        replaceDate()           replaceDate:날짜바꾸기
+        subStringData()         subStringData:하위 문자열 데이터
+        normalize()             normalize:정상화하다
+        data()
+        document.createTextNode() (text 노드의 속성도 상속받은 속성도 아니지만, 이번장에서 다룬다)
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>6.5 class 및 id attribute를 사용하여 element의 CSS속성을 적용 및 제거하기</title>
+</head>
+<body>
+    <!--
+    인라인 스타일시트나 외부 스타일시트에 정의된 스타일 규칙은 class 및 id attribute를 사용하여 element에 추가하거나 제거 할 수있는데,
+    element 스타일을 조작할 때 가장 일반적인 패턴이다. 다음 코드에서는 setAttribute() 와 classList.add()를 확용하여 class 및 id attribute 값을
+    설정해서 <div>에 스타일 규칙을 적용한다. removeAttribute()와 classList.remove()를 사용하여 이 CSS 규칙들을 제거할 수도 있다
+    -->
+    
+    <style>
+        .foo{
+            background-color:red;
+            padding:10px;
+        }
+        #bar{
+            border:10px solid #000;
+            margin:10px;
+        }
+    </style>
+
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+
+        // 설정.
+        div.setAttribute('id', 'bar')
+        div.classList.add('foo');
+
+        // 제거
+        /*
+        div.removeAttribute('id');
+        div.classList.remove('foo');
+        */
+    </script>
+</body>
+</html>

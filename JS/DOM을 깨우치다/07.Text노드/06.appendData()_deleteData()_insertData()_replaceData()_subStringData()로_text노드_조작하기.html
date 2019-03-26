@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.6 appendData() deleteData() insertData() replaceData() subStringData()로 text노드 조작하기</title>
+</head>
+<body>
+    <!--
+    Text 노드가 메서드를 상속받는 CharacterData 개체는 Text노드의 하위 값을 조작하고 추출하기 위한 메서드를 제공한다.
+
+        appendData()
+        deleteData()
+        insertData()
+        replaceData()
+        subStringData()
+
+    다음 코드에서는 각 메서드들을 활용하고 있다.
+    -->
+
+    <p>Go big Blue Blue</p>
+
+    <script>
+        var pElementText = document.querySelector('p').firstChild;
+
+        // 추가
+        pElementText.appendData('!');
+        console.log('1' + pElementText.data);
+
+        // 첫번째 'Blue'를 삭제.
+        pElementText.deleteData(7, 5);
+        console.log('2' + pElementText.data);
+
+        // 'Blue'를 'Bunny'로 바꿈
+        pElementText.replaceData(7, 5, 'Bunny ')
+        console.log('3' + pElementText.data);
+
+        // 부분 문자열 'Blue Bunny'를 추출
+        console.log('4' + pElementText.substringData(7, 10));
+
+        /*
+        조작 및 부분 추출 메서드들은 Comment 노드에서도 활용 가능하다.
+        */
+    </script>
+</body>
+</html>

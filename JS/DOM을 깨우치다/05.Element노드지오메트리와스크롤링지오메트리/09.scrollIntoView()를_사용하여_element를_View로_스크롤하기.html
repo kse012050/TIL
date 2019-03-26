@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>5.9 scrollIntoView()를 사용하여 element를 View로 스크롤하기</title>
+</head>
+<body>
+    <!--
+    스크롤이 가능한 노드 내엣 있는 노드를 선택하면, scrollIntoView() 메서드를 사용하여 선택된 노드가 view로 스크롤되도록 할 수 있다.
+    다음 코드에서는 스코롤이 가능한 <div> 내에 있는 5번째 <p> element를 선택한 후, scrollIntoView()를 호출한다.
+    -->
+
+    <style>
+        div{height:50px; width:50px; overflow:auto;}
+        p{background-color:red;}
+    </style>
+
+    <div>
+        <content>
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>6</p>
+            <p>7</p>
+            <p>8</p>
+            <p>9</p>
+            <p>10</p>
+        </content>
+    </div>
+    <script>
+        /*
+        <p>5</p>를 선택해서, view로 스크롤시킨다. 0부터 시작하는 인텍스를 가지는 유사 배열 구조이므로 children '4'를 전달한다
+        */
+        document.querySelector('content').children[4].scrollIntoView(true);
+
+        /*
+        scrollIntoView() 메서드는 매개변수 true를 전달하면 해당 매서드로 하여금 스크롤될 대상 element의 tio으로 스크롤하라는 것이다.
+        하지만 이는 해당 메서드가 수행하는 기본 동작이므로, true 매개 변수는 주지 않아도 된다. element의 bottom으로 스크롤시키고싶다면,
+        scrollIntoView() 메서드에 false 매개변수를 전달한다.
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.10 Element에서 ownerDocument를 사용하여 Document에 대한 참조얻기</title>
+</head>
+<body>
+    <!--
+    노드에서 ownerDocument 속성을 호출하면, 노드가 포함된 document에 대한 참조를 반환한다. 다음 코드에서는 HTML 문서 내의 <body>에서 document에 대한 참조를 얻고,
+    iframe 내에 포함된 <body> element에서 document 노드를 얻어낸다.           owner:소유자
+    -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/z4YGCWnirbI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <script>
+        // <body>가 포함된 window.document를 얻음
+        console.log(document.body.ownerElement);
+
+        // ifrarme 내의 <body>가 포함된 window.document를 얻음
+        console.log(window.frames[0].document.body.ownerElement);
+
+        // document 노드에서 ownerDocument를 호출하면 null 값이 반환된다.
+        // 나는 이상하게 책이랑 달리 ownerElement를 호출하면 null이 나오고 ownerDocument를 호출하면 값이 나옴
+    </script>
+</body>
+</html>

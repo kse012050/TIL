@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>4.5 사전에 구성된 Element 노드 선택 및 리스트</title>
+</head>
+<body>
+    <!--
+    HTML 문서에서 element 노드를 포함하고 있는 사전 구성된 유사 배열 리스트가 몇 개 존재한다는 것을 알아두자. 다음 목록은 이 중에서 알아두면 편리한 것들이 나와있다.
+
+        document.all
+        HTML 문서 내의 모든 element
+
+        document.forms
+        HTML 문서 내의 모든 <form> element
+
+        document.images
+        HTML 문서 내의 모든 <img> element
+
+        document.links
+        HTML 문서 내의 모든 <a> element
+
+        document.scripts
+        HTML 문서 내의 모든 <script> element
+
+        document.styleSheets
+        HTML 문서 내의 모든 <link> 또는 <style> element
+    -->
+
+    <!--
+    앞의 사전에 구성된 배열들은 HTMLCollection 인터페이스/개체를 통해 생성되는데,
+        document.styleSheets만 예외적으로 StyleSheetList를 사용한다.
+
+        HTMLCollection은 NodeList와 마찬가지로 라이브 상태다(querySelectorAll()은 제외)
+
+        특이하게 document.all은 HTMLCollection이 아닌 HTMLAllCollection으로 생성되며, Firefox에서 지원되지 않는다.
+    -->
+</body>
+</html>

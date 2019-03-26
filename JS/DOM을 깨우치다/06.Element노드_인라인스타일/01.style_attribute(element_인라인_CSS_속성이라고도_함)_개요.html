@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>6.1 style attribute(element 인라인 CSS 속성이라고도 함) 개요</title>
+</head>
+<body>
+    <!--
+    모든 HTML element는 해당 element에 한정된 인라인 CSS 속성을 넣는데 사용할 수 있는 style attribute를 가진다.
+    다음 코드에서는 여러 인라인 CSS 속성을 가지고 있는 <div> 의 style attribute에 접근하고 있다.
+        -->
+
+    <div style="background-color:red; border:1px solid black; height:100px; width:100px;" ></div>
+
+    <script>
+        var divStyle = document.querySelector('div').style;
+
+        // CSSStyleDeclaration {0="background-color", ...} 출력됨
+        console.log(divStyle);
+
+        /*
+        코드에서 style 속성이 문자열이 아닌 CSSStyleDeclaration 개체를 반환한다는 점에 유의한다. 또한 CSSStyleDeclaration 개체에는 element의
+        인라인 스타일만이 포함된다(즉 스타일시트에서 단계적으로 내려오면서 계산된 스타일은 아니다).
+        */
+    </script>
+
+</body>
+</html>

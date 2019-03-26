@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.11 splitText()를 사용하여 텍스트 노드를 분할하기</title>
+</head>
+<body>
+    <!--
+    Text 노드에서 splitText()를 호출하면, 해당 텍스트 노드를 변경(옵셋까지의 텍스트는 내버려둠)하고
+    옵셋을 기반으로 원래 텍스트에서 분할된 텍스트를 가진 새로운 Text노드를 반환한다.
+    
+    다음 코드에서 Hey Yo! 텍스트 노드는 Hey 이후부터 분할되어, Hey는 DOM에 남아있고 Yo!는 새로운 텍스트 노드가 되어 splitText() 메서드에서 반환한다.
+    -->
+
+    <p>Hey Yo!</p>
+
+    <script>
+        // DOM으로부터 새로운 텍스트 노드를 반환.
+        console.log(document.querySelector('p').firstChild.splitText(4).data);      // Yo! 가 출력됨
+
+        // DOM에 남아이쓴 것.
+        console.log(document.querySelector('p').firstChild.textContent);        //Hey가 출력됨
+    </script>
+</body>
+</html>

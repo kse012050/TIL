@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>10.1 JavaScript삽입 및 실행 개요</title>
+</head>
+<body>
+    <!--
+    외부 JavaScript 파일을 포함시키거나 페이지 수준의 인라인 JavaScript를 작성하여
+    HTML문서 내에 JavaScript를 삽입할 수 있다. 기본적으로 외부 JavaScript 파일의 내용은 HTML 문서 내에 텍스트 노드로 들어간다.
+    attribute 이벤트 핸들러에 포함된 element 인라인 JavaScript(예: <div on click="alert('yo')"></div>)를 페이지 인라인 JavaScript(예: <script>alert('hi')</script>)와
+    혼동하지 말아야 한다.
+
+    HTML 문서 내에 JaaScript를 삽입하는 두 방법 모두 <script> element 노드의 사용을 필요로 한다. <script> element 는 JavaScript 코드를 포함하거나
+    src attribute를 통해 외부 JavaScript 파일을 연결하는 데 사용될 수 있다.
+
+    다음 코드 예제에서는 두 가지 방법을 살펴본다.
+    -->
+
+    <!-- 외부의 크로스 토메인 JavaScript 모듈을 포함 -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js">
+
+    </script>
+
+    <!-- 페이지 인라인 JavaScript -->
+    <script>
+        console.log('hi');
+
+        /*
+        element의 attribute 이벤트 핸들러 내에 JavaScript를 넣거나(예: <div on click="alert('yo')"></div>), Javascript: 프로토콜(예: <a href="javascript:alert('yo'):></a>)을
+        사용하여 DOM내에 JavaScript를 삽입해서 실행하는 것도 가능하지만, 최근에는 잘 사용하지 않는다.
+        동일한 <script> element를 사용하여 외부 JavaScript파일을 포함시키고 페이지 인라인 JavaScript도 작성하려고 시도해보면, 결과적으로 페이지 인라인 JavaScript는 무시되고
+        외부 JavaScript파일이 다운로드되어 실행된다.
+
+        예전 XHTML을 고수하지 않는 한, Self-closing 스크립트 태크(<script src="">)을 피해야 한다.
+
+        <script> element에 필수 attribute는 존재하지 않지만 async, charset, defer, type과 같은 선택적인 attribute는 제공된다.
+
+        페이지 인라인 JavaScript는 텍스트 노드를 생성하므로, <script>의 내용을 가져오기 위해 innerHTML과 textContent를 사용할 수 있다.
+        하지만 브라우저가 이미 DOM을 해석한 이후에 JavaScript 코드로 구성된 텍스트 노드를 DOM에 추가하더라도 이 JavaScript코드는 실행되지 않으며, 단순 텍스트만 바꾸게 된다.
+
+        JavaScript코드가 '/script' 라는 문자열을 가지는 경우, 파서가 이를 실제 /script element로 생각하지 않도록 '<|/script>'로 이스케이프처리를 해야한다.
+        */
+    </script>
+</body>
+</html>

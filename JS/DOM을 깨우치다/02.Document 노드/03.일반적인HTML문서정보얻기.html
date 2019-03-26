@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>2.3 일반적인 HTML 문서 정보 얻기</title>
+</head>
+<body>
+    <script>
+        var d = document;
+        console.log('title = ' + d.title);
+        console.log('url = ' + d.URL);
+        console.log('referrer = ' + d.referrer);
+        console.log('lastModified = ' + d.lastModified);
+
+        // BackCompat(Quirks 모드) 또는 CSS1Compat(Strict 모드) 중 하나가 출력된다.
+        console.log('compatibility mode = ' + d.compatMode);
+    </script>
+</body>
+</html>

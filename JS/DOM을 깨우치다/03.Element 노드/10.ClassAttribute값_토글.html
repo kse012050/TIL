@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.10 Class Attribute 값 토글</title>
+</head>
+<body>
+    <!--
+    classList.toggle() 메서드를 사용하면, class attribute의 하위 값을 토글시킬 수 있다.
+    이 메서드는 값이 누락된 경우 추가하거나 값이 이미 있는 경우 제거할 수 있게 해준다.
+        -->
+
+    <div class="visible"></div>
+
+    <script>
+        var elm = document.querySelector('div');
+
+        elm.classList.toggle('visible');
+        elm.classList.toggle('grow');
+        console.log(elm.className);     //'grow'
+
+        // toggle() 이 뭔가..
+    </script>
+</body>
+</html>

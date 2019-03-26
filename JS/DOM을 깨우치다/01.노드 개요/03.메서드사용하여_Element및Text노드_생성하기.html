@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>매서드 사용하여 Element 및 text 노드 생성하기</title>
+</head>
+<body>
+    <script>
+        var elementNode = document.createElement('div');
+        console.log(elementNode, elementNode.nodeType);     // <div>  1을 출력하며, 1은 element 노드를 가리킨다.
+
+        var textNode = document.createTextNode('Hi');
+        console.log(textNode, textNode.nodeType);           // text{} 3을 출력하며, 3은 text 노드를 가리킨다.
+
+        // craeteAttribute() 매서드는 사용이 금지되었으며, attribute 노드를 만드는 데 사용되어서는 안 된다. 대신에, 통상적으로 개발자들은 getAttribute(), setAttribute(), removeAttribute() 매서드를 사용한다
+        // createDocumentFragment() ?? 8장에서 다룸          // Comment 노드를 생성 하기 위한 createComment() 매서드도 존재한다. 이책에서 다루지는 않음
+    </script>
+</body>
+</html>

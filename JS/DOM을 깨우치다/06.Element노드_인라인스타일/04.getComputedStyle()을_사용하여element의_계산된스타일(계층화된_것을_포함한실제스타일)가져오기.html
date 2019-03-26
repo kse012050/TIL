@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>6.4 getComputedStyle()을 사용하여 element의 계산된스타일(계층화된 것을 포함한 실제 스타일) 가져오기</title>
+</head>
+<body>
+    <!--
+    style 속성은 style attribute를 통해 정의된 CSS만을 가지고 있다. element의 계층화된 CSS(즉 인라인 스타일시트, 외부 스타일 시트, 브라우저 스타일시트가 계층화된 것)를
+    가져오려면, getComputedStyle()을 사용한다. 이 메서드는 style과 유사한 읽기 전용의 CSSStyleDeclaration 개체를 제공한다.
+    
+    다음 코드에서는 element의 인라인 스타일이 아니라 계층화된 스타일을 읽는 예를 보여준다.
+        -->
+    <style>
+        div{
+            background-color:red;
+            border:1px solid black;
+            height:100px;
+            width:100px;
+        }
+    </style>
+
+    <div style="background-color:green; border:1px solid purple;"></div>
+
+    <script>
+        var div = document.querySelector('div');
+         
+        // rgb(0, 128, 0) 또는  green이 출력됨: 인라인 element 스타일
+        console.log(window.getComputedStyle(div).backgroundColor);
+
+        // 1px solid rgb(128, 0, 128) 또는 1px solid purple이 출력됨: 인라인 element 스타일
+        console.log(window.getComputedStyle(div).border);
+
+        // 100px가 출력됨: 인라인 스타일 아님
+        console.log(window.getComputedStyle(div).width);
+
+
+        /*
+        getComputedStyle() 메서드는 CSS 특수 계층 (http://css-tricks.com/specifics-on-css-specificity/)을 준수한다. 예를 들어,
+        이 코드에서 <div> 의 backgroundColor는 red가 아닌 green인데, 인라인 스타일이 특수 계층의 최상위에 있기 때문이다.
+        따라서 브라우저는 인라인 backgroundColor 값을 element에 적용하며, 이를 최종 계산된 스타일로 간주한다
+        */
+
+        /*
+        getComputedStyles()에서 반환되는 CSSStyleDeclaration 개체는 읽기 전용이므로 값을 설정할 수 없다.
+        getComputedStyles() 메서드는 색상 값을 원래 지정된 방식에 상관없이 rgb(#,#,#) 형식으로 반환한다.
+        CSSStyleDeclaration 개체에서 단축 속성은 계산되지 않으므로, 속성 접근 시 비단 축 속성명을 사용해야한다(예:margin이 아니라 marginTop을 사용)
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>8.3 DocumentFragment를 라이브 DOM에 추가하기</title>
+</head>
+<body>
+    <!--
+    appendChild()와 insertBefore() 노드 메서드의 인수로 DocumentFragment를 전달하면, DocumentFragment의 자식 노드는 메서드가 호출되는
+    DOM 노드의 자식노드로 옮겨진다.
+
+    다음 코드에서는 DocumentFragment를 만들어서 <li> 몇 개를 추가한 후, appendChild()를 사용하여 새 element 노드들을 라이브 DOM 트리 에 추가한다.
+    -->
+    
+    <ul></ul>
+
+    <script>
+        var ulElm = document.querySelector('ul');
+        var docFrag = document.createDocumentFragment();
+
+        ["blue", "green", "red", "blue", "pink"].forEach(function (e) {
+            var li = document.createElement("li");
+            li.textContent = e;
+            docFrag.appendChild(li);
+        });
+        ulElm.appendChild(docFrag);
+
+        console.log(document.body.innerHTML);   // <ul><li>blue</li><li>green</li><li>red</li><li>blue</li><li>pink</li></ul>가 출력됨
+    
+        /*
+        노드를 삽입하는 메서드에 DocumentFragment를 인수로 전달하면, 자식 노드 구조 전체가 삽입되며 DocumentFragment 노드 자체는 무시된다.
+        */
+    </script>
+</body>
+</html>

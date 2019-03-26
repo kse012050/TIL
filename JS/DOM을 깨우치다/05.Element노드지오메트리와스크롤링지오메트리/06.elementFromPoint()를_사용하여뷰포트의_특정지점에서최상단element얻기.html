@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>5.6 elementFromPoint()를 사용하여 뷰포트의 특정지점에서 최상단 element 얻기</title>
+</head>
+<body>
+    <!--
+    elementFromPoint()를 사용하면 HTML 문서의 특정 지점에서 최상단 element에 대한 참조를 얻을 수 있다.
+        다음 예제 코드에서는 뷰포트의 top/left에서 50픽셀 떨어진 최상당 element를 물어본다.
+        해당 위치에 두 개의 <div>가 있는데, 최상단 div(또는 z-index설정이 없는 경우에는 문서 순서상 마지막인 것)가 선택되어 반환된다.
+        -->
+
+    <style>
+        div{height:50px; width:50px; background-color:red; position:absolute; top:50px; left:50px;}
+    </style>
+    <div id="bottom"></div><div id="top"></div>
+    <script>
+        console.log(document.elementFromPoint(50, 50));     //<div id="top">가 출력됨
+    </script>
+</body>
+</html>

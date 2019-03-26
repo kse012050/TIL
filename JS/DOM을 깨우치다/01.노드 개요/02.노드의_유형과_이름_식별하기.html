@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>노드의 유형과 이름 식별하기</title>
+</head>
+<body>
+
+    <a href="#">Hi</a>
+
+    <script>
+        //노드의 유형과 이름 식별하기
+
+        //DOCUMENT_TYPE_NODE 또는 nodeType 10
+        console.log(
+            document.doctype.nodeName,  //'HTML'이 기록됨. document.doctype을 시도하면 <!DOCTYPE html>을 얻을수 있음
+            document.doctype.nodeType           //DOCUMENT_TYPE_NODE에 매핑되는 10이 기록됨
+        );
+        //Node.DOCUMENT_NODE === 9 이므로 DOCUMENT_NODE 또는 nodeType 9
+        console.log(
+            document.nodeName,          //'#document'가 기록됨
+            document.nodeType           //DOCUMENT_NODE에 매핑되는 9가 기록됨
+        );
+        // Node.DOCUMENT_FRAGMENT_NODE === 11이므로 DOCUMENT_FRAGMENT_NODE 또는 nodeType 11
+        console.log(
+            document.createDocumentFragment().nodeName,     //'#document-fragment'가 기록됨
+            document.createDocumentFragment().nodeType      // DOCUMENT_FRAGMENT_NODE에 매핑되는 11이 기록됨
+        );
+        //Node.ELEMENT_NODE === 1 이므로 ELEMENT_NODE 또는 nodeType 1
+        console.log(
+            document.querySelector('a').nodeName,           // 'A'가 기록됨
+            document.querySelector('a').nodeType            // ELEMNENT_NODE에 매핑되는 1이 기록됨
+        );
+        //Node.TEXT_NODE === 3이므로 TEXT_NODE 또는 nodeType 3
+        console.log(
+            document.querySelector('a').firstChild.nodeName,        // '#text'가 기록됨
+            document.querySelector('a').firstChild.nodeType         // TEXT_NODE에 매핑되는 3이 기록됨
+        );
+
+        //<a>는 ELEMENT_NODE 인가?
+        console.log(document.querySelector('a').nodeType === 1);    // <a>는 Element 노드 이므로 true가 기록됨
+        // 또는 숫자 값 1을 가지고 있는 속성인 Node.ELEMENT_NODE를 사용.
+        console.log(document.querySelector('a').nodeType === Node.ELEMENT_NODE);
+        // <a>가 Element 노드이므로 true가 기록됨
+
+
+        // 노드 값 가져오기
+
+        // DOCUMENT_TYPE_NODE, DOCUMENT_NODE, DOCUMENT_FRAGMENT_NODE, ELEMENT_NODE에 대해서는 null을 기록
+        console.log(document.doctype.nodeValue);
+        console.log(document.nodeValue);
+        console.log(document.createDocumentFragment().nodeValue);
+        console.log(document.querySelector('a').nodeValue);
+
+        //텍스트 문자열을 기록.
+        console.log(document.querySelector('a').firstChild.nodeValue);  //'Hi'가 기록됨
+
+    </script>
+</body>
+</html>

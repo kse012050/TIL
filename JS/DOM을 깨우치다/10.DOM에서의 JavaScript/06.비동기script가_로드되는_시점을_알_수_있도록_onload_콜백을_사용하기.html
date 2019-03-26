@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>10.6 비동기 script가 로드되는 시점을 알 수 있도록 onload 콜백을 사용하기</title>
+</head>
+<body>
+    <!--
+    <script> element는 외부 JavaScript 파일이 로드되어 실행될 때 수행되는 load 이벤트 핸들러(onload)를 지원한다.
+
+    다음 코드에서는 onload 이벤트를 활용하여 JavaScript 파일이 다운되어 실행될 때 알려주는 콜백을 프로그래밍적으로 생성한다.
+    -->
+    <!-- 차단하지 않고, 다운로드를 시작한 후 완료되면 파일을 해석한다. -->
+    <script>
+        var underscoreScript = document.createElement("script");
+        underscoreScript.src = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js";
+        underscoreScript.onload = function () { console.log('underscsore is loaded and executed') };
+        document.body.appendChild(underscoreScript);
+    </script>
+
+    <!-- 차단하지 않고, 다운로드를 시작한 후 완료되면 파일을 해석한다. -->
+    <script async src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" onload="console.log('jQuery is loaded and exectuted')"></script>
+
+    <!-- onload 이벤트는 onload가 지원될 경우에만 동작한다. onerror, load, error를 사용할 수도 있다.-->
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>6.3 모든 인라인 CSS속성 가져오기 설정 제거</title>
+</head>
+<body>
+    <!--
+    CSSStyleDeclaration 개체의 sccText 속성과 getAttribute() 및 setAttribute() 메서드를 사용하면,
+    JavaScript 문자열을 사용하여 style attribute의 전체 값*모든 인라인 CSS 속성)을 가져오고, 설정 및 제거할 수 있다.
+    다음 코드에서는 <div>의 모든 인라인 CSS를 가져오고, 설정하며, 제거한다(CSS 속성을 개별적으로 변경하는 것과 다름).
+        -->
+
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+
+        var divStyle = div.style;
+
+        // cssText를 사용하여 설정.
+        divStyle.cssText = 'background-color:red; border:1px solid black; height:100px; width:100px;';
+
+        // cssText를 사용하여 가져옴.
+        console.log(divStyle.cssText);
+
+        // 제거
+        divStyle.cssText = '';
+
+        // setAttribute() 및 getAttribute()를 사용하는 것과 결과가 완전히 동일함.
+
+
+        // setAttribute을 사용하여 설정
+        div.setAttribute('style', 'background-color:red; border:1px solid black; height:100px; width:100px;');
+
+        // getAttribute를 사용하여 가져옴
+        console.log(div.getAttribute('style'));
+
+        // 제거
+        div.removeAttribute('style');
+
+        /*
+        style attribute 값을 새로운 문자열로 바꾸는 것은 element의 style에 여러 변경을 수행하는 가장 빠른 방법이다.
+        */
+    </script>
+</body>
+</html>

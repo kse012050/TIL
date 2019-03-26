@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>5.8 scrollTop과 scrollLeft를 사용하여 top 및 left로부터 스크롤될 픽셀을 가져오거나 설정하기</title>
+</head>
+<body>
+    <!--
+    scrollTop과 scrollLeft 속성은 스크롤 때문에 현재 뷰포트에서 보이지 않는 left나 top까지의 픽셀을 반환한다.
+    다음 코드에서는 <p> element를 스크롤 하도록 <div>를 구성하였다.
+    -->
+    <style>
+        div{height:100px; width:100px; overflow:auto;}
+        p{height:1000px; width:1000px; background-color:red;}
+    </style>
+
+    <div><p></p></div>
+
+    <script>
+        var div = document.querySelector('div');
+
+        div.scrollTop = 750;
+        div.scrollLeft = 750;
+
+        console.log(div.scrollTop, div.scrollLeft);     //'750 750'이 출력됨
+
+        // scrollTop과 scrollLeft를 750으로 설정하여, <div>를 프로그래밍적인 방법으로 스크롤시켰다. 그 후 scrollTop과 scrollLeft의 현재 값을 얻으면,
+        // 좀 전에 설정한대로 750이라는 값이 반환된다. 750은 스크롤된 픽셀의 값이며, left와 top까지의 750픽셀이 뷰포트에서 보이지 않는다는 것을 가리킨다.
+        // 이 속성들은 left나 top까지 뷰포트에서 보이지 않는 내용을 픽셀로 측정한 것이라 생각하면 편리하다
+
+        // 집중도 안되고 말이 너무 어렵다
+        // 그냥 scrollTop 값과 scrollLeft를 설정해주면 그곳에서 을 먼저 보여준다
+    </script>
+</body>
+</html>

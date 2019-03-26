@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>9.1 CSS스타일시트개요</title>
+</head>
+<body>
+    <!--
+    스타일시트는 외부 스타일시트를 포함하도록 HTMLLinkElement노드 (예: <link href="stylesheet.css" rel="stylesheet" type="text/css">)를
+    사용하거나 인라인 스타일시트를 정의하도록 HTMLStyleElement 노드(예: <style></style>)를 사용하여 HTML 문서에 추가된다.
+
+    다음 HTML 문서에는 DOM 내에 이 두가지 Element노드 가 존재하며, 해당 노드들을 생성하는 생성자를 검증한다.
+    -->
+
+    <link id="linkElement" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css" />
+
+    <style id="styleElement">
+        body{background-color:#fff;}
+    </style>
+
+    <script>
+        // function HTMLLinkElement(){[native cod]} 이 출력됨.          constructor:건설자
+        console.log(document.querySelector('#linkElement').constructor);
+
+        // function HTMLStyleElement() {[native code]}이 출력됨
+        console.log(document.querySelector('#styleElement').constructor);
+
+        /*
+        스타일시트가 HTML 문서에 추가되면 CSSStylesheet 개체로 표현되며, 시트알시트 내부의 각 CSS 규칙(예:body{background-color:red;})은
+        CSSStyleRule 개체로 표현된다.
+
+        다음 코드에서는 스타일시트와 스타일시트 내의 각 CSS규칙(선택자와 CSS 속성 및 값)을 생성하는생성자를 검증한다.
+        */
+
+        // 이 개체는 스타일시트 자체이므로 function CSSStyleSheet(){[native code]}가 출력됨
+        console.log(document.querySelector('#styleElement').sheet.constructor);
+
+        // 이 개체는 스타일시트 내부의 규칙이므로 function CSSStyleRule() {[native code]} 가 출력됨
+        console.log(document.querySelector('#styleElement').sheet.cssRules[0].constructor);
+
+        /*
+        스타일시트를 포함하고 있는 element를 선택(예: <link> 또는 <style>) 하는 것은 스타일 시트 자체를 표현하는 실제 개체(CSSStylesheet)에
+        접근하는 것과 동일하지 않다는 점에 유의한다.
+        */
+    </script>
+
+</body>
+</html>

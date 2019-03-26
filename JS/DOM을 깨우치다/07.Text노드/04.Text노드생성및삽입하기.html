@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.4 Text노드 생성 및 삽입하기</title>
+</head>
+<body>
+    <!--
+    Text 노드는 브라우저가 HTML 문서를 해석해서 문서 내용을 기반으로 DOM이 구축 될 때 자동적으로 생성된다.
+    자동으로 생성된 이후에는 createTextNode()를 사용해서 프로그래밍적으로 text 노드를 생성할 수도 있다.
+
+    다음코드에서는 text 노드를 생성한 후 현재 DOM 트리에 해당 노드를 삽입한다.
+    -->
+
+    <div></div>
+
+    <script>
+        var textNode = document.createTextNode('Hi');
+        document.querySelector('div').appendChild(textNode);
+
+        console.log(document.querySelector('div').innerHTML);   // Hi를 출력
+
+        /*
+        프로그래밍적으로 생성된 DOM 구조에도 text 노드를 삽입할 수 있다.
+
+        다음 코드에서는 <p> element 내에 text 노드를 넣은 다음, 현재 DOM에 삽입한다.
+        */
+    </script>
+
+    <script>
+        var elementNode = document.createElement('p');
+
+        elementNode.appendChild(textNode);
+        document.querySelector('div').appendChild(elementNode);
+
+        console.log(document.querySelector('div').innerHTML);       // <p>Hi</p>가 출력됨
+    </script>
+</body>
+</html>

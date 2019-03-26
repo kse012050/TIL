@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>NodeList나 HTMLCollection을 JavaScript배열로 변환</title>
+</head>
+<body>
+    <a href="#"></a>
+
+    <script>
+        console.log(Array.isArray(document.links));     // HTMLCollection이지 Array가 아니므로 false가 반환된다.
+
+        console.log(Array.isArray(document.querySelectorAll('a')));     // NodeList이지 Array가 아니므로 false가 반환된다.
+
+        // .slice() 배열 잘라내기?
+
+        console.log(Array.isArray(Array.prototype.slice.call(document.links)));     // true를 반환
+
+        console.log(Array.isArray(Array.prototype.slice.call(document.querySelectorAll('a'))));        // true를 반환다
+
+    </script>
+</body>
+</html>

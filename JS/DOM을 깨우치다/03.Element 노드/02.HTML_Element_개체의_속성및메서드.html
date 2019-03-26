@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>3.2 HTML Element 개체의 속성 및 메서드</title>
+</head>
+<body>
+    <!--
+    HTML*Element 노드에 존재하는 속성 및 매서드오 고나련된 정확한 정보를 얻으려면, 사양서를 무시하고 브라우저에 물어보는 것이 제일 좋다. 
+        다으 코드에서 새엇ㅇ한 배열을 살펴 보면 HTML element노드에 존재하는 속성 및 매서드에 대해 상세히 알 수 있다.
+    -->
+
+    <a href="#">Hi</a>
+
+    <script>
+        var anchor = document.querySelector('a');       //anchor 닻
+
+        // element 고유 속성
+        console.log(Object.keys(anchor).sort());
+
+        // element 고유 속성 및 상속받은 속서
+        var documentPropertiesIncludeInherited = [];
+        for (var p in document) {
+            documentPropertiesIncludeInherited.push(p);
+        }
+        console.log(documentPropertiesIncludeInherited.sort());
+
+        // element가 상속받은 속성만
+        var documentPropertiesOnlyInherited = [];
+        for (var p in document) {
+            if (!document.hasOwnProperty(p)) {
+                documentPropertiesOnlyInherited.push(p);
+            }
+        }
+        console.log(documentPropertiesOnlyInherited.sort());
+
+        // 상속받은 속성을 고려하지 않더라도, 많은 속성이 존재한다. 이번 장에서 중요하게 생각되는 주요 속성 및 메서드(상속받은 것 포함)들의 목록이다
+        /*
+        createElement()
+        tagName
+        children
+        getAttribute()
+        setAttribute()
+        hasAttribute()
+        removeAttribute()
+        classList()
+        dataset
+        attributes          attribute:속성
+
+        전체 목록의 경우, 대부분의 HTML element에 존재하는 일반적인 속성 및 메서드를 다루고 있는 MDN 문서(http://mzl.la/YTmqp5)를 살펴보기 바란다
+        */
+    </script>
+</body>
+</html>

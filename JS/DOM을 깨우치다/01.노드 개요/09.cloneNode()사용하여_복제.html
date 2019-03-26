@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>cloneNode()사용하여 복제</title>
+</head>
+<body>
+    <!--
+    cloneNode() 메서드를 사용하여 단일 노드 혹은 노드 및 모든 자식 노드를 복제할 수 있다.    
+    -->
+
+    <ul>
+        <li>Hi</li>
+        <li>there</li>
+    </ul>
+
+    <script>
+        var cloneUL = document.querySelector('ul').cloneNode();
+
+        console.log(cloneUL.constructor)    //HTMLUListElement()가 출력됨  constructor이 안됨;;
+
+        console.log(cloneUL.innerHTML);     // ul만이 복제되었으므로 빈 문자열이 출력됨
+
+        var cloneUL2 = document.querySelector('ul').cloneNode(true);
+
+        console.log(cloneUL2.constructor);  // HTMLUListElement()가 출력됨
+        console.log(cloneUL2.innerHTML);    // <li>Hi</li><li>there</li> 출력됨
+
+        // Element 노드를 복제할 때, 모든 특성 및 값(인라인 이벤트 포함)도 복제된다.
+        // addEventListener() 나 node.onclick으로 추가된 것은 복제되지 않는다.
+        // cloneNode(true)를 사용해서 노드와 그 자식을 복제하면 nodeList가 반환될 것이라 생각할 수 있지만, 실제로는 그렇지 않다.
+        // cloneNode() 때문에 문서 내에서 요소 ID가 중복될 수도 있다.
+    </script>
+</body>
+</html>

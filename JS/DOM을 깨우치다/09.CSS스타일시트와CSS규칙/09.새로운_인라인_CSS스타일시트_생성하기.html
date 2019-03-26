@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>9.9 새로운 인라인 CSS스타일시트 생성하기</title>
+</head>
+<body>
+    <!--
+    HTML 페이지가 로드된 후에 새로운 스타일시트를 즉석에서 만들려면, 새로운 <style> 노드를 만들고 innerHTML을 사용하여 이노드에 CSS 규칙을 추가한 다음,
+    <style> 노드를 HTML 문서에 추가하기만 하면 된다.
+
+    다음 코드에서는 스타일 시트를 프로그래밍적으로 생성하는 body{color:red;} CSS 규칙을 추가한 후, 스타일시트를 DOM에 추가한다.
+    -->
+
+    <p>Hey <strong>Dude!</strong></p>
+
+    <script>
+        var styleElm = document.createElement('style');
+        styleElm.innerHTML = 'body{color:red}';
+
+        // 새로운 인라인 스타일시트 떄문에 문서 내의 마크업이 red 색상으로 변경된다.
+        document.querySelector('head').appendChild(styleElm);
+    </script>
+</body>
+</html>

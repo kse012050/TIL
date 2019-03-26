@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>7.3 공백도 Text노드를 생성한다</title>
+</head>
+<body>
+    <!--
+    브라우저에 의해서나 프로그래밍 수단에 의해서 DOM이 생성될 때 텍스트 문자뿐만 아니라 공백 역시 text노드로 만들어진다.
+    경국 공백도 문자이기 때문이다.
+    다음 코드에서 공백을 포함하고 있는 두번째 <p>는 자식 text 노드를 가지는 반면, 첫 번째 <p>는 가지지 않는다.
+    -->
+
+    <p id="p1"></p>
+    <p id="p2"> </p>
+
+    <script>
+        console.log(document.querySelector('#p1').firstChild);      //null이 출력됨
+        console.log(document.querySelector('#p2').firstChild.nodeName);     // #text가 출력됨
+
+        /*
+        DOM에서 공백이나 텍스트 문자가 보통 text 노드로 표현된다는 것을 잊지 말기 바란다.
+        줄 바꿈도 당연히 text 노드로 간주된다.
+
+        다음 코드에서는 줄 바꿈 문자도 text 노드라는 것을 강조하기 위해 줄 바꿈을 출력한다.
+        */
+
+    </script>
+    <p id="p3"></p>  <!--이 주석 앞에 줄 바꿈 text 노드가 존재하며, 이 주석도 노드다-->
+
+    <script>
+        console.log(document.querySelector('#p3').nextSibling);     // Text가 출력됨
+
+        /*
+        키보드를 사용해서 HTML 문서에 문자나 공백을 입력할 수 있다면, text노드로 변환될 가능성이 높다.
+        이 점을 고려할 때 HTML 문서를 최소화하거나 압축하지 않는 한, 일반적인 HTML 페이지는 상당한 수의 공백과 줄 바꿈 text 노드를 가진다
+        */
+    </script>
+    
+</body>
+</html>
