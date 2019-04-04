@@ -15,5 +15,7 @@ clip-path: circle(0% 0% at 0% 0%)
 + 두번째 0% 는 원의 height를 지정합니다
 + at 이후에 나오는 0% 0% 원의 위치를 지정합니다
 
+> 아직까진 IE에서 호환하지 않아 사용하긴 어려울 것 같습니다  
+
 [clip-path 참고 자료](https://bennettfeely.com/clippy/)
             
