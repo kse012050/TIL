@@ -53,7 +53,8 @@ CSS 그리드 레이아웃(Grid Layout)은 페이지를 여러 주요 영역으�
 
 ## 참고
 ### CSS 프로퍼티 
-|---|:---:|---:|
+| CSS 프로퍼티 || |
+|---|---|---|
 |```grid-template-columns```|```grid```|```grid-area```|
 |```grid-template-rows```|```grid-row-start```|```grid-row-gap```|
 |```grid-template-areas```|```grid-column-start```|```grid-column-gap```|
@@ -61,3 +62,16 @@ CSS 그리드 레이아웃(Grid Layout)은 페이지를 여러 주요 영역으�
 |```grid-auto-columns```|```grid-column-end```||
 |```grid-auto-rows```|```grid-row```||
 |```grid-auto-flows```|```grid-column```||
+
+### CSS 함수
+| CSS 함수 | |
+|---|---|
+|```repeat()```|```fit-content()```|
+|```minmax()```||
+
+### CSS 데이터 타입
+| CSS 데이터 타입  |
+|---|
+|```<flex>```|
+
+[mozilla 내용 출처](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Grid_Layout)
