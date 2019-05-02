@@ -53,14 +53,11 @@ CSS 그리드 레이아웃(Grid Layout)은 페이지를 여러 주요 영역으�
 
 ## 참고
 ### CSS 프로퍼티 
+|---|:---:|---:|
 |```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
-|```grid-template-columns```|```grid```|```grid-area```|
+|```grid-template-rows```|```grid-row-start```|```grid-row-gap```|
+|```grid-template-areas```|```grid-column-start```|```grid-column-gap```|
+|```grid-template```|```grid-row-end```|```grid-gap```|
+|```grid-auto-columns```|```grid-column-end```||
+|```grid-auto-rows```|```grid-row```||
+|```grid-auto-flows```|```grid-column```||
