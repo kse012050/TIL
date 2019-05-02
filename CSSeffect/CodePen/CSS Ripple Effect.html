@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CSS Ripple Effect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        button {
+            background-color:#09c;
+            border:none;
+            border-radius:.25em;
+            color:#fff;
+            padding:1em 2em;
+        }
+
+        .ripple {
+            box-sizing:border-box;
+            position:relative;
+        }
+
+        .ripple:before {
+            animation:ripple 2s ease-out infinite;
+            border:solid 2px #09c;
+            border-radius:1em;
+            bottom:0;
+            box-sizing:border-box;
+            content:"";
+            left:0;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+
+        .ripple:after {
+            animation:ripple 2s 1s ease-out infinite;
+            border:solid 2px #09c;
+            border-radius:1em;
+            bottom:0;
+            box-sizing:border-box;
+            content:"";
+            left:0;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+
+        @keyframes ripple {
+        0% {
+            opacity:.25;
+        }
+        100% {
+            border-radius:2em;
+            opacity:0;
+            transform:scale(3);
+        }
+        }
+
+        body {
+            align-items:center;
+            display:flex;
+            height:100vh;
+            justify-content:center;
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="ripple">A Button</button>
+
+</body>
+</html>
