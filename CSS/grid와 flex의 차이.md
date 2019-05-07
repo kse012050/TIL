@@ -88,3 +88,5 @@ BFC가 생성되면 자식드을 포함해서 같은 레이어를 공유한다�
 - ```column-count```
 - ```column-width```
 두 속성을 함께 쓰면  ```column-count```는 최대 컬럼 수로 사용된다
+
+[내용출처](https://medium.com/@deptno/css3-grid-flex-position-layout-%EC%A0%95%EB%A6%AC-b22820120132)
