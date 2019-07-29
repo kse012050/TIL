@@ -2,7 +2,7 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>상위에서 하위 컴포넌트로 데이터 전달하기</title>
+    <title>props 속성을 사용한 데이터 전달 예제</title>
   </head>
   <body>
     <div id="app">
@@ -15,14 +15,12 @@
       <script>
         /* 2 */  Vue.component('child-component' , {
           /* 3 */  props: ['propsdata'],
-          /* 5 */  templat: '<p>{{ propsdata }}</p>'
+          /* 5 */  template: '<p>{{ propsdata }}</p>'
       })
-        new Vue({
+        /* 4 */ new Vue({
           el: '#app',
-          // 지역 컴포넌트 등록
-          components: {
-            'my-component1': cmp1,
-            'my-component2': cmp2
+          data: {
+            message: 'Hello Vue! passed from Parent Component'
           }
         });
       </script>
