@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>이벤트를 발생시키고 수신하기</title>
+  </head>
+  <body>
+    <div id="app">
+      <child-component v-on:show-log="printText"></child-component>
+    </div>
+      <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+      <script>
+        Vue.component('child-component' , {
+          template: '<button v-on:click="showLog">show</button>',
+          // show-log -> 하위 컴포넌트의 이벤트명  /  printText -> 상위 컴포넌트의 메서드명
+          methods: {
+            showLog: function(){
+              this.$emit('show-log');  // -> 버튼 요소 추가
+            }
+          }
+        })
+
+        new Vue({
+          el: '#app',
+          data: {
+            message: 'Hello Vue! passed from parent Componenet'
+          },
+          // 메서드 추가
+          methods: {
+            printText: function() {
+              console.log("received an event"); // -> 이벤트 발생 로직
+            }
+          }
+        });
+      </script>
+  </body>
+</html>
