@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>액시오스로 데이터 받아오기</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="getData">프레임워크 목록 가져오기</button>
+    </div>
+      <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+      <!-- 액시오스 라이브러리 로딩 -->
+      <script src="https://unpkg.com/axios@0.19.0/dist/axios.min.js"></script>
+      <script>
+        new Vue({
+          el: '#app',
+          methods: {
+            getData: function(){
+              axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+              .then(function(response){
+                console.log(response);
+              });
+            }
+          }
+        });
+      </script>
+      <!--
+      액시오스 CDN 에러로
+      기존
+      https://unpkg.com/axios/dist/axios.min.js 에서
+      현재
+      https://unpkg.com/axios@0.19.0/dist/axios.min.js 로 변경하였습니다.
+       -->
+  </body>
+</html>
