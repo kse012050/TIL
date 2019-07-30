@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>네스티드 라우터 구현하기</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1 User 컴포넌트가 뿌려질 영역-->
+      <router-view></router-view>
+    </div>
+      <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+      <!-- 라우터 CDN 추가 -->
+      <script src="https://unpkg.com/vue-router@3.0.7/dist/vue-router.js"></script>
+      <script>
+        // 2 컴포넌트 내용 정의
+        var User = {
+          template: `<div>
+            User Component
+            <router-view></router-view>   <!-- 하위 컴포넌트가 뿌려질 영역 -->
+          </div>`
+        };
+        var UserProfile = { template: '<p>User Profile Component</p>' };
+        var UserPost = { template: '<p>User Post Component</p>' };
+
+        // 3 네스티드 라우팅 정의
+        var routes = [
+          {
+            path: '/user',
+            component: User,
+            children: [
+              {
+              path: 'posts',
+              component: UserPost
+              },
+              {
+              path: 'profile',
+              component: UserProfile
+              },
+            ]
+          }
+        ];
+
+        // 4 뷰 라우터 정의
+        var router = new VueRouter({
+          routes
+        });
+
+        // 5 뷰 인스턴스에 라우터 추가
+        var app = new Vue({
+          router
+        }).$mount('#app');
+      </script>
+  </body>
+</html>
