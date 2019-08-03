@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>v-bind 예제</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message }}</p>
+      <p>{{ message + "!!!" }}</p>
+      <p>{{ message.split('').reverse().join('') }}</p>
+    </div>
+      <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+      <script>
+        new Vue({
+          el: '#app',
+          data: {
+            message: 'Hello Vue.js!'
+          }
+        });
+      </script>
+  </body>
+</html>
