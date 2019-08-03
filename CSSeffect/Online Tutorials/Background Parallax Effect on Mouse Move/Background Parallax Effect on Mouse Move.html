@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Background Parallax Effect on Mouse Move</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Parallax.js 파일 -->
+  <script src="parallax.js" type="text/javascript"></script>
+
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .container{
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: url(background.jpg) no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul id="scene">
+      <li class="layer" data-depth=".1">
+        <img src="text.png">
+      </li>
+      <li class="layer" data-depth="1">
+        <img src="planet1.png">
+      </li>
+      <li class="layer" data-depth="-1">
+        <img src="planet2.png">
+      </li>
+      <li class="layer" data-depth="2">
+        <img src="astronaut.png">
+      </li>
+      <li class="layer" data-depth="0.5">
+        <img src="rocket.png">
+      </li>
+    </ul>
+  </div>
+  <!-- data-depth 중요! 마우스의 움직임의 따라 움직이는 폭을 정합니다. -->
+
+  <!-- 작성한 JS는 최하단에 있어야 합니다. -->
+  <script type="text/javascript">
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
+  </script>
+</body>
+</html>
