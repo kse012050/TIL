@@ -48,4 +48,4 @@
 
 [mix-blend-mode 출처](https://cssreference.io/property/mix-blend-mode/)
 
-> internet explorer , internet Edge 에서만 지원을 하지 않습니다.
+> internet explorer , internet Edge 에서만 지원을 하지 않습니다. 
