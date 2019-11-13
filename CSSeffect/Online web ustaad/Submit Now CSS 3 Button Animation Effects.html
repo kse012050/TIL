@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Submit Now CSS 3 Button Animation Effects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+    <style>
+        *{
+            font-family: tahoma;
+        }
+
+        .container{
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             margin-left: -59px;
+             margin-top: -20px;
+             width: 130px;
+             height: 40px;
+             text-align: center;
+        }
+
+        button{
+            outline: none;
+            height: 40px;
+            text-align: center;
+            width: 130px;
+            border-radius: 40px;
+            background: white;
+            border:2px solid #1ecd97;
+            color: #1ecd97;
+            letter-spacing: 1px;
+            text-shadow: 0;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.25s ease;
+        }
+
+        button:hover{
+            color: white;
+            background: #1ecd97;
+        }
+
+        button:active{
+            letter-spacing: 2px;
+        }
+
+        button::after{
+            content: "SUBMIT NOW";
+        }
+
+        .onclic{
+            width: 40px;
+            border-color:#bbb;
+            border-width:3px;
+            font-size: 0;
+            border-left-color:#1ecd97;
+            animation: rotating 2s 0.25s linear infinite;
+        }
+
+        .onclic::after{
+            content: "";
+        }
+
+        .onclic:hover{
+            color: #1ecd97;
+            background: white;
+        }
+
+        .validate{
+            font-size: 13px;
+            color:white;
+            background: #1ecd97;
+        }
+
+        .validate::after{
+            font-family: 'FontAwesome';
+            content: "\f00c";
+        }
+
+        @keyframes rotating{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="button"></button>
+    </div>
+
+    <script>
+        $(function(){
+            $("#button").click(function(){
+                $("#button").addClass("onclic", 250, validate);
+            });
+
+            function validate(){
+                setTimeout(function(){
+                    $("#button").removeClass("onclic");
+                    $("#button").addClass("validate",450, callback);
+                }, 2250);
+            }
+
+            function callback(){
+                setTimeout(function(){
+                    $("#button").removeClass("validate");
+                }, 1250);
+            }
+            // 이 클래스는 CSS를 호출하여 CSS 속성을 넣습니다.
+        });
+    </script>
+</body>
+</html>
