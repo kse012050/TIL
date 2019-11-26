@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이용약관</title>
+    <style>
+        *{padding: 0; margin: 0; list-style: none;}
+        body{padding: 50px;}
+        .agree{counter-reset: num;}
+        .agree > h2{counter-reset: ol;}
+        .agree > h2::before{content:"제 " counter(num) "조 "; counter-increment: num 1;}
+        .agree > ol > li::before{content: counter(ol); counter-increment: ol 1; display: inline-block; width: 15px; height: 15px; border: 1px solid #000; font-size: 12px; border-radius: 15px; text-align: center; line-break: 15px;}
+        .agree > ol > li{counter-reset: ol2;}
+        .agree > ol > li > ol li::before{content: counter(ol2) ". "; counter-increment: ol2 1;}
+    </style>
+</head>
+
+<body>
+<div class="agree">
+    <h2>(목적)</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aliquam pariatur tempora repudiandae, labore
+        enim possimus temporibus ullam accusantium, saepe laborum impedit reprehenderit facere facilis laboriosam
+        aliquid assumenda dignissimos quas?</p>
+    <h2>(정의)</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aliquam pariatur tempora repudiandae, labore
+        enim possimus temporibus ullam accusantium, saepe laborum impedit reprehenderit facere facilis laboriosam
+        aliquid assumenda dignissimos quas?</p>
+    <h2>(약관의 개정)</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aliquam pariatur tempora repudiandae, labore
+        enim possimus temporibus ullam accusantium, saepe laborum impedit reprehenderit facere facilis laboriosam
+        aliquid assumenda dignissimos quas?</p>
+    <h2>(목적)</h2>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <h2>(목적)</h2>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li>
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </li>
+    </ol>
+</div>
+</body>
+
+</html>
