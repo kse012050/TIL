@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>반사효과</title>
+    <style>
+    html{height: 100%;}
+    body{height: 100%; background: radial-gradient(cyan, darkblue);}
+    div{position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 150px; font-family: arial; font-weight: bold; color: #fff; letter-spacing: -5px; text-transform: uppercase; line-height: 1; transition: all 0.5s;}
+    div::before{content: attr(data-text); position: absolute; bottom: 43px; transform: rotateX(180deg); transform-origin: bottom; 
+    background: linear-gradient(to top ,rgba(255,255,255,0) ,
+    rgba(255,255,255,0) 23px,
+    rgba(255,255,255,0.8) 23px ,
+    rgba(255,255,255,0.3) 50%,
+     rgba(255,255,255,0) 80% );
+    -webkit-background-clip: text;
+     color: transparent;
+    }  
+    div:hover{letter-spacing: 10px;}
+    </style>
+</head>
+<body>
+   
+    <div data-text="DnF-KSE">DnF-KSE</div>
+
+</body>
+</html>
