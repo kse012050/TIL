@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구구단 출력을 클래스로 만들기</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+    function My99DAN(){
+        this.$output = $("#output");
+    }
+
+    // My99DAN.prototype.print3dan = function(dan){
+    //     var result = "";
+    //     for(var i = 1; i <= 9; i++){
+    //         result += dan + " * "+i+"="+(dan * i) + "<br/>"
+    //     }
+    //     this.$output.html(result);
+    // }
+    // My99DAN.prototype.print6dan = function(){
+    //     var result = "";
+    //     var dan = 6;
+    //     for(var i = 1; i <= 9; i++){
+    //         result += dan + " * "+i+"="+(dan * i) + "<br/>"
+    //     }
+    //     this.$output.html(result);
+    // }
+    // My99DAN.prototype.print9dan = function(){
+    //     var result = "";
+    //     var dan = 9;
+    //     for(var i = 1; i <= 9; i++){
+    //         result += dan + " * "+i+"="+(dan * i) + "<br/>"
+    //     }
+    //     this.$output.html(result);
+    // }
+  
+
+    My99DAN.prototype.printdan = function(dan){
+        var result = "";
+        for(var i = 1; i < 9; i++){
+            result += dan + " * " + i + "=" + (dan*i)+"<br/>"
+        }
+        this.$output.html(result);
+    }
+
+    My99DAN.prototype.print3dan = function(dan){
+        this.printdan(3);
+    }
+    My99DAN.prototype.print6dan = function(){
+        this.printdan(6);
+    }
+    My99DAN.prototype.print9dan = function(){
+        this.printdan(9);
+    }
+
+    My99DAN.prototype.clear = function(){
+        this.$output.html("");
+    }
+
+    $(document).ready(function(){
+        var my99dan = new My99DAN();
+        $("#3dan").click(function(){
+            my99dan.print3dan(3);
+        });
+        $("#6dan").click(function(){
+            my99dan.print6dan(6);
+        });
+        $("#9dan").click(function(){
+            my99dan.print9dan(9);
+        });
+        $("#clear").click(function(){
+            my99dan.clear();
+        });
+    });
+    </script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <button id="3dan">3단</button>
+    <button id="6dan">6단</button>
+    <button id="9dan">9단</button>
+    <button id="clear">clear</button>
+    <div id="output"></div>
+</body>
+</html>
