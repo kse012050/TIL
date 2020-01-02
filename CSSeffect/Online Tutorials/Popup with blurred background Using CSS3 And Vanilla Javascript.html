@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Popup with blurred background Using CSS3 And Vanilla Javascript</title>
+    <style>
+    *{
+        margin: 0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    .container{
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff173;
+        transition: 0.5s;
+        padding: 20px;
+    }
+    .container#blur.active{
+        filter:blur(20px);
+        pointer-events: none;
+        user-select: none;
+    }
+    .container .content{
+        position: relative;
+        max-width: 800px;
+    }
+    h2{
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .container .content img{
+        max-width: 100%;
+        display: block;
+    }
+    a{
+        position: relative;
+        padding: 5px 20px;
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #fff;
+        background: #111 ;
+    }
+
+    #popup{
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 600px;
+        padding: 50px;
+        box-sizing: 0 5px 30px rgba(0,0,0,0.3);
+        background: #fff;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.5s;
+    }
+    #popup.active{
+        top: 50%;
+        visibility: visible;
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container" id="blur">
+        <div class="content">
+            <h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora pariatur atque, accusantium modi culpa reprehenderit commodi provident ullam vitae rerum iusto suscipit sapiente aspernatur omnis quia. Iusto, voluptatibus exercitationem. Mollitia.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora pariatur atque, accusantium modi culpa reprehenderit commodi provident ullam vitae rerum iusto suscipit sapiente aspernatur omnis quia. Iusto, voluptatibus exercitationem. Mollitia.
+                <img src="http://www.newsa.co.kr/news/photo/201711/156329_125771_2858.jpg" alt="">
+                <a href="#" onclick="toggle()">Read More</a>
+            </h2>
+        </div>
+    </div>
+
+    <div id="popup">
+        <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum sunt, a voluptatem molestiae aperiam illum enim iste ad repellendus possimus unde accusantium porro reprehenderit ab est, officiis vel cupiditate voluptatum.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum sunt, a voluptatem molestiae aperiam illum enim iste ad repellendus possimus unde accusantium porro reprehenderit ab est, officiis vel cupiditate voluptatum.
+            <a href="#" onclick="toggle()">Read More</a>    
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        function toggle(){
+            var blur = document.getElementById("blur");
+            blur.classList.toggle("active");
+            var popup = document.getElementById("popup");
+            popup.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
