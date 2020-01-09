@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pure CSS3 Dark Mode Effects For Website</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+        input[type="checkbox"]{
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 100px;
+            cursor:  pointer;
+            -webkit-appearance: none;
+        }
+        input[type="checkbox"]::before{
+            content: 'Dark';
+            position: absolute;
+            color: #fff;
+            background-color: #000;
+            padding: 10px 20px ;
+        }
+        input[type="checkbox"]:checked::before{
+            content: 'light';
+            color: #000;
+            background: #fff;
+        }
+        input[type="checkbox"]:checked ~ *{
+            filter: invert(1);
+        }
+        section{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            min-width: 100vh;
+            padding: 80px 100px;
+        }
+        section img{
+            max-width: 500px;
+            float: left;
+            margin: 10px 20px 10px 0; 
+            filter: inherit;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="" id="">
+    <section>
+        <h2>Pure CSS Dark / Light Mode Tricks</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+        </p>
+        <img src="http://cphoto.asiae.co.kr/listimglink/1/2019123109203472337_1577751634.jpeg" alt="아이유">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis sit maxime eius modi esse, quae vero fuga nesciunt id aspernatur nisi officia molestias provident accusamus recusandae perferendis commodi molestiae voluptate.
+
+        </p>
+    </section>
+</body>
+</html>
