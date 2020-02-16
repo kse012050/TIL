@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Hearts Trail Animation On Mousemove</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        body{overflow: hidden; background-color: #000; height: 100vh;}
+        span{position: absolute; width: 100px; height: 100px; background: url(heart.png); background-size: cover; pointer-events: none; transform: translate(-50%,-50%); animation: animate 2s linear infinite;}
+
+        @keyframes animate{
+            0%{transform: translate(-50%,-50%); opacity: 1; filter: hue-rotate(0deg);}
+            100%{transform: translate(-50%,-1000% ); opacity: 0; filter: hue-rotate(720deg);}
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("mousemove",function(e){
+            var body = document.querySelector('body');
+            var heart = document.createElement("span");
+            // 현재 마우스 (e)의 위치
+            var x = e.offsetX;
+            var y = e.offsetY;
+            // 생성될 span(heart) 의 위치를 마우스 위치의 기반으로 설정
+            heart.style.left = x + "px";
+            heart.style.top = y + "px";
+            // 0 ~ 1 사이의 랜덤 값을 받아 * 100
+            var size = Math.random() * 100;
+            // 생성될 span(heart) 의 크기를 랜덤으로 지정
+            heart.style.width = 20 + size + "px";
+            heart.style.height = 20 + size + "px";
+            //span(heart)을 body에 생성
+            body.append(heart);
+
+            setTimeout(function(){
+                heart.remove();
+            },2000);
+        });
+    </script>
+</body>
+</html>
