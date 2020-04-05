@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Image Transform on Scroll Using CSS3 & Vanilla Javascript</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            min-height: 2000px;
+        }
+        .banner{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+        }
+        .banner img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 
+                object-fit 속성은 대체되는 요소의 내용(<img> , <video> , <object> , <svg> 등과 같은)이
+                지정된 너브와 높이에 맞게 장착되는 방식을 지정합니다.
+                쉽게 말해서, img를 크기에 맞게 비율이 깨지지 않게 조정한다?!
+                fill - 기본값 , 크기에 맞게? 이미지에 강제로 너비와 높이를 지정하는 것과 같습니다.
+                contain - 내용이 종횡비를 유지하면서 요소에 정의된 너비와 높이안에서 가능한한 많이 확대(scale up) 시킵니다.
+                cover - 내용이 종횡비를 유지하면서 정의된 너비와 높이를 가득 채울때까지 확대됩니다.
+                        쉽게 말해, 최대 크기로 늘린다?
+                none - 내용의 크기가 요소의 크기와는 상관없이 기본 알고리즘에 의해 조정됩니다.
+                        중요한건 가운데 정렬된 형태를 띈다는 것입니다.
+                scale-down - 내용의 크기를 아무것도 지정되지 않거나 혹은 contain 이 지정되어 있는 것처럼 변경됩니다.
+
+                호환성
+                i X  - i를 제외한 모든 브라우저 사용가능합니다.
+            */
+        }
+        .banner #bg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff url(heart.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100px;
+            mix-blend-mode: screen;
+            /* 
+                mix-blend-mode : CSS 속성은 어느 요소의 콘텐츠가 자신의 배경 및 부모와 어떻게 혼합되어야 하는지 지정합니다.
+                    쉽게 말해, 부모의 배경이나 혹은 부모와 혼합시키는 속성
+                속성값이 너무 많아 따로 정리하지는 않겠습니다.
+                참고 자료 MDN : https://developer.mozilla.org/ko/docs/Web/CSS/mix-blend-mode
+
+                호환성
+                i , Safari 지원 X
+            */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <!-- video 처럼 영상물도 가능합니다. -->
+        <img src="https://www.topstarnews.net/news/photo/201902/578967_254885_4354.jpg" alt="장나라img">
+        <div id="bg"></div>
+    </div>
+
+    <script type="text/javascript">
+        let bg = document.querySelector('#bg');
+        window.addEventListener('scroll',function(){
+            let value = window.scrollY;
+            bg.style.backgroundSize = 100 + value*2 + 'px';
+        });
+    </script>
+</body>
+</html>
