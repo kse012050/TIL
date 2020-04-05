@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flat Long Shadow Using CSS & Vanilla Javascript | CSS Text Shadow</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #00fff3;
+        }
+        #text{
+            position: relative;
+            color: #fff;
+            font-weight: 700;
+            font-size: 10em;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            text-shadow: 1px 1px 0 #01ded3;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        HTML contenteditable 속성은 사용자가 요소를 편집할 수 있는지 나태내는 열거형? 특성
+        그냥 사용자가 편집 가능하게 해주는 속성입니다.
+        - true : 또는 빈 문자열은 요소가 편집 가능함을 나타냅니다.
+        - false : 는 요소가 편집 불가능함을 나타냅니다.
+    -->
+    <id id="text" contenteditable="">Text</id>
+    <script type="text/javascript">
+        var text = document.getElementById('text');
+        var shadow = '';
+        for(var i = 0; i < 500; i++){
+            shadow += (shadow? ',' : '') + i * 1 + 'px ' + i * 1 + 'px 0 #01ded3';
+        }
+        text.style.textShadow = shadow;
+    </script>
+</body>
+</html>
