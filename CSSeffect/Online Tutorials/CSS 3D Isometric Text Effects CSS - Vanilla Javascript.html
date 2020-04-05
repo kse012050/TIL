@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 3D Isometric Text Effects | CSS & Vanilla Javascript</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f1f1f1;
+            overflow: hidden;
+        }
+        #text{
+            position: relative;
+            color: #fff;
+            font-weight: 700;
+            font-size: 12em;
+            line-height: 0.9em;
+            letter-spacing: -2px;
+            text-align: center;
+            transform: rotate(-28deg) skew(25deg);
+        }
+        #text::before{
+            content: attr(data-text);
+            position: absolute;
+            top: 30px;
+            left: -30px;
+            color: rgba(0,0,0,0.3);
+            text-shadow: none;
+            filter: blur(8px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="text" data-text="CSS 3D Isometric Text">
+        CSS 3D Isometric Text
+    </div>
+    <script type="text/javascript">
+        var text = document.getElementById('text');
+        var shadow = '';
+        for(var i = 0; i < 30; i++){
+            // 문법이 아직 이해가 되지 않는다... (삼항연산자로 예상 된다)
+            shadow +=(shadow? ',':'') + -i * 1 + 'px ' + i * 1 + 'px 0 #d9d9d9';
+        }
+        text.style.textShadow = shadow;
+    </script>
+</body>
+</html>
