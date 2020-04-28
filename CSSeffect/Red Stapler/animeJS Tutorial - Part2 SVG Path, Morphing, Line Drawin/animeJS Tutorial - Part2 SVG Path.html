@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anime.js Tutorial - Part2 SVG 경로</title>
+    <style>
+        body{width: 100vw; height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center; background-color: rgb(36,36,36);}
+        .demo-wrapper{position: relative;}
+        #emoji{width: 50px; height: 50px; border-radius: 50%; background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(54,142,15,1) 35%, rgba(35,255,0,1) 100%) ; position: absolute; top: -25px; left: -25px;}
+        
+    </style>
+</head>
+<body>
+    <div class="demo-wrapper">
+        <!-- 
+            SVG Path Builder
+            https://codepen.io/anthonydugois/pen/mewdyZ 
+        -->
+        <div id="emoji"></div>
+        <svg id="demo-svg" width="1000" height="500">
+            <path stroke='red' fill='none' d='M 107 354 L 199 233 L 251 306 L 392 184 L 468 284 L 582 171 L 613 373 Z'></path>
+        </svg>
+    </div>
+    <script src="anime.min.js"></script>
+    <script>
+        let path = anime.path('#demo-svg path');
+
+        anime({
+            targets: '#emoji',
+            translateX: path('x'),
+            translateY: path('y'),
+            rotate: path('angle'),
+            easing: 'linear',
+            duration: 5000,
+            // loop:true
+        });
+    </script>
+</body>
+</html>
