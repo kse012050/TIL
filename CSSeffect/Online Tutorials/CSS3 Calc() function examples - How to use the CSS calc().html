@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Calc() 함수의 예 | CSS calc() 사용법</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .container{
+            position: relative;
+            width: 1000px;
+            height: 200px;
+            display: flex;
+            background: #ccc;
+        }
+        .container .box{
+            position: relative;
+            min-width: calc(calc(100% / 5) - 20px);
+            height: calc(100% - 20px);
+            background: #000;
+            margin: 10px 10px 10px 10px;
+        }
+        .box2{
+            position: relative;
+            width: calc(200px * 5);
+            height: 200px;
+            background: #000;
+            margin: 10px 0;
+        }
+        .box3{
+            position: relative;
+            width: calc(2000px / 4);
+            height: 200px;
+            background: #000;
+            margin: 10px 0;
+        }
+        .box4{
+            position: relative;
+            --w:400px;
+            --h:100px;
+            width: calc(var(--w) * 3);
+            height: calc(var(--h) * 5);
+            background: #000;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+</body>
+</html>
