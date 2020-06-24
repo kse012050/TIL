@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 와 CSS3를 사용하여 곡선 header를 만드는 방법</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            min-height: 1000px;
+        }
+        section{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+        section::before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 100vh;
+            height: 100vh;
+            background: #008dff;
+            transform-origin: bottom;
+            transform: translateX(-50%) scale(4);
+            border-radius: 50%;
+        }
+        section .content{
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            text-align: center;
+        }
+        section .content h2{
+            font-size: 3em;
+            color: #fff;
+        }
+        section .content p{
+            font-size: 1.2em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="content">
+            <h2>CSS Only Non-Rectangular Header</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis similique quae illo earum maiores explicabo nostrum eveniet odit recusandae in obcaecati optio, perferendis aspernatur tempore reiciendis pariatur et, totam dolorem.</p>
+        </div>
+    </section>
+</body>
+</html>
