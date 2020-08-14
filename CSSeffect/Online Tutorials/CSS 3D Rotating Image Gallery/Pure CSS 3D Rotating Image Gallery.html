@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>순수 CSS 3D 회전 이미지 갤러리</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        img{width: 200px; }
+        .box{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            animation: animate 20s linear infinite;
+        }
+        @keyframes animate {
+            0%{
+                transform: perspective(1000px) rotateY(0deg);
+            }
+            100%{
+                transform: perspective(1000px) rotateY(360deg);
+            }
+        }
+        .box span{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            transform: rotateY(calc(var(--i) * 45deg)) translateZ(400px);
+            -webkit-box-reflect: below 0px linear-gradient(transparent,transparent,#0004);
+        }
+        .box span img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span style="--i:1;"><img src="https://i.pinimg.com/originals/52/c7/ab/52c7ab7f3825f0b804555681b7c6098b.jpg" alt="아이유"></span>
+        <span style="--i:2;"><img src="https://img.insight.co.kr/static/2019/11/05/700/o05x4z6gdt2hlcx358yg.jpg" alt="아이유"></span>
+        <span style="--i:3;"><img src="https://i.pinimg.com/originals/fb/bd/a3/fbbda36f2efaab640337af1bafde5ff2.jpg" alt="아이유"></span>
+        <span style="--i:4;"><img src="https://i.pinimg.com/originals/66/9c/e9/669ce9ca55f2e1e71d7da86483d37149.jpg" alt="아이유"></span>
+        <span style="--i:5;"><img src="https://i.pinimg.com/736x/fb/e5/ac/fbe5acdd77f87c5b69ebbdecec5c9d7c.jpg" alt="아이유"></span>
+        <span style="--i:6;"><img src="https://dcinside.mycelebs.com/service/uploaded/theme/1722.jpg" alt="아이유"></span>
+        <span style="--i:7;"><img src="https://i.pinimg.com/736x/9f/21/74/9f2174ee7d73856ef15d798abec40dce.jpg" alt="아이유"></span>
+        <span style="--i:8;"><img src="https://i.pinimg.com/736x/4b/c1/47/4bc147e5d3a2de3aaed5185709e913b7.jpg" alt="아이유"></span>
+    </div>
+</body>
+</html>
