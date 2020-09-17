@@ -15,3 +15,6 @@ gitignore- 의도적으로 추적되지 않은 파일을 무시하도록 지정
 
 
 [출처내용 git 공식문서](https://git-scm.com/docs/gitignore)
+
+## .gitconfig 파일 위치
+c:\Users\ ``<사용자>`` \ .gitconfig
