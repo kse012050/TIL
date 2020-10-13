@@ -21,5 +21,20 @@ background-blend-mode: unset;
 #### ``<blend-mode>``
 적용 할 혼합 모드입니다. 쉼표로 구분된 여러 값이 있을 수 있습니다.
 
+## 형식적 구문 (속성값들?)
+> MDN 공식사이트 의 속성 설명이 부족하다. (아직 많이 사용되지 않기 때문일까?)
+
+>``<blend-mode>``#  
+where   
+``<blend-mode>`` = normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
+
 [내용출처 MDN background-blend-mode](https://developer.mozilla.org/ko/docs/Web/CSS/background-blend-mode)
+
+
+## 사용 예제
+~~~css
+background: url(bg.jpg), linear-gradient(45deg, #ff3479, #0319f4);
+            background-blend-mode: soft-light;
+~~~
+> CSSeffect -> Online Tutorials -> How to make Zig-zag~~~
 
