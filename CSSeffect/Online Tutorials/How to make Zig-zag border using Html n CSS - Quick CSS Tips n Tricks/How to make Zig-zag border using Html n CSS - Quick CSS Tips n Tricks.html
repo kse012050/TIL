@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 및 CSS를 사용하여 지그재그 테두리를 만드는 방법 | 빠른 CSS 팁 및 요령</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        section{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url(bg.jpg), linear-gradient(45deg, #ff3479, #0319f4);
+            background-blend-mode: soft-light;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-left: 50px solid #fff;
+            border-right: 50px solid #fff;
+        }
+        section::before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            display: block;
+            background: linear-gradient(-45deg, transparent 33.33%, #fff 33.33%, #fff 66.666%, transparent 66.66%),
+                        linear-gradient(45deg, transparent 33.33%, #fff 33.33%, #fff 66.666%, transparent 66.66%);
+            background-size: 30px 60px;
+        }
+        section::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            display: block;
+            background: linear-gradient(-45deg, transparent 33.33%, #fff 33.33%, #fff 66.666%, transparent 66.66%),
+                        linear-gradient(45deg, transparent 33.33%, #fff 33.33%, #fff 66.666%, transparent 66.66%);
+            background-size: 30px 60px;
+            transform: rotate(180deg);
+        }
+        section h2{
+            color: #fff;
+            font-size: 6em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Zig Zag Border</h2>
+    </section>
+</body>
+</html>
