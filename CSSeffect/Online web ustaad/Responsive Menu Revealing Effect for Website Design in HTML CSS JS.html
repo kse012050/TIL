@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML CSS JS에서 웹 사이트 디자인을 위한 반으형 메뉴 표시 효과</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .menu, .nav-container ul{
+            font-weight: 400;
+            text-transform: capitalize;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: white;
+        }
+        body{
+            background-image: url(https://img2.sbs.co.kr/img/sbs_cms/PG/2019/08/07/PG32010102_w1280_h720.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+        main{
+            width: 100vw;
+            display: flex;
+        }
+        nav{
+            width: 100vw;
+            z-index: 90;
+            position: relative;
+        }
+        .menu{
+            background: #f2c58c;
+            position: fixed;
+            padding: 20px 30px;
+            top: 50px;
+            right: 50px;
+            border-radius: 30px;
+            cursor: pointer;
+            z-index: 100;
+            border: 2px solid white;
+            font-size: 18px;
+        }
+
+        .block:last-child{
+            border-right: none;
+        }
+        .block-reveal{
+            background: #f2c58c;
+            height: 100vh;
+            position: absolute;
+        }
+
+        #block-1{
+            right: 0%;
+        }
+        #block-2{
+            right: 25%;
+        }
+        #block-3{
+            right: 50%;
+        }
+        #block-4{
+            right: 75%;
+        }
+
+        .nav-container{
+            position: absolute;
+            width: 50%;
+            left: 25%;
+            height: 100vh;
+            text-align: center;
+        }
+        .nav-container ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            flex-direction: column;
+            font-size: 26px;
+        }
+        .nav-container ul li{
+            padding: 20px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">menu</div>
+    <nav>
+        <div id="block-1" class="block-reveal"></div>
+        <div id="block-2" class="block-reveal"></div>
+        <div id="block-3" class="block-reveal"></div>
+        <div id="block-4" class="block-reveal"></div>
+
+        <div class="nav-container">
+            <ul>
+                <li class="nav-link">Home</li>
+                <li class="nav-link">About</li>
+                <li class="nav-link">Gallery</li>
+                <li class="nav-link">Our Team</li>
+                <li class="nav-link">Faq</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TimelineMax.min.js"></script>
+
+    <script>
+        var blocks = $('.block-reveal'),
+            menuButton = $('.menu'),
+            menuLinks = $('.nav-link');
+
+        var blockAnimation = new TimelineMax ({
+            paused: true,
+            reversed: true
+        });
+
+        blockAnimation.staggerTo(blocks, 0.6, {
+            y:20,
+            autoAlpha: 0,
+            ease : Circ.easeInOut
+        },{
+            y: 0,
+            autoAlpha: 1    
+        }, 0.2)
+        menuButton.click(function(e){
+            blockAnimation.reversed() ? 
+                blockAnimation.play() : blockAnimation.reversed();
+        })
+    </script>
+</body>
+</html>
