@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 및 CSS 전용 오디오 플레이어 | HTML5 오디오</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        .wrap{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #e91e63, #fffde7);
+        }
+        .player{
+            position: relative;
+            width: 350px;
+            background: #f1f3f4;
+            box-shadow: 0 50px 80px rgba(0,0,0,0.25);
+        }
+        .player .imgBx{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 350px;
+        }
+        .player .imgBx img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="player">
+            <div class="imgBx">
+                <img src="https://cdnimg.melon.co.kr/cm2/album/images/103/46/650/10346650_500.jpg?14a08050b8c6adc879b6e0cf587d456a/melon/quality/80/optimize" alt="아이유">
+            </div>
+            <audio controls>
+                <source src="iu.mp3" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
