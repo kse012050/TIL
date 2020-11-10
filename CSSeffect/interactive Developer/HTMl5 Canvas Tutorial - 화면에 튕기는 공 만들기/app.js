@@ -3,8 +3,7 @@ import{
 } from './ball.js'
 
 import {
-    Block,
-    block
+    Block
 } from './block.js'
 
 class App{
@@ -38,7 +37,8 @@ class App{
 
         this.ctx.clearRect(0,0,this.stageWidth, this.stageHeight);
 
-        this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
+        this.block.draw(this.ctx);
+        this.ball.draw(this.ctx, this.stageWidth, this.stageHeight,this.block);
     }
 }
 
