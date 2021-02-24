@@ -108,5 +108,22 @@ __HTML ``<script>``__ 요소는 데이터와 실행 가능한 코드를 문서�
 
 ![ansy images](./images/scriptDefer02.PNG)
 
+### type
+스크립트의 유형을 나타냅니다. 다음 다섯개의 범주 중 하나에 속할 수 있습니다.
+
+- __생략 또는 JavaScript MIME 유형 :__ 스크립트가 JavaScript임을 나타냅니다. 이 경우, HTML5 명세는 웹 작성자가 불필요한 ``type``을 포함하지 않고 완전히 제외할 것을 촉구합니다. 보다 오래된 브라우저에서는 ``type`` 특성의 값으로 삽입 혹은 (``src`` 특성으로) 불러온 스크립트의 언어를 표시하곤 했습니다. JavaScript MIME 유형은 [명세에 나열](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#JavaScript_types)되어 있습니다.
+
+- __``module``__ : 스크립트를 JavaScript 모듈로 간주합니다. 스크립트 콘텐츠 처리가 ``charset``과 ``defer`` 특성의 영향을 받지 않습니다. ``module``의 더 자세한 사용법은 MDN의 [JavaScript 모듈 안내서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)를 참고하세요. 기존 스크립트와 달리, 모듈 스크립트는 교차 출처 가져오기 시 CORS 프로토콜을 사용해야 합니다.
+
+- __다른 모든 값:__ 내장 콘텐츠를 브라우저가 처리하지 않을 데이터 블록으로 간주합니다. 개발자는 반드시 유효하면서 JavaScript가 아닌 MIME 유형을 지정해야 합니다. ``src`` 특성을 무시합니다.
+
+#### 모듈 대체 스크립트
+[type](https://developer.mozilla.org/ko/docs/Web/HTML/Element/script#attr-type) 특성이 ``module``을 지원하는 브라우저는 ``nomodule`` 특성을 가진 모든 ``<script>``를 무시합니다. 그러므로 모듈 스크립트를 사용하면서도, 미지원 브라우저를 위한 대체 스크립트를 ``nomodule``로 표시해 제공할 수 있습니다.
+~~~html
+<script type="module" src="main.mjs"></script>
+<script nomodule src="fallback.js"></script>
+~~~
+
+
 [내용출처 MDN script](https://developer.mozilla.org/ko/docs/Web/HTML/Element/script)  
 [내용출처 엘리 코딩](https://www.youtube.com/watch?v=tJieVCgGzhs&list=PLv2d7VI9OotTVOL4QmPfvJWPJvkmv6h-2&index=2)
