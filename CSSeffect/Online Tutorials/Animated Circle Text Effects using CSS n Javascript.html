@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 및 Javascript를 사용한 애니메이션 원 텍스트 효과</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        section{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #111;
+            overflow: hidden;
+        }
+        section .text{
+            position: absolute;
+            color: #fff;
+            font-size: 1.5em;
+            user-select: none;
+            pointer-events: none;
+            animation: animate 7.5s linear infinite;
+        }
+        @keyframes animate {
+            0%{
+                transform: rotate(360deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+        }
+        section .text span{
+            position: absolute;
+            top: -100px;
+            text-transform: uppercase;
+            display: inline-block;
+            transform-origin: 0 100px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2 class="text">Circle-Text-Effects-</h2>
+    </section>
+
+    <script>
+        const text = document.querySelector('.text');
+        text.innerHTML = text.textContent.replace(/\S/g,"<span>$&</span>");
+
+        const element = document.querySelectorAll('span');
+        for(let i = 0; i < element.length; i++){
+            element[i].style.transform = "rotate(" + i * 18+ "deg)"
+        }
+
+        document.addEventListener("mousemove",function(e){
+            text.style.left = e.pageX + 'px';
+            text.style.top = e.pageY + 'px';
+        })
+    </script>
+</body>
+</html>
