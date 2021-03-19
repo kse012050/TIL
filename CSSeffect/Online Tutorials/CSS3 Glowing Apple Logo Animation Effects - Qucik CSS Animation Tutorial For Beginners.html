@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 빛나는 Apple 로고 애니메이션 효과 | 초보자를위한 Qucik CSS 애니메이션 튜토리얼</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #000;
+        }
+        .logo{
+            position: relative;
+            color: #fff;
+            font-size: 5em;
+            text-shadow: 0 0 50px #0f0,
+                        0 0 100px #0f0,
+                        0 0 150px #0f0,
+                        0 0 200px #0f0,
+                        0 0 250px #0f0;
+            animation: animate 5s linear infinite;
+        }
+        @keyframes animate {
+            0%{
+                filter: hue-rotate(0deg)
+            }
+            100%{
+                filter: hue-rotate(360deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <i class="fa fa-apple logo"></i>
+    </div>
+</body>
+</html>
