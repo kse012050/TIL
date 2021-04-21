@@ -26,6 +26,10 @@
             justify-content: center;
             flex-direction: column;
         }
+        .drag-area.active{
+            border: 2px solid #fff;
+        }
+
         .drag-area .icon span{
             font-size: 100px;
             color: #fff;
@@ -52,6 +56,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .drag-area img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -60,11 +71,76 @@
         <header>Drag & Drop to Upload File</header>
         <span>OR</span>
         <button>Browse File</button>
+        <input type="file" hidden>
     </div>
 
     <script>
         // 모든 필수 요소 선택
-        const dropArea = document.querySelector("")
+        const dropArea = document.querySelector(".drag-area");
+        dragText = dropArea.querySelector("header");
+        button = dropArea.querySelector("button");
+        input = dropArea.querySelector("input");
+
+        let file; // 이것은 전역 변수이며 여러 함수 내에서 사용할 것입니다.
+
+        button.onclick = () =>{
+            input.click(); // 사용자가 버튼을 클릭하면 입력도 클릭됩니다.
+        }
+
+        input.addEventListener("change",function(){
+            // 사용자 선택 파일 가져 오기 및 [0] 사용자가 여러 파일을 선택하면 첫 번째 파일 만 선택 함을 의미합니다.
+            file = this.files[0];
+            showFile(); // 호출 기능
+            dropArea.classList.add("active");
+        })
+
+        // 사용자가 DragArea 위로 파일을 드래그하는 경우
+        dropArea.addEventListener("dragover" , (event) => {
+            event.preventDefault(); // 기본 동작 방지
+            console.log("파일이 DragArea 위에 있습니다.");
+            dropArea.classList.add("active");
+            dragText.textContent = "릴리스 파일 업로드";
+        });
+
+        // 사용자가 DragArea 위에 파일을 남기면
+        dropArea.addEventListener("dragleave" , () => {
+            console.log("파일이 DragArea 외부에 있습니다.");
+            dropArea.classList.remove("active");
+            dragText.textContent = "드래그 앤 드롭하여 파일 업로드";
+        });
+
+        // 사용자가 DropArea에 파일을 드롭하는 경우
+        dropArea.addEventListener("drop" , (event) => {
+            event.preventDefault(); // 기본 동작 방지
+            console.log("DragArea에 파일이 드롭 됨");
+            // 사용자 선택 파일 가져 오기 및 [0] 사용자가 여러 파일을 선택하면 첫 번째 파일 만 선택 함을 의미합니다.
+            file = event.dataTransfer.files[0];
+            showFile(); // 호출 기능
+        });
+
+        function showFile(){
+            let fileType = file.type;
+            console.log(file);
+
+            let validExtensions = ["image/jpeg","image/jpg","image/png"]; // 배열에 유효한 이미지 확장 추가
+
+            if(validExtensions.includes(fileType)){ // 사용자가 선택한 파일이 이미지 파일 인 경우
+                console.log("이것은 이미지 파일입니다");
+                let fileReader = new FileReader(); // 새 FileReader 개체 만들기
+                fileReader.onload = () => {
+                    let fileURL = fileReader.result; // fileURL 변수에 사용자 파일 소스 전달
+                    console.log("111" + fileURL);
+                    let imgTag = `<img src="${fileURL}">`;  // img 태그를 만들고 src 내부에 사용자가 선택한 파일 소스 전달
+                    dropArea.innerHTML = imgTag; // dropArea 컨테이너 안에 생성 된 img 태그 추가
+                }
+                fileReader.readAsDataURL(file); // 이것은 img의 base62 형식입니다.
+            }else{
+                console.log("이것은 이미지 파일이 아닙니다");
+                alert("이것은 이미지 파일이 아닙니다");
+                dropArea.classList.remove("active");
+                dragText.textContent = "드래그 앤 드롭하여 파일 업로드";
+            }
+        }
     </script>
 </body>
 </html>
