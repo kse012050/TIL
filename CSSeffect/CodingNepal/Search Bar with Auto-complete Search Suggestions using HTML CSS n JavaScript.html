@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML CSS 및 JavaScript를 사용하여 자동 완성 검색 제안이있는 검색 창</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        *{margin: 0; padding: 0; font-family: 'Poppins', sans-serif;}
+        body{
+            background: #644bff;
+            padding: 0 20px;
+        }
+        .wrapper{
+            max-width: 450px;
+            margin: 150px auto;
+        }
+        .wrapper .search-input{
+            position: relative;
+            background: #fff;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+        }
+        .search-input input{
+            height: 55px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 5px; 
+            padding: 0 60px 0 20px;
+            font-size: 18px;
+        }
+        .search-input .icon{
+            height: 55px;
+            width: 55px;
+            line-height: 55px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-align: center;
+            font-size: 20px;
+            color: #644bff;
+            cursor: pointer;
+        }
+        .search-input .autocom-box{
+            padding: 10px 8px;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+        .autocom-box li{
+            list-style: none;
+            padding: 8px 12px;
+            width: 100%;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="search-input">
+            <input type="text" placeholder="Type to search..">
+            <div class="autocom-box">
+                <li>Login Form in HTML & CSS</li>
+                <li>How to learn HTML & CSS</li>
+                <li>How to learn JavaScript</li>
+                <li>How to became Freelancer</li>
+                <li>How to became Web Designer</li>
+            </div>
+            <div class="icon"><i class="fas fa-search"></i></div>
+        </div>
+    </div>
+</body>
+</html>
