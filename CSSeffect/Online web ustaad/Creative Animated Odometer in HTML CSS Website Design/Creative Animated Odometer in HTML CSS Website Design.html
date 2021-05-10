@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML CSS 웹 사이트 디자인의 크리에이티브 애니메이션 주행 거리계</title>
+    <script src="https://unpkg.com/bounty@1.1.6/lib/bounty.js"></script>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        body{
+            background-color: lightgreen
+        }
+        .js-odoo{
+            font-size: 155px;
+            font-weight: bold;
+            color: white;
+            margin: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="js-odoo"></div>
+
+    <script>
+        bounty.default({
+            el: '.js-odoo',
+            value: '£42,000,000',
+            initialValue: '£900,000',
+            lineHeight: 1.35,
+            letterSpacing: 1,
+            animationDelay: 100,
+            letterAnimationDelay: 100,
+            duration: 3000
+        });
+    </script>
+</body>
+</html>
