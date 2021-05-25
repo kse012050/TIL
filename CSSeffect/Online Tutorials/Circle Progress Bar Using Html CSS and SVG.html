@@ -58,6 +58,7 @@
             stroke-dashoffset: 440;
             stroke:#03a9f4;
             /* animation을 만들때 calc로 연산을 넣었더니 작동하지 않았습니다. */
+            /* 아니 된다! 공식을 잘못 작성했다 */
             animation-name: progress;
             animation-duration: 1s;
             animation-fill-mode: forwards;
@@ -68,7 +69,7 @@
                 stroke-dashoffset: 440;
             }
             100%{
-                stroke-dashoffset: 0;
+                stroke-dashoffset: calc(440px - (440px * 87) / 100 );
             }
         }
         .box .percent .number{
