@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 및 Javascript를 사용하여 마우스 팔로우가 있는 크리에이티브 페이지 스크롤 진행률 표시기</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box; font-family: consolas;}
+        body{
+            background-color: #000;
+            cursor: context-menu;
+        }
+        section{
+            padding: 40px;
+            color: #666;
+        }
+        section h2{
+            font-size: 3.5em;
+        }
+        section p{
+            font-size: 1.2em;
+        }
+
+        .cursorMeter{
+            position: fixed;
+            top: 0;
+            width: 400px;
+            height: 80px;
+            /* background-color: #ff0; */
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .scrollPath{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #333;
+        }
+        .pregressBar{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            /* background: indianred; */
+            background: linear-gradient(to left, #008aff, #00ffe7);
+            animation: animate 5s linear infinite;
+        }
+        .pregressBar::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, #008aff, #00ffe7);
+            filter: blur(10px);
+        }
+        .pregressBar::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, #008aff, #00ffe7);
+            filter: blur(30px);
+        }
+        @keyframes animate{
+            0%, 100%{
+                filter : hue-rotate(0deg)
+            }
+            50%{
+                filter : hue-rotate(360deg)
+            }
+        }
+
+        .percent{
+            position: absolute;
+            top: 30px;
+            left: 0;
+            color: #fff;
+            font-size: 1.2em;
+            padding: 2px 5px;
+            background-color: #fff;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h2>Creative Scroll Progress Bar</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde incidunt esse itaque porro minima voluptatum at pariatur, cupiditate magni modi ea aut dolores sint beatae. Numquam eaque recusandae eius officiis?
+            Nesciunt quasi porro rerum similique provident, libero impedit quaerat necessitatibus pariatur accusantium magnam beatae eos est voluptatem saepe dolorum praesentium cupiditate commodi? Iste ex aperiam enim ratione, facilis praesentium provident.
+            Officiis ex perspiciatis quos magnam at dolorem. Itaque illum saepe earum vero eaque, facere voluptas omnis consectetur, voluptate modi velit, blanditiis natus quidem sit tenetur atque quia eos iste nulla?
+            Porro, repudiandae perspiciatis. Eius, numquam harum, quidem necessitatibus labore cum aut a culpa optio aliquam architecto odit quam quod? Modi mollitia quis vero non laborum expedita est adipisci reiciendis impedit?
+            Odio ab exercitationem illo architecto similique ipsam eius quas perspiciatis nihil accusantium aut obcaecati, voluptates iste rem natus suscipit. Doloribus sequi soluta maiores inventore consequatur, molestias aliquam culpa nesciunt laborum.
+            Quas, odit aspernatur. Molestiae, dolores minus quia neque tempora eos magnam officia expedita consequuntur blanditiis ducimus earum cupiditate fuga amet id quasi assumenda quam suscipit accusamus, labore quibusdam! Voluptas, a?
+            Molestiae tempore quod cum illum magni iure ea! Quia commodi corrupti voluptatum! Deleniti nesciunt expedita, minus illo possimus, consequuntur enim molestiae ipsum officia doloribus architecto placeat vitae optio ea tempore!
+            Dolor esse est, accusamus harum sapiente placeat eligendi. Voluptates tempore labore neque veritatis explicabo! Voluptatum ipsa voluptas repudiandae! Ratione temporibus sit distinctio deserunt debitis modi cum amet natus expedita consequatur.
+            Itaque nemo fugiat ad, beatae quia optio adipisci ex aliquam reprehenderit, inventore labore perspiciatis quis cumque, possimus dolorem voluptates excepturi. Voluptas quam tempora nesciunt illo a recusandae quos rerum aspernatur.
+            Minus nemo voluptatum repudiandae obcaecati dignissimos enim aperiam corrupti voluptatibus. Beatae, quo. Amet numquam aperiam alias aliquid, enim molestiae recusandae sint possimus ducimus repellat nemo assumenda, quibusdam placeat minus eaque.
+        </p>
+        
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde incidunt esse itaque porro minima voluptatum at pariatur, cupiditate magni modi ea aut dolores sint beatae. Numquam eaque recusandae eius officiis?
+            Nesciunt quasi porro rerum similique provident, libero impedit quaerat necessitatibus pariatur accusantium magnam beatae eos est voluptatem saepe dolorum praesentium cupiditate commodi? Iste ex aperiam enim ratione, facilis praesentium provident.
+            Officiis ex perspiciatis quos magnam at dolorem. Itaque illum saepe earum vero eaque, facere voluptas omnis consectetur, voluptate modi velit, blanditiis natus quidem sit tenetur atque quia eos iste nulla?
+            Porro, repudiandae perspiciatis. Eius, numquam harum, quidem necessitatibus labore cum aut a culpa optio aliquam architecto odit quam quod? Modi mollitia quis vero non laborum expedita est adipisci reiciendis impedit?
+            Odio ab exercitationem illo architecto similique ipsam eius quas perspiciatis nihil accusantium aut obcaecati, voluptates iste rem natus suscipit. Doloribus sequi soluta maiores inventore consequatur, molestias aliquam culpa nesciunt laborum.
+            Quas, odit aspernatur. Molestiae, dolores minus quia neque tempora eos magnam officia expedita consequuntur blanditiis ducimus earum cupiditate fuga amet id quasi assumenda quam suscipit accusamus, labore quibusdam! Voluptas, a?
+            Molestiae tempore quod cum illum magni iure ea! Quia commodi corrupti voluptatum! Deleniti nesciunt expedita, minus illo possimus, consequuntur enim molestiae ipsum officia doloribus architecto placeat vitae optio ea tempore!
+            Dolor esse est, accusamus harum sapiente placeat eligendi. Voluptates tempore labore neque veritatis explicabo! Voluptatum ipsa voluptas repudiandae! Ratione temporibus sit distinctio deserunt debitis modi cum amet natus expedita consequatur.
+            Itaque nemo fugiat ad, beatae quia optio adipisci ex aliquam reprehenderit, inventore labore perspiciatis quis cumque, possimus dolorem voluptates excepturi. Voluptas quam tempora nesciunt illo a recusandae quos rerum aspernatur.
+            Minus nemo voluptatum repudiandae obcaecati dignissimos enim aperiam corrupti voluptatibus. Beatae, quo. Amet numquam aperiam alias aliquid, enim molestiae recusandae sint possimus ducimus repellat nemo assumenda, quibusdam placeat minus eaque.
+        </p>
+        
+        
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde incidunt esse itaque porro minima voluptatum at pariatur, cupiditate magni modi ea aut dolores sint beatae. Numquam eaque recusandae eius officiis?
+            Nesciunt quasi porro rerum similique provident, libero impedit quaerat necessitatibus pariatur accusantium magnam beatae eos est voluptatem saepe dolorum praesentium cupiditate commodi? Iste ex aperiam enim ratione, facilis praesentium provident.
+            Officiis ex perspiciatis quos magnam at dolorem. Itaque illum saepe earum vero eaque, facere voluptas omnis consectetur, voluptate modi velit, blanditiis natus quidem sit tenetur atque quia eos iste nulla?
+            Porro, repudiandae perspiciatis. Eius, numquam harum, quidem necessitatibus labore cum aut a culpa optio aliquam architecto odit quam quod? Modi mollitia quis vero non laborum expedita est adipisci reiciendis impedit?
+            Odio ab exercitationem illo architecto similique ipsam eius quas perspiciatis nihil accusantium aut obcaecati, voluptates iste rem natus suscipit. Doloribus sequi soluta maiores inventore consequatur, molestias aliquam culpa nesciunt laborum.
+            Quas, odit aspernatur. Molestiae, dolores minus quia neque tempora eos magnam officia expedita consequuntur blanditiis ducimus earum cupiditate fuga amet id quasi assumenda quam suscipit accusamus, labore quibusdam! Voluptas, a?
+            Molestiae tempore quod cum illum magni iure ea! Quia commodi corrupti voluptatum! Deleniti nesciunt expedita, minus illo possimus, consequuntur enim molestiae ipsum officia doloribus architecto placeat vitae optio ea tempore!
+            Dolor esse est, accusamus harum sapiente placeat eligendi. Voluptates tempore labore neque veritatis explicabo! Voluptatum ipsa voluptas repudiandae! Ratione temporibus sit distinctio deserunt debitis modi cum amet natus expedita consequatur.
+            Itaque nemo fugiat ad, beatae quia optio adipisci ex aliquam reprehenderit, inventore labore perspiciatis quis cumque, possimus dolorem voluptates excepturi. Voluptas quam tempora nesciunt illo a recusandae quos rerum aspernatur.
+            Minus nemo voluptatum repudiandae obcaecati dignissimos enim aperiam corrupti voluptatibus. Beatae, quo. Amet numquam aperiam alias aliquid, enim molestiae recusandae sint possimus ducimus repellat nemo assumenda, quibusdam placeat minus eaque.
+        </p>
+    </section>
+
+    <div class="cursorMeter">
+        <div class="percent">Page Scrolled</div>
+        <div class="scrollPath">
+            <div class="pregressBar"></div>
+        </div>
+    </div>
+
+    <script>
+        let cursorMeter = document.querySelector('.cursorMeter');
+        document.addEventListener('mousemove',function(e){
+            cursorMeter.style.top = e.clientY + 'px';
+            cursorMeter.style.left = e.clientX + 'px';
+        })
+
+        let percent = document.querySelector('.percent');
+        let pregressBar = document.querySelector('.pregressBar');
+
+        let totalHeight = document.body.scrollHeight - window.innerHeight;
+
+        window.onscroll = function(){
+            let progress = (window.pageYOffset / totalHeight) * 100;
+            pregressBar.style.width = progress + '%';
+            percent.innerHTML = "Page Scrolled " + Math.round(progress) + "%";
+        }
+    </script>
+</body>
+</html>
