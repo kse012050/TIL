@@ -47,7 +47,7 @@
 
         // 입자를 생성
         let particlesArray = [];
-        class particle  {
+        class Particle  {
             constructor(x,y,size){
                 this.x = x;
                 this.y = y;
@@ -76,6 +76,7 @@
         }))
 
         function handleParticles(){
+            // console.log(particlesArray.lenght);
             for(let i = 0; i < particlesArray.lenght; i++){
                 particlesArray[i].updata();
                 particlesArray[i].draw();
@@ -83,15 +84,17 @@
                     particlesArray[i].splice(i,1);
                     i--;
                 }
+                console.log(particlesArray[i]);
             }
         }
 
         function createParticle(){
             if(activeButton > -1){
                 let size = Math.random() * 40 + 10;
-                let x = Math.random() * buttonMeasurements[activeButton].width;
+                let x = Math.random() * buttonMeasurements[activeButton].width + buttonMeasurements[activeButton].x;
                 let y = buttonMeasurements[activeButton].y +  40;
-                particlesArray.push(new particle(x,y,size));
+                particlesArray.push(new Particle(x,y,size));
+                console.log(particlesArray.lenght);
             }
         }
         function animate(){
