@@ -7,7 +7,7 @@
     <title>UI animations</title>
     <style>
         *{margin: 0; padding: 0; box-sizing: border-box;}
-        body{background-color: black;}
+        body{background-color: black; overflow: hidden;}
         .buttons{position: absolute; top: 30%; left: 0; width: 100vw; text-align: center;}
         #canvas1 {background-color: black;}
         .button{position: relative; width: 25%; height: 120px; margin: 10px; display: inline-block; border-radius: 50px; border: 5px solid white; background-color: transparent; transition: 0.5s; font-size: 50px; font-weight: 500; color: white; line-height: 110px; min-width: 300px;}
@@ -21,10 +21,86 @@
 </head>
 <body>
     <div class="buttons">
-        <button class="button button1"><!-- HOME --></button>
-        <button class="button button2"><!-- SHOP --></button>
-        <button class="button button3"><!-- ABOUT --></button>
+        <button class="button button1" data-number="0"><!-- HOME --></button>
+        <button class="button button2" data-number="1"><!-- SHOP --></button>
+        <button class="button button3" data-number="2"><!-- ABOUT --></button>
         <canvas id="canvas1"></canvas>
     </div>
+
+    <script>
+        const canvas = document.getElementById('canvas1');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // 측정 버튼
+        const buttonElements = document.querySelectorAll('.button');
+        let buttonMeasurements = [];
+        function measureButtons(){
+            buttonMeasurements = [];
+            buttonElements.forEach(button => {
+                buttonMeasurements.push(button.getBoundingClientRect());
+            })
+        }
+        measureButtons();
+        console.log(buttonMeasurements);
+
+        // 입자를 생성
+        let particlesArray = [];
+        class particle  {
+            constructor(x,y,size){
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.weight = Math.random() * 1.5 + 1.5;
+                this.directionX = Math.random() * 2;
+            }
+            updata(){
+                this.y -= this.weight;
+                this.x += this.directionX;
+                if(this.size >= 0.3) this.size -= 0.2;
+            }
+            draw(){
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0 , Math.PI * 2);
+                ctx.fillStyle = 'orange';
+                ctx.fill();
+            }
+        }
+        let activeButton = 0;
+        buttonElements.forEach(button => button.addEventListener('mouseenter',function(){
+            activeButton = button.dataset.number;
+        }))
+        buttonElements.forEach(button => button.addEventListener('mouseleave',function(){
+            activeButton = -1;
+        }))
+
+        function handleParticles(){
+            for(let i = 0; i < particlesArray.lenght; i++){
+                particlesArray[i].updata();
+                particlesArray[i].draw();
+                if(particlesArray[i].size <= 1){
+                    particlesArray[i].splice(i,1);
+                    i--;
+                }
+            }
+        }
+
+        function createParticle(){
+            if(activeButton > -1){
+                let size = Math.random() * 40 + 10;
+                let x = Math.random() * buttonMeasurements[activeButton].width;
+                let y = buttonMeasurements[activeButton].y +  40;
+                particlesArray.push(new particle(x,y,size));
+            }
+        }
+        function animate(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            createParticle();
+            handleParticles();
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
