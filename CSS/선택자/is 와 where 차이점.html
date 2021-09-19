@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .isClass span , .isClass p{color: black;}
+        .isClass :is(span , p){color: red;}
+        
+        .whereClass span , .whereClass p{color: black;}
+        .whereClass :where(span , p){color: blue;}
+    </style>
+</head>
+<body>
+    <div class="isClass">
+        <span>
+            is
+        </span>
+        <p>is</p>
+    </div>
+
+    <div class="whereClass">
+        <span>
+            where
+        </span>
+        <p>where</p>
+    </div>
+</body>
+</html>
