@@ -5,8 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS 픽셀 이미지 효과 | CSS 전용 픽셀화된 타일 이미지 아트</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .box{
+            position: relative;
+            width: 400px;
+            height: 600px;
+            margin: 10px;
+            background: #000;
+        }
+        .box img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .box.pixel img{
+            image-rendering: pixelated;
+            filter: contrast(1.4);
+        }
+        .box.pixel::before{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: repeating-linear-gradient(0deg,red 0%,red 4%, transparent 4%,transparent 96%, red 96%, red 100%),
+                        repeating-linear-gradient(90deg,#0006 0%,#0006 4%, transparent 4%,transparent 96%, #0006 96%, #0006 100%);
+            background-size: 10px 10px;
+        }
+    </style>
 </head>
 <body>
     <!-- https://www.youtube.com/watch?v=K49-9Tfb6JU -->
+    <div class="box">
+        <img src="monalisa.jpg" alt="">
+    </div>
+    <div class="box pixel">
+        <img src="monalisa_pixel.jpg" alt="">
+    </div>
 </body>
 </html>
