@@ -1,31 +1,42 @@
 # git 명령어 정리
 
-## git config --list
+## git init
+깃을 init(초기화) 시켜줍니다
+
+## git status
+올라가 파일이 있는지 현재 폴더에 있는 파일들을 확인합니다
+
+## git [확인하고 싶은 명령어] --h
+[확인하고 싶은 명령어]의 기능들을 볼 수 있다
+
+## git config
+
+### git config --list
 git의 모든 설정들을 확인할 수 있다
 
-## git config --global -e
+### git config --global
+
+#### git config --global -e
 git의 설정 코드를 볼 수 있다
 
-## code .
-VScode(따로 설정 필요?)가 열린다
-
-## 터미널로 VScode(툴) 을 열었을 때 설정
+#### 터미널로 VScode(툴) 을 열었을 때 설정
 - git config --global core.editor "code"
 > 코드가 열린다
 - git config --global core.editor "code"
 > 코드가 열리고 닫히기 전까지 기다린다 (터미널 사용 X)
 
-## 윈도우 와 맥의 줄바꿈을 맞추는 설정
+#### 윈도우 와 맥의 줄바꿈을 맞추는 설정
 - git config --global core.autocrlf true
 > 윈도우
 - git config --global core.autocrlf input
 > 맥
 
-# $ git init
-### 깃을 init(초기화) 시켜줍니다
+#### git config --global alias.[내가 사용할 명령어] [기존 명령어]
+[기존 명령어]를 [내가 사용할 명령어]에 대입? 시킨다
 
-# $ git status
-### 올라가 파일이 있는지 현재 폴더에 있는 파일들을 확인합니다
+## code .
+VScode(따로 설정 필요?)가 열린다
+
 
 
 # $ git add .
