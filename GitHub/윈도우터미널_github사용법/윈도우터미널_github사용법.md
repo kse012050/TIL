@@ -64,4 +64,4 @@ VScode(따로 설정 필요?)가 열린다
 ### commit 메시지를 보여줍니다
 ### 'q' 를 입력하면 나가집니다
 
-[GitHub 내용 출처](https://coding-factory.tistory.com/entry/Git-GitHub-%EB%A0%88%ED%8C%8C%EC%A7%80%ED%86%A0%EB%A6%ACRepository-%EC%83%9D%EC%84%B1-%EC%86%8C%EC%8A%A4-%EC%98%AC%EB%A6%AC%EA%B8%B0)
+[Git 명령어 Reference](https://git-scm.com/docs)
