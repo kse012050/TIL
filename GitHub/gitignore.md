@@ -18,3 +18,39 @@ gitignore- 의도적으로 추적되지 않은 파일을 무시하도록 지정
 
 ## .gitconfig 파일 위치
 c:\Users\ ``<사용자>`` \ .gitconfig
+
+
+## 예시
+log.log
+> log.log 파일을 git add 에서 제외한다  
+  
+*.log
+> 파일 확장자명이 .log 인 파일을 git add 에서 제외한다  
+  
+build/
+> build 폴더( directory ) 안에 있는 모든 파일 및 폴더를 git add 에서 제외한다  
+  
+build/.log
+> build 폴더 ( directory ) 안에 있는 확장자명 .log 파일 모두를 git add 에서 제외한다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
