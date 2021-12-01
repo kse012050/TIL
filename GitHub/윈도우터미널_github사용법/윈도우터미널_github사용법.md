@@ -10,6 +10,10 @@ working drectroy / staging area / .git directory 내용을 확인할 수 있다
 ## git [확인하고 싶은 명령어] --h
 [확인하고 싶은 명령어]의 기능들을 볼 수 있다
 
+## git mv [파일명] [파일명 변경 이름]
+[파일명]을 [파일명 변경 이름]으로 파일의 이름을 변경한다
+> 터미널 명령어 __mv__ 와 차이점은 git 명렁어를 사용하면 바로 ``staging area``로 이동한다는 것이다
+
 ## code .
 VScode(따로 설정 필요?)가 열린다
 
@@ -101,9 +105,35 @@ git add . ( staging area ) 로 옮기는 작업을 생략하고
 commit 메시지를 보여줍니다  
 'q' 를 입력하면 나가집니다
 
-## git mv [파일명] [파일명 변경 이름]
-[파일명]을 [파일명 변경 이름]으로 파일의 이름을 변경한다
-> 터미널 명령어 __mv__ 와 차이점은 git 명렁어를 사용하면 바로 ``staging area``로 이동한다는 것이다
+## git log
+commit log 를 확인 할 수 있다.  
+``확인 할 수 있는 목록``
+- 작성자 ( commit id )
+- 시간
+- title ( commit 내용 )
+> 위에 있을수록 __최신__ 이다  
+> ``Q`` 를 이용해서 나갈 수 있다
+
+### git log --p ( patch )
+git log로 확인할 수 있는 내용에 __수정된 파일의 내용__ 도 확인할 수 있다
+
+### git log --oneline
+git log를 단간하게 볼 수 있다 (해쉬코드의 앞자리 , 간단한 commit message )
+
+### git log --oneline --reverse
+git log의 순서 변경 ( 오래된 commit부터 볼 수 있다 )
+
+
+## git checkout
+git log에서 확인한 해쉬코드를 이용해 해당되는 __버전으로 이동__ 할 수 있다
+
+### git checkout __master__
+해당 프로젝트의 최신 버전으로 돌아간다
+
+### git checkout [해쉬코드]
+[해쉬코드] 버전의 프로젝트로 이동한다
+
+
 
 # $ git remote add origin repository 주소
 ### 복사한 repository 원격 저장소와 로컬저장소가 연결됩니다
