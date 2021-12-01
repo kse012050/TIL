@@ -38,7 +38,8 @@ git의 설정 코드를 볼 수 있다
 #### git config --global alias.[내가 사용할 명령어] [기존 명령어]
 [기존 명령어]를 [내가 사용할 명령어]에 대입? 시킨다
 
-## git rm ( remove )
+## git rm ( remove ) [파일명]
+[파일명] 파일을 삭제한다
 
 ### git rm --cached [파일명]
 staging 된 ( git add [파일명] ) 파일들을 다시 working directory로 이동 시킨다
@@ -93,13 +94,16 @@ commit과 동시에 메시지 작성
 git add . ( staging area ) 로 옮기는 작업을 생략하고   
 바로 commit ( .git directory )로 메시지와 함께 넘긴다
 
-## git log
 커밋 로그를 표시한다  
 주어진 커밋에서 상위 링크를 따라 도달할 수 있는 커밋을 나열하지만 앞에 ^가 있는 커밋에서 도달할 수 있는 커밋을 제외한다  
 출력은 기본적으로 시간 역순으로 제공된다  
   
 commit 메시지를 보여줍니다  
 'q' 를 입력하면 나가집니다
+
+## git mv [파일명] [파일명 변경 이름]
+[파일명]을 [파일명 변경 이름]으로 파일의 이름을 변경한다
+> 터미널 명령어 __mv__ 와 차이점은 git 명렁어를 사용하면 바로 ``staging area``로 이동한다는 것이다
 
 # $ git remote add origin repository 주소
 ### 복사한 repository 원격 저장소와 로컬저장소가 연결됩니다
