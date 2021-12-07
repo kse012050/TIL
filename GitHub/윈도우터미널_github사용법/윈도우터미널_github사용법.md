@@ -135,7 +135,7 @@ git log --oneline이랑 비슷하지만 ``해쉬코드`` 전부가 나온다
 - %an : 저자의 이름
 - %ar : commit 된 date ( 시간 )
 - %s : commit title
-- [참고자료 git -log Documentation](https://git-scm.com/docs/git-log)   ``스크롤 55%정도에 있다``
+- [참고자료  git -log Documentation](https://git-scm.com/docs/git-log)   ``스크롤 55%정도에 있다``
 > 예 :  git log --pretty=format:"%h %an %ar %s"
 
 ## git checkout
