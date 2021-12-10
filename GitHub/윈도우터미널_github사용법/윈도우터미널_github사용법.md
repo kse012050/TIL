@@ -191,18 +191,6 @@ git log의 HEAD에서 [숫자] 전부터의 보여준다
 ### git show [태그]
 [태그] 가 있다면 해당하는 commit 의 정보를 볼 수 있다
 
-## git checkout
-git log에서 확인한 해쉬코드를 이용해 해당되는 __버전으로 이동__ 할 수 있다
-
-### git checkout __master__
-해당 프로젝트의 최신 버전으로 돌아간다
-
-### git checkout [해쉬코드]
-[해쉬코드] 버전의 프로젝트로 이동한다  
-
-### git checkout [태그명]
-[태그명] 버전의 프로젝트로 이동한다  
-
 ## git tag
 모든 tag들을 확인할 수 있다
 > git tag는 보통 버전을 넣어준다
@@ -223,6 +211,66 @@ git tag list 중에 특정한 문자열이 들어 있는 것만 확인 가능하
 
 ### git tag -d [문자열]
 [문자열] tag를 삭제한다
+
+## git branch 
+지금 현재 Repository (저장소)에 있는 branch를 확인할 수 있다
+> 내 컴퓨터 안에만 있는 branch를 보여준다
+
+### git branch --all
+서버에 있는 branch들의 모든 정보를 보여준다
+> 원격 Github와 같은 서버와 연결된 repository의 branch도 확인할 수 있다
+
+### git branch -v
+branch의 정보와 간단하게 최신 commit들도 확인할 수 있다
+
+### git branch --merged	(병합)
+merge(병합)이 된 branch들만 확인할 수 있다
+
+### git branch --no-merged
+merge이 되지 않은 branch들만 확인할 수 있다
+
+### git branch [branch-이름]
+[branch-이름]의 branch를 만든다
+
+### git branch --move [branch-이름] [변경될 branch-이름]
+[branch-이름] branch 이름을 [변경될 branch-이름]으로 변경한다
+
+### git branch -d [branch-이름]  (delete)
+[branch-이름]의 branch 를 제거한다
+
+
+## git switch
+
+### git switch [branch-이름]
+[branch-이름]로 이동한다
+
+### git switch -C [branch-이름]
+[branch-이름]의 branch를 생성과 동시에 이동한다
+
+## git checkout
+git log에서 확인한 해쉬코드를 이용해 해당되는 __버전으로 이동__ 할 수 있다
+
+### git checkout __master__
+해당 프로젝트의 최신 버전으로 돌아간다
+
+### git checkout [해쉬코드]
+[해쉬코드] 버전의 프로젝트로 이동한다  
+
+### git checkout [태그명]
+[태그명] 버전의 프로젝트로 이동한다  
+
+### git checkout [branch-이름]
+``HEAD`` 가 [branch-이름] 의 branch로 이동한다
+
+### git checkout -b [branch-이름]
+[branch-이름]의 branch를 생성과 동시에 이동한다
+
+## git merge
+branch를 병합한다
+
+## git merge [branch-이름]
+[branch-이름]의 branch를 병합(merge) 한다
+
 
 # $ git remote add origin repository 주소
 ### 복사한 repository 원격 저장소와 로컬저장소가 연결됩니다
