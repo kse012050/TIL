@@ -273,6 +273,8 @@ branch를 병합한다
 > __fast-forward merges__  
 > merge 하고 싶은 branch로 이동한 다음 ``master`` 로 번경 후 명령어를 입력하시면 merge
 
+### git merge --no-ff [branch-이름]   (fase-forword)
+[branch-이름]를 merge 하는데 fast-forword를 하지 않는다
 
 # $ git remote add origin repository 주소
 ### 복사한 repository 원격 저장소와 로컬저장소가 연결됩니다
