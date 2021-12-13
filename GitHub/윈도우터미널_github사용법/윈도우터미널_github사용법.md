@@ -268,8 +268,10 @@ git log에서 확인한 해쉬코드를 이용해 해당되는 __버전으로 �
 ## git merge
 branch를 병합한다
 
-## git merge [branch-이름]
+### git merge [branch-이름]
 [branch-이름]의 branch를 병합(merge) 한다
+> __fast-forward merges__  
+> merge 하고 싶은 branch로 이동한 다음 ``master`` 로 번경 후 명령어를 입력하시면 merge
 
 
 # $ git remote add origin repository 주소
