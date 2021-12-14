@@ -276,6 +276,12 @@ branch를 병합한다
 ### git merge --no-ff [branch-이름]   (fase-forword)
 [branch-이름]를 merge 하는데 fast-forword를 하지 않는다
 
+### git merge --abort	(중단하다)
+실행했던 merge를 취소한다
+
+### git merge --continue
+??
+
 # $ git remote add origin repository 주소
 ### 복사한 repository 원격 저장소와 로컬저장소가 연결됩니다
 
