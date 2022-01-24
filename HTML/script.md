@@ -54,7 +54,7 @@ __HTML ``<script>``__ 요소는 데이터와 실행 가능한 코드를 문서�
 ~~~
 
 ##### result
-![ansy images](./images/scriptAsync02.PNG)
+![ansy images](./images/scriptAsync02.png)
 
 ### defer
 브라우저가 스크립트를 문서 분석 이후에, 그러나 DOMContentLoaded 발생 이전에 실행해야 함을 나타내는 불리언 속성입니다.
