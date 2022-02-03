@@ -13,28 +13,47 @@
 <body>
     <canvas id="canvas"></canvas>
     <script>
+        // 변수 생성
         var w, h, loopId, id, canvas, ctx, particles;
+
+        // 객체 변수 생성
         var options = {
             particleColor : 'rgba(255,255,255)',
             lineColor : 'rgba(0,181,255)',
             particleAmount : 50,
+            // 입자 양
             defaultRadius : 2,
+            // 기본 반경
             variantRadius : 2,
+            // 번형 반경
             defaultSpeed : 1,
+            // 기본 속도
             variantSpeed : 1,
+            // 변종 속도
             linkRadius : 300
+            // 링크 반경
         }
 
         var rgb = options.lineColor.match(/\d+/g);
+        // var rgb = options.lineColor;
         
+        console.log(rgb);
+        
+        // 페이지가 로드 되면 init 함수 싱행
         document.addEventListener('DOMContentLoaded', init);
+
+        // init 함수
         function init() {
+            // canvas 태그 지목
             canvas = document.getElementById('canvas');
+            // 지목한 canvas를 2d로 설정
             ctx = canvas.getContext('2d');
+            // 함수 실행
             resizeReset();
             initialiseElements();
             startAnimation();
         }
+
 
         function resizeReset() {
             w = canvas.width = window.innerWidth;
