@@ -25,7 +25,7 @@
             defaultRadius : 2,
             // 기본 반경
             variantRadius : 2,
-            // 번형 반경
+            // 변형 반경
             defaultSpeed : 1,
             // 기본 속도
             variantSpeed : 1,
@@ -44,8 +44,6 @@
          */
         // var rgb = options.lineColor;
         
-        console.log(rgb);
-        
         // 페이지가 로드 되면 init 함수 싱행
         document.addEventListener('DOMContentLoaded', init);
 
@@ -61,7 +59,7 @@
             startAnimation();
         }
 
-
+        // 캔버스 사이즈를 웹 화면에 맞춰 설정
         function resizeReset() {
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
@@ -69,8 +67,11 @@
 
         function initialiseElements(){
             particles = [];
+            // 집합 생성
             for (var i = 0; i < options.particleAmount; i++){
+                // options 객체에 들어있는 입자양만큼 반복문 실행
                 particles.push(new Particle());
+                // 집합에 Particle class 입자양만큼 넣기
             }
         }
 
@@ -125,13 +126,30 @@
 
         Particle = function() {
             var _this = this;
-
+            
             _this.x = Math.random() * w;
+            // 0 ~ 브라우저의 가로 크기 사이 값을 랜덤으로 받음
             _this.y = Math.random() * h;
+            // 0 ~ 브라우저의 세로 크기 사이 값을 랜덤으로 받음
             _this.color = options.particleColor;
+            // 변수에 설정해 놓은 하얀색을 받음
             _this.radius = options.defaultRadius + Math.random() * options.variantRadius;
+            /* 입자의 크기 지정
+                현재 defaultRadius (2) + random(0 ~ 0.999) * variantRadius (2)
+                2 ~ 4 사이의 값 반환
+             */
             _this.speed = options.defaultSpeed + Math.random() * options.variantSpeed;
+            /* 
+                입자의 속도 지정
+                    현재 defaultSpeed (1) + random(0 ~ 0.999) * variantRadius (2)
+                    1 ~ 2 사이의 값 반환
+             */
             _this.directionAngle = Math.floor(Math.random() * 360);
+            /* 
+                방향 각도
+                    Math.floor 내림
+                    0 ~ 360 사이의 값을 반환 (소수점 X)
+             */
             _this.vector = {
                 x: Math.cos(_this.directionAngle) * _this.speed,
                 y: Math.sin(_this.directionAngle) * _this.speed
