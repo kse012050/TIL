@@ -20,7 +20,7 @@
         var options = {
             particleColor : 'rgba(255,255,255)',
             lineColor : 'rgba(0,181,255)',
-            particleAmount : 50,
+            particleAmount : 1,
             // 입자 양
             defaultRadius : 2,
             // 기본 반경
@@ -154,6 +154,17 @@
                 x: Math.cos(_this.directionAngle) * _this.speed,
                 y: Math.sin(_this.directionAngle) * _this.speed
             }
+
+            // console.log('direction : ' + _this.directionAngle);
+            // console.log('speed : ' + _this.speed);
+            // console.log('x : ' + Math.cos(_this.directionAngle));
+            // console.log('y : ' + Math.sin(_this.directionAngle));
+            console.log('x : ' + Math.cos(90));
+            console.log('y : ' + Math.sin(90 * Math.PI / 180));
+            // for(var i = 0; i <= 360; i++){
+            //     console.log(i + ' : ' + Math.sin(i));
+            // }
+            // console.log('--------------------------------------------------------------');
 
             _this.update = function() {
                 _this.border();
