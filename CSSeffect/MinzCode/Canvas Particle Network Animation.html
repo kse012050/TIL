@@ -159,18 +159,21 @@
             // console.log('speed : ' + _this.speed);
             // console.log('x : ' + Math.cos(_this.directionAngle));
             // console.log('y : ' + Math.sin(_this.directionAngle));
-            console.log('x : ' + Math.cos(90));
-            console.log('y : ' + Math.sin(90 * Math.PI / 180));
-            console.log(90 * Math.PI / 180);
+            // console.log('x : ' + Math.cos(90));
+            // console.log('y : ' + Math.sin(90 * Math.PI / 180));
+            // console.log(90 * Math.PI / 180);
             // for(var i = 0; i <= 360; i++){
             //     console.log(i + ' : ' + Math.sin(i));
             // }
             // console.log('--------------------------------------------------------------');
-
+                
             _this.update = function() {
                 _this.border();
+                // Particle 이 모서리에 도달하면 방향을 바꾼다
                 _this.x += _this.vector.x;
+                // x축으로 _this.vector.x 값의 속도로 이동
                 _this.y += _this.vector.y;
+                // y축으로 _this.vector.y 값의 속도로 이동
             }
             _this.border = function() {
                 if(_this.x > w || _this.x <= 0){
