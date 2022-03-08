@@ -20,7 +20,7 @@
         var options = {
             particleColor : 'rgba(255,255,255)',
             lineColor : 'rgba(0,181,255)',
-            particleAmount : 1,
+            particleAmount : 2,
             // 입자 양
             defaultRadius : 2,
             // 기본 반경
@@ -83,7 +83,7 @@
             ctx.clearRect(0,0,w,h);
             drawScene();
 
-            id = requestAnimationFrame(animationLoop);
+            // id = requestAnimationFrame(animationLoop);
         }
 
         function drawScene() {
@@ -122,6 +122,8 @@
 
         function checkDistance(x1, y1, x2, y2) {
             return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            // Math.sqrt() 숫자는 제곱근을 반환한다
+            
         }
 
         Particle = function() {
