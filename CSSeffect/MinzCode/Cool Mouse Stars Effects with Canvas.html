@@ -4,9 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>캔버스로 멋진 마우스 별 효과</title>
+    <style>
+        body{padding: 0; margin: 0; height: 100vh; background-color: #222;}
+        #canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
+    </style>
 </head>
 <body>
-    빨리해야지?
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas, ctx, w,h , particles = [];
+        function init(){
+            canvas = document.querySelector('#canvas');
+            ctx.canvas.getContext('2d');
+            resizeReset();
+            particles.push(new Particle());
+            animationloop();
+        }
+
+        function resizeReset(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function animationloop(){
+            particles.push(new Particle());
+
+            ctx.clearRect(0,0,w,h);
+            ctx.globalCompositeOperation = 'lihgter';
+
+            drawScenc();
+            requestAnimationFrame(animationloop);
+        }
+
+        function drawScene(){
+            particles.map((particle) => {
+                particle.update();
+                particle.draw();
+            });
+        }
+
+        class Particle{
+            constructor(){
+                this.x = perseInt(w/2);
+                this.y = perseInt(h/2);
+                this.radius = 5;
+                this.hue = 0;
+            }
+            setPoint(){
+                let r,x,y;
+                this.point = [];
+                for(let a = 0; a < 360; a += 36){
+                    r = (Math.PI / 180) * a;
+                    x = this.x + 50 + Math.sin(r);
+                    y = this.y + 50 + Math.cos(r);
+                    this.point.push({x:x,y:y,r:r});
+                }
+            }
+            draw(){
+                this.point.map((p) => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${this.alpha})`;
+                    ctx.fill();
+                    ctx.closePath();
+                })
+            }
+            update(){
+                this.setPoint();
+            }
+        }
+
+        window.addEventListener('DOMContentloaded',init);
+        window.addEventListener('resize',resizeReset);
+    </script>
 </body>
 </html>
