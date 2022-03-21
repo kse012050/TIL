@@ -55,9 +55,10 @@
                 let r,x,y;
                 this.point = [];
                 for(let a = 0; a < 360; a += 36){
+                    let d = ((a / 36) % 2 === 0) ? 50 : 25;
                     r = (Math.PI / 180) * a;
-                    x = this.x + 50 * Math.sin(r);
-                    y = this.y + 50 * Math.cos(r);
+                    x = this.x + d * Math.sin(r);
+                    y = this.y + d * Math.cos(r);
                     this.point.push({x : x, y : y, r : this.radius});
                 }
             }
