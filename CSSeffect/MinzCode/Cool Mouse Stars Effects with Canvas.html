@@ -63,6 +63,7 @@
                 }
             }
             draw(){
+                // draw points 
                 this.point.map((p) => {
                     ctx.beginPath(); 
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -70,9 +71,22 @@
                     ctx.fill();
                     ctx.closePath();    
                 });
+                // draw lines
+                ctx.beginPath();
+                for(let i = 0; i < this.point.length; i++){
+                    if(i === 0){
+                        ctx.moveTo(this.point[i].x , this.point[i].y);
+                    } else{
+                        ctx.lineTo(this.point[i].x , this.point[i].y);
+                    }
+                }
+                ctx.closePath();
+                ctx.strokeStyle = `hsla(${this.hue}, 100%, 50%, ${this.alpha})`;
+                ctx.stroke();
             }
             update(){
                 this.setPoint();
+                // this.radius -= .1;
             }
         }
 
