@@ -16,10 +16,10 @@
         let canvas, ctx, w,h , particles = [];
         function init(){
             canvas = document.querySelector('#canvas');
-            ctx.canvas.getContext('2d');
+            ctx = canvas.getContext("2d");
             resizeReset();
             particles.push(new Particle());
-            animationloop(); 
+            animationloop();
         }
 
         function resizeReset(){
@@ -28,12 +28,11 @@
         }
 
         function animationloop(){
-            particles.push(new Particle());
 
             ctx.clearRect(0,0,w,h);
-            ctx.globalCompositeOperation = 'lihgter';
+            ctx.globalCompositeOperation = 'lighter';
 
-            drawScenc();
+            drawScene();
             requestAnimationFrame(animationloop);
         }
 
@@ -46,37 +45,38 @@
 
         class Particle{
             constructor(){
-                this.x = perseInt(w/2);
-                this.y = perseInt(h/2);
+                this.x = parseInt(w / 2);
+                this.y = parseInt(h / 2);
                 this.radius = 5;
                 this.hue = 0;
+                this.alpha = 1;
             }
             setPoint(){
                 let r,x,y;
                 this.point = [];
                 for(let a = 0; a < 360; a += 36){
                     r = (Math.PI / 180) * a;
-                    x = this.x + 50 + Math.sin(r);
-                    y = this.y + 50 + Math.cos(r);
-                    this.point.push({x:x,y:y,r:r});
+                    x = this.x + 50 * Math.sin(r);
+                    y = this.y + 50 * Math.cos(r);
+                    this.point.push({x : x, y : y, r : r});
                 }
             }
             draw(){
                 this.point.map((p) => {
-                    ctx.beginPath();
+                    ctx.beginPath(); 
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                     ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${this.alpha})`;
                     ctx.fill();
-                    ctx.closePath();
-                })
+                    ctx.closePath();    
+                });
             }
             update(){
                 this.setPoint();
             }
         }
 
-        window.addEventListener('DOMContentloaded',init);
-        window.addEventListener('resize',resizeReset);
+        window.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('resize', resizeReset);
     </script>
 </body>
 </html>
