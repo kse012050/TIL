@@ -17,7 +17,12 @@
 
         // 변수선언
         let canvas, ctx, w,h , particles = [];
+        let mouse = {
+            x : undefined,
+            y : undefined
+        }
 
+        let hue = 0;
         // 초기화 함수
         function init(){
             // canvas 변수에 #canvas를 담는다
@@ -26,10 +31,19 @@
 
             // resizeReset() 함수 실행 - canvas의 크기
             resizeReset();
-            // particles 배열에 새로운 Particle(class)를 생성해서 넣는다
-            particles.push(new Particle());
+            arrayCleanup();
             // animationloop() 함수 실행 - canvas animation 실행
             animationloop();
+        }
+
+        function arrayCleanup(){
+            let dump = [];
+            particles.map((particle) => {
+                if(particle.radius > 0){
+                    dump.push(particle);
+                }
+            })
+            particles = dump;
         }
 
         function resizeReset(){
@@ -38,7 +52,22 @@
             h = canvas.height = window.innerHeight;
         }
 
+        function mousemove(e){
+            mouse.x = e.x;
+            mouse.y = e.y;
+        }
+
+        function mouseout(){
+            mouse.x = undefined;
+            mouse.y = undefined;
+        }
+
         function animationloop(){
+            hue += 2;
+            if(mouse.x != undefined && mouse.y != undefined){
+                particles.push(new Particle(mouse.x , mouse.y));
+            }
+            
             // canvas의 그림을 지운다
             ctx.clearRect(0,0,w,h);
             ctx.globalCompositeOperation = 'lighter';
@@ -48,6 +77,8 @@
             requestAnimationFrame(animationloop);
         }
 
+
+
         function drawScene(){
             particles.map((particle) => {
                 particle.update();
@@ -56,21 +87,21 @@
         }
 
         class Particle{
-            constructor(){
-                this.x = parseInt(w / 2);
-                this.y = parseInt(h / 2);
+            constructor(x , y){
+                this.x = x;
+                this.y = y;
                 this.radius = 5;
                 this.size = 0;
                 this.rotate = 0;
-                this.hue = 0;
-                this.alpha = 1;
+                this.hue = hue % 360;
+                this.alpha = 0.5;
             }
             setPoint(){
                 let r,x,y;
                 this.point = [];
                 for(let a = 0; a < 360; a += 36){
                     let d = ((a / 36) % 2 === 0) ? this.size : this.size / 2;
-                    r = (Math.PI / 180) * a;
+                    r = (Math.PI / 180) * (a + this.rotate);
                     x = this.x + d * Math.sin(r);
                     y = this.y + d * Math.cos(r);
                     this.point.push({x : x, y : y, r : this.radius});
@@ -103,12 +134,15 @@
                 this.setPoint();
                 this.radius -= .05;
                 this.size += .5;
-                // this.rotate -= 1;
+                this.rotate -= 1;
+                this.alpha = (this.radius * 0.5 < 0.5) ? this.radius * 0.5 : 0.5;
             }
         }
 
         window.addEventListener('DOMContentLoaded', init);
         window.addEventListener('resize', resizeReset);
+        window.addEventListener('mousemove',mousemove);
+        window.addEventListener('mouseout',mouseout);
     </script>
 </body>
 </html>
