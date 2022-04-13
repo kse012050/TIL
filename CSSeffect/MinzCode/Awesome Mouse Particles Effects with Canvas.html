@@ -82,16 +82,25 @@
             return Math.round(Math.random() * (max - min)) + min;
         }
 
+        function easeOutQuart(x) {
+            return 1 - Math.pow(1 - x, 4);
+        }
+
         class Ball {
             constructor(){
-                this.x = mouse.x + getRandomInt(-20, 20);
-                this.y = mouse.y + getRandomInt(-20, 20);
-                this.size = getRandomInt(30, 40);
+                this.start = {
+                    x : mouse.x + getRandomInt(-20, 20),
+                    y : mouse.y + getRandomInt(-20, 20),
+                    size : getRandomInt(30,40)
+                }
+                this.x = this.start.x;
+                this.y = this.start.y;
+                this.size = this.start.size;
 
                 this.style = rgb[getRandomInt(0, rgb.length - 1)];
 
                 this.time = 0;
-                this.ttl = 30;
+                this.ttl = 120;
             }
 
             draw(){
@@ -103,8 +112,9 @@
             }
 
             update(){
-                if(this.time == this.ttl){
-                    this.size = 0;
+                if(this.time <= this.ttl){
+                    let progress = 1 - (this.ttl - this.time) / this.ttl;
+                    this.size = this.start.size * (1 - easeOutQuart(progress));
                 }
                 this.time++;
             }
