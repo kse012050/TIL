@@ -44,6 +44,7 @@
         }
 
         function animationLoop(){
+            ctx.clearRect(0,0,w,h);
             drawBalls();
 
             requestAnimationFrame(animationLoop);
@@ -51,6 +52,7 @@
 
         function drawBalls(){
             for(let i = 0; i < balls.length; i++){
+                balls[i].update();
                 balls[i].draw();
             }
         }
@@ -78,6 +80,9 @@
                 this.size = getRandomInt(30, 40);
 
                 this.style = rgb[getRandomInt(0, rgb.length - 1)];
+
+                this.time = 0;
+                this.ttl = 30;
             }
 
             draw(){
@@ -88,8 +93,11 @@
                 ctx.fill();
             }
 
-            undate(){
-
+            update(){
+                if(this.time == this.ttl){
+                    this.size = 0;
+                }
+                this.time++;
             }
         }
 
