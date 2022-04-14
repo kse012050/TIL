@@ -11,16 +11,21 @@
     </style>
 </head>
 <body>
+    <canvas id="canvas"></canvas>
     <script>
         const canvas = document.querySelector('#canvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
 
-        let w, h;
+        let w, h, balls = [];
 
-        
+        let mouse = {
+            x : undefined,
+            y : undefined
+        }
 
         function init(){
             resizeReset();
+            animationLoop();
         }
 
         function resizeReset(){
@@ -28,8 +33,52 @@
             h = canvas.height = window.innerHeight;
         }
 
+        function animationLoop(){
+            drawBalls();
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        function drawBalls(){
+            for(let i = 0; i < balls.length; i++){
+                balls[i].draw();
+            }
+        }
+
+        function mousemove(e){
+            mouse.x = e.x;
+            mouse.y = e.y;
+
+            balls.push(new Ball());
+        }
+
+        function mouseout(){
+            mouse.x = undefined;
+            mouse.y = undefined;
+        }
+
+        class Ball {
+            constructor(){
+
+            }
+
+            draw(){
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.beginPath();
+                ctx.arc(100,100,50,0,Math.PI *2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            undate(){
+
+            }
+        }
+
         window.addEventListener("DOMContentLoaded", init);
         window.addEventListener("resize", resizeReset);
+        window.addEventListener("mousemove",mousemove);
+        window.addEventListener("mouseout",mouseout);
     </script>
 </body>
 </html>
