@@ -45,7 +45,16 @@
 
         function animationLoop(){
             ctx.clearRect(0,0,w,h);
+
             drawBalls();
+
+            let temp = [];
+            for(let i = 0; i < balls.length; i++){
+                if(balls[i].time <= balls[i].ttl){
+                    temp.push(balls[i]);
+                }
+            }
+            balls = temp;
 
             requestAnimationFrame(animationLoop);
         }
