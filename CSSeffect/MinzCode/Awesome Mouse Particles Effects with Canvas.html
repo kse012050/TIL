@@ -57,10 +57,14 @@
             mouse.y = undefined;
         }
 
+        function getRandomInt(min,max){
+            return Math.round(Math.random() * (max - min)) + min;
+        }
+
         class Ball {
             constructor(){
-                this.x = mouse.x;
-                this.y = mouse.y;
+                this.x = mouse.x + getRandomInt(-20, 20);
+                this.y = mouse.y + getRandomInt(-20, 20);
                 this.size = 30;
             }
 
