@@ -59,13 +59,15 @@
 
         class Ball {
             constructor(){
-
+                this.x = mouse.x;
+                this.y = mouse.y;
+                this.size = 30;
             }
 
             draw(){
                 ctx.fillStyle = "rgb(255,255,255)";
                 ctx.beginPath();
-                ctx.arc(100,100,50,0,Math.PI *2);
+                ctx.arc(this.x,this.y,this.size,0,Math.PI *2);
                 ctx.closePath();
                 ctx.fill();
             }
