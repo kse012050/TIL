@@ -79,6 +79,12 @@
         window.addEventListener("resize", resizeReset);
         window.addEventListener("mousemove",mousemove);
         window.addEventListener("mouseout",mouseout);
+
+        setInterval(() => {
+           document.querySelector('#debug span').innerText = balls.length;
+        }, 100);
     </script>
+
+    <div id="debug" style="position: fixed; left: 10px; top: 10px; color: #0f0;">balls.length = <span></span></div>
 </body>
 </html>
