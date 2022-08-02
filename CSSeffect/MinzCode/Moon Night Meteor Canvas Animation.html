@@ -13,13 +13,16 @@
 <body>
       <canvas id="canvas"></canvas>
       <script>
-        let canvas , ctx, w, h , moon;
+        let canvas , ctx, w, h , moon , stars = [];
 
         function  init() {
             canvas = document.querySelector('#canvas');
             ctx = canvas.getContext('2d');
             resizeReset();
             moon = new Moon();
+            for(let a = 0; a < 10; a++){
+                stars.push(new Star());
+            }
             animationLoop();
         }
 
@@ -36,6 +39,10 @@
 
         function drawScene(){
             moon.draw();
+            stars.map((star)=>{
+                star.update();
+                star.draw();
+            })
         }
 
         class Moon{
@@ -54,6 +61,26 @@
                 ctx.fill();
                 ctx.closePath();
                 ctx.restore();
+            }
+        }
+
+        class Star{
+            constructor(){
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.size = 3;
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.arc(this.x , this.y, this.size, 0 , Math.PI *2);
+                ctx.fillStyle = 'rgba(255,255,255,1)';
+                ctx.fill();
+                ctx.closePath();
+            } 
+
+            update(){
+
             }
         }
 
