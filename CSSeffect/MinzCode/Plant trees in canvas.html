@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>캔버스에 나무 심기</title>
+    <title>step.1 중앙을 세로로 가로지는 원들</title>
     <style>
         body{padding: 0; margin: 0; height: 100vh; background-color: #ccc;}
         #canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
@@ -13,20 +13,98 @@
 <body>
     <canvas id="canvas"></canvas>
     <script>
-        let canvas , ctx, w, h;
+        let canvas , ctx, w, h, trees;
 
         function init(){
             canvas = document.querySelector('#canvas');
             ctx = canvas.getContext('2d');
+
             resizeReset();
+            animationLoop();
+
+            trees.push(new Tree());
         }
 
         function resizeReset(){
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
+            trees = [];
+            drawGround();
         }
 
-        window.addEventListener('COMContentLoaded',init);
+        function drawGround(){
+            ctx.fillStyle = `rgba(0,0,0,1)`
+            ctx.fillRect(0, h - 10 , w , h);
+        }
+
+        function animationLoop(){
+            drawScene();
+
+            requestAnimationFrame(animationLoop)
+        }
+
+        function drawScene(){
+            trees.map((t)=>{
+                t.update();
+                t.draw(); 
+            })
+        }
+
+        class Tree{
+            constructor(x){
+                this.x = (x) ? x : w * 0.5;
+                this.y = h;
+                this.branchs = [];
+                this.addBranch(this.x, this.y, 5, 180);
+            }
+            addBranch(x , y , radius, angle){
+                this.branchs.push(new Branch(x , y , radius , angle));
+            }
+            draw(){
+                this.branchs.map((b)=>{
+                    b.draw();
+                })
+            }
+            update(){
+                this.branchs.map((b)=>{
+                    b.update();
+                })
+            }
+        }
+
+        class Branch{
+            constructor(x , y , radius , angle){
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.angle = angle;
+                this.branchReset();
+            }
+
+            branchReset(){
+                this.sx = this.x;
+                this.sy = this.y;
+                this.length = this.radius * 20;
+                this.progress = 0;
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.arc(this.x , this.y , this.radius , 0 , Math.PI * 2);
+                ctx.fillStyle = `rgba(255,0,0,1)`
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            update(){
+                let radian = (Math.PI / 180) * this.angle;
+                this.x = this.sx + (this.length * this.progress) * Math.sin(radian);
+                this.y = this.sy + (this.length * this.progress) * Math.cos(radian);
+                this.progress += .1;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
         window.addEventListener('resize',resizeReset)
     </script>
 </body>
