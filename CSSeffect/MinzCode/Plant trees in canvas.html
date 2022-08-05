@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>step.3 나무기둥에서 줄기가 나오는 효과</title>
+    <title>step.4 클릭시 나무 생성</title>
     <style>
         body{padding: 0; margin: 0; height: 100vh; background-color: #ccc;}
         #canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
@@ -25,6 +25,10 @@
             animationLoop();
 
             trees.push(new Tree());
+        }
+
+        function addTree(e){
+            trees.push(new Tree(e.x));
         }
 
         function resizeReset(){
@@ -138,6 +142,7 @@
 
         window.addEventListener('DOMContentLoaded',init);
         window.addEventListener('resize',resizeReset)
+        window.addEventListener('click',addTree)
     </script>
 </body>
 </html>
