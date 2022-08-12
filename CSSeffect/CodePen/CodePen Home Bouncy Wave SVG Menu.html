@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바운시 웨이브 SVG 메뉴</title>
+    <style>
+        @import "bourbon";
+
+        .wave-nav {
+            background: #45A0B2;
+            height: 60px; width: 100%;
+            position: fixed; 
+            bottom: 0;
+            z-index: 10;
+            
+            
+        }
+        #logo {
+            height: 20px;
+            width: auto;
+            padding: 15px;
+            display: none;
+        }
+        
+        #navigation {
+            display: inline-block;
+            list-style: none;
+        }
+
+        #navigation li {
+            height: 70px; width: 70px;
+            display: inline-block;
+        }
+
+        #navigation li i {
+                font-size: 3em;
+                color: #fff;
+            }
+
+        #wave {
+            background: #45A0B2;
+            height: 60px;
+            width: calc(20px * 3);
+            filter: url("#water");
+            position: absolute;
+            right: 50px; bottom: 0px;
+            margin: 0px auto;
+            text-align: center;
+           
+        }
+
+        #wave  li {
+            position: absolute;
+            display: inline-block;
+            list-style: none;
+            background: #45A0B2;
+            height: 20px;
+            width:  20px;
+            border-radius: 200%;
+            animation: water 1.2s infinite; 
+        }
+
+        #wave  li:nth-child(1){animation-delay: 0.2s; left: 0;}
+        #wave  li:nth-child(2){animation-delay: 0.4s; left: 50%; margin-left: calc(-20px / 2);}
+        #wave  li:nth-child(3){animation-delay: 0.6s; right: 0;}
+
+        @keyframes water {
+            0% {
+                transform:translateY(10px);
+            }
+            50% {
+                transform:translateY(-45px);
+            }
+            100% {
+                transform:translateY(10px);
+            }
+            
+        } 
+    </style>
+</head>
+<body>
+    
+    <nav class="wave-nav bottom" role='navigation'>
+        <img id="logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/166133/cc-logo.svg" alt="" />
+        <ul id="wave">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </nav>
+    
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+        <filter id="water">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+        </defs>
+    </svg>
+</body>
+</html>
