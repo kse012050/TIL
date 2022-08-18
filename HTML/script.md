@@ -106,7 +106,7 @@ __HTML ``<script>``__ 요소는 데이터와 실행 가능한 코드를 문서�
 </html>
 ~~~
 
-![ansy images](./images/scriptDefer02.PNG)
+![ansy images](./images/scriptDefer02.png)
 
 ### type
 스크립트의 유형을 나타냅니다. 다음 다섯개의 범주 중 하나에 속할 수 있습니다.
