@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css scrollbar 테스트</title>
+    <style>
+        div{width: 500px; height: 500px; overflow: scroll;}
+        div::-webkit-scrollbar{ 
+            /* scrollbar 전체 설정 */
+            width: 10px;    
+            /* 세로 스크롤의 가로 크기 */
+            height: 30px;   
+            /* 가로 스크롤의 세로 크기 */
+        }   
+        /* 
+            크기를 지정한 순간 기본 설정값은 풀린다 , 
+            즉 track 등을 설정해 줘야 스타일 된다
+            반대로 크기를 지정(-webkit-scrollbar) 설정값이 변경이 안되면
+            track 등의 선택자는 적용이 안된다
+        */
+        div::-webkit-scrollbar-track { /* 스크롤이 움직이는 영역  */
+            background-color: lightblue;
+            box-shadow: inset 0 0 10px dodgerblue;
+            /* 
+                -webkit-scrollbar 에 넣어도 들어가지만 
+                -webkit-scrollbar 는 스크롤 전체
+                -webkit-scrollbar-track은 스크롤바를 담는 공간 ??!!
+            */
+        } 
+        div::-webkit-scrollbar-track-piece{
+            background-color: blue;
+            /* 
+                ::-webkit-scrollbar-track
+                ::-webkit-scrollbar-track-piece
+                두개 차이를 잘 모르겠다
+            */
+        }
+        div::-webkit-scrollbar-thumb{
+            background-color: black;
+            /* 드래스할 수 있는 스크롤 손잡이 (scrollbar) */
+        }
+
+        div::-webkit-scrollbar-button{
+            background-color: lightgreen;
+            /* 스크롤에 있는 화살표 버튼 */
+        }
+        div::-webkit-scrollbar-button:start{
+            background-color: greenyellow;
+            /* start , end로 개별 색상 변경 가능 */
+        }
+        div::-webkit-scrollbar-corner{
+            background-color: red;
+            /* 가로스크롤과 세로스크롤 사이 공간 */
+        }
+        textarea::-webkit-resizer {
+            background-color: red;
+            /* textarea에 있는 resize 버튼 커스텀 */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        - ::-webkit-scrollbar — 스크롤바 전체.<br/>
+        - ::-webkit-scrollbar-button — 스크롤바의 버튼 (한 번 누를 때마다 위아래로 한 줄씩 오르내리는 위아래 화살표).<br/>
+        - ::-webkit-scrollbar-thumb — 드래그할 수 있는 스크롤 손잡이.<br/>
+        - ::-webkit-scrollbar-track — 흰색 막대 위에 회색 바가 존재할 경우의 스크롤바의 트랙(진행 표시줄).<br/>
+        - ::-webkit-scrollbar-track-piece — 손잡이에 의해 덮이지 않은 트랙(진행 표시줄)의 부분.<br/>
+        - ::-webkit-scrollbar-corner — 수평 스크롤바와 수직 스크롤바가 교차하는 곳의 하단 모서리. 주로 브라우저 창의 우측 하단 모서리에 위치한다.<br/>
+        - ::-webkit-resizer — 몇몇 요소들의 하단 모서리에 나타나는, 드래그 할 수 있는 사이즈 변경 손잡이.<br/>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+</body>
+</html>
