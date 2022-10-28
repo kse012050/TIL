@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>has() 테스트</title>
+    <style>
+        ul{margin: 0; padding: 0; list-style: none; padding: 50px; border: 1px solid rgba(0, 0, 0, 0.5);}
+        ul li{padding: 50px; border: 1px solid rgba(0, 0, 0, 0.2);}
+        ul li span{display: block; padding: 10px; border: 1px solid black;}
+        ul li:has(span){background-color: dodgerblue;}
+        ul li:has(.hasTest){background-color: lightcoral;}
+        ul li:has([title="hasTest"]){background-color: lightgreen;}
+        ul li.afterTest span::after{content: ''; display: block;}
+        ul li:has(span::after){background-color: lightpink;}
+
+        div:has(p) h3{background-color: lightblue;}
+        div:has(h3 + p) h3{background-color: dodgerblue;}
+    </style>
+</head>
+<body>
+    <h2>자식 요소 중 내가 선택한 선택자가 있으면</h2>
+    <ul>
+        <li><span>자식 요소 중 span이 있으면</span></li>
+        <li><span class="hasTest">자식 요소 중 class가 있으면</span></li>
+        <li><span title="hasTest">자식 요소 중 title(속성 선택자)가 있으면</span></li>
+        <li class="afterTest"><span>가상 클래스 (:before , :after)는 안되는건지 , 사용법이 틀린건지.. </span></li>
+        <li></li>
+    </ul>
+
+    <div>
+        <h3>header - 3</h3>
+    </div>
+
+    <div>
+        <p>div의 입장에서 자식요소로 p가 있으면 배경색을 넣는다</p>
+        <h3>header - 3</h3>
+    </div>
+    <div>
+        <h3>header - 3</h3>
+        <p>div의 입장에서 자식요소로 h3 뒤로 p가 오면 배경색을 넣는다</p>
+    </div>
+</body>
+</html>
