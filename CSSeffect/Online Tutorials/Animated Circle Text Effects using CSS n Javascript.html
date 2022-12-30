@@ -48,6 +48,7 @@
 
     <script>
         const text = document.querySelector('.text');
+        console.log(text.innerHTML);
         text.innerHTML = text.textContent.replace(/\S/g,"<span>$&</span>");
 
         const element = document.querySelectorAll('span');
