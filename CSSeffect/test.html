@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>margin으로 가둬져 있는 영역 가로로 꽉 채우기</title>
+    <style>
+        body{margin: 0;}
+        div{width: calc(100% - 100px); max-width: 1000px; margin: 0 auto;}
+        div *{height: 500px; border: 2px solid black; box-sizing: border-box;}
+        div section{--backgroundColor: #289340; background-color: var(--backgroundColor); box-shadow: 0 0 0 100vmax var(--backgroundColor); clip-path: inset(0 -100vmax);}
+    </style>
 </head>
 <body>
-      
+    <div>
+        <header>header</header>
+        <section>section</section>
+        <footer>footer</footer>
+    </div>
 </body>
 </html> 
