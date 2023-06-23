@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('button').click(function(){
+                $('div').toggleClass('open')
+            })
+        })
+    </script>
+    <style>
+        /* details p{display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows 200ms;}
+        details[open] p{grid-template-rows: 1fr;} */
+        details{transition: grid-template-rows 200ms;}
+        details div{display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows 200ms;}
+        details div p{min-height: 0; margin: 0;}
+        details[open] div{grid-template-rows: 1fr;}
+        div.test{display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows 200ms;}
+        div.test.open{grid-template-rows: 1fr;}
+        div.test p{min-height: 0; margin: 0;}
+    </style>
+</head>
+<body>
+    <details>
+        <summary>클릭</summary>
+        <div>
+            <p>test</p>
+        </div>
+    </details>
+
+    <button>클릭</button>
+    <div class="test">
+        <p>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        </p>
+    </div>
+</body>
+</html>
