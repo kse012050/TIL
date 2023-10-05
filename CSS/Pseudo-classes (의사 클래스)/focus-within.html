@@ -7,25 +7,38 @@
     <title>focus-within 테스트</title>
     <style>
         ul{margin: 0; padding: 0; list-style: none; padding: 50px; border: 1px solid rgba(0, 0, 0, 0.5);}
-        ul li{padding: 50px; border: 1px solid rgba(0, 0, 0, 0.2);}
+        /* ul li{padding: 50px; border: 1px solid rgba(0, 0, 0, 0.2);}
+        ul li:focus-within{background-color: dodgerblue;} */
         ul:focus-within{background-color: lightblue;}
-        ul li:focus-within{background-color: dodgerblue;}
+        .focus01:focus{outline: none;}
+        .focus02:focus-visible{outline: none;}
+        .focus03:focus{outline: 2px solid red;}
+        .focus04:focus-visible{outline: 2px solid red;}
     </style>
 </head>
 <body>
     <ul>
         <li>
-            <input type="text">
+            <button class="focus01">포커스 테스트</button>
         </li>
         <li>
-            <input type="text">
+            <button class="focus02">포커스 테스트</button>
         </li>
         <li>
-            <input type="text">
+            <input type="text" class="focus03">
         </li>
         <li>
-            <input type="text">
+            <input type="text" class="focus04">
         </li>
     </ul>
+    <script>
+        console.log(document.querySelector('.focus01'));
+        document.querySelector('.focus01').addEventListener('click',function(){
+            alert('포커스 01')
+        })
+        document.querySelector('.focus02').addEventListener('click',function(){
+            alert('포커스 02')
+        })
+    </script>
 </body>
 </html>
