@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object를 array로 변경</title>
+    <script>
+        let obj = {
+            '1' : 5,
+            '3' : 5,
+            '4' : 5,
+            '5' : 5,
+            '13' : 5,
+            '8' : 5,
+        }
+        var resultArray = Array.from(Object.entries(obj).flatMap(([key, count]) => Array(count).fill(parseInt(key, 10)))).sort((a, b) => b - a);
+        console.log(resultArray);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
