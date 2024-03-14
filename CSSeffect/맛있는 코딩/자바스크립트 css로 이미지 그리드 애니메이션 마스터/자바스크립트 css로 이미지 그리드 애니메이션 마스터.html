@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 css로 이미지 그리드 애니메이션 마스터</title>
+    <style>
+        html, body{background-color: #121212; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;}
+        .img-box{--box-width: 20rem; --box-height: 30rem; display: flex; flex-wrap: wrap; width: var(--box-width); height: var(--box-height); border: 1px solid #F1F1F1;
+            --frag-width: calc(var(--box-width) / 15);
+            --frag-height: calc(var(--box-height) / var(--row));
+            --img-url: url(img.jpg)
+        }
+        .fragment{
+            /* border: 1px solid red; box-sizing: border-box; */
+            width: var(--frag-width); height: var(--frag-height); 
+            --x-offset: calc(var(--x) * var(--frag-width) * -1);
+            --y-offset: calc(var(--y) * var(--frag-height) * -1);
+            background-image: url(img.jpg);
+            background-position: var(--x-offset) var(--y-offset);
+            background-size: var(--box-width) var(--box-height);
+            background-repeat: no-repeat;
+            animation: flip var(--duration) linear var(--delay) forwards;
+        }
+        @keyframes flip {
+            0%{transform: rotateX(-180deg);}
+            100%{transform: rotateX(0deg);}
+        }
+    </style>
+</head>
+<body>
+    <div class="img-box"></div>
+    <script>
+        class GridAnimation {
+            constructor(el, row = 15, col = 15){
+                this.element = el
+                this.row = row
+                this.col = col
+
+                this.element.style.setProperty('--row', this.row)
+                this.element.style.setProperty('--col', this.col)
+
+                this.randomIntBetween = (min, max) => {
+                    return Math.floor(Math.random() * (min - min + 1) + min)
+                }
+            }
+            animate(){
+                const duration = 2000;
+                for(let a = 0; a < this.row; a++){
+                    for(let b = 0; b < this.col; b++){
+                        const fragment = document.createElement('div')
+                        fragment.className = 'fragment'
+                        fragment.style.setProperty('--x', b)
+                        fragment.style.setProperty('--y', a)
+
+                        const delay = a;
+                        fragment.style.setProperty('--delay', delay * 70 + 'ms')
+                        fragment.style.setProperty('--duration', duration + 'ms')
+
+                        this.element.appendChild(fragment)
+                    }
+                }
+            }
+        }
+        const imgBox = document.querySelector('.img-box')
+        new GridAnimation(imgBox).animate()
+    </script>
+</body>
+</html>
