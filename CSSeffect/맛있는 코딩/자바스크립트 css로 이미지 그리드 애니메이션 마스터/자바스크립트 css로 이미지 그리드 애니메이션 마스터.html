@@ -53,11 +53,19 @@
                         fragment.style.setProperty('--x', b)
                         fragment.style.setProperty('--y', a)
 
-                        const delay = a;
+                        const delay = b;
                         fragment.style.setProperty('--delay', delay * 70 + 'ms')
                         fragment.style.setProperty('--duration', duration + 'ms')
 
                         this.element.appendChild(fragment)
+
+                        const timer = setTimeout(()=>{
+                            fragment.style.willChange = 'initial'
+                            fragment.style.transform = 'initial'
+                            fragment.style.animation = 'initial'
+                            fragment.style.backfaceVisibility = 'initial'
+                            clearTimeOut(timer)
+                        }, duration + delay * 70)
                     }
                 }
             }
