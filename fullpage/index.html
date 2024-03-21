@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>full page</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            let delta;
+            let fullIdx = 0;
+            let moveTop = 0;
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                // 모바일인 경우
+                $('.fullPage').children().height($(window).height())
+            }
+            $('.fullPage').on('mousewheel DOMMouseScroll',function(e){
+                // mousewheel 크롬 엣지 , DOMMouseScroll 파이어폭스
+                if($(this).is(':animated')) return;
+                
+                // 크롬 , 엣지
+                delta = e.originalEvent.wheelDelta;
+                // 파이어폭스
+                if(delta === undefined){
+                    delta = -(e.originalEvent.detail);
+                }
+
+                fullPage(e , delta)
+            });
+
+            let touchValue = {
+                startX : 0,
+                startY : 0,
+                endX : 0,
+                endY : 0
+            }
+
+            $('.fullPage').on('touchstart',function(e){
+                touchValue.startX = e.changedTouches[0].clientX;
+                touchValue.startY = e.changedTouches[0].clientY;
+            });
+            
+            $('.fullPage').on('touchend',function(e){
+                if($(this).is(':animated')) return;
+                touchValue.endX = e.changedTouches[0].clientX;
+                touchValue.endY = e.changedTouches[0].clientY;
+                if(Math.abs(touchValue.startY - touchValue.endY) > Math.abs(touchValue.startX - touchValue.endX)){
+                    if(touchValue.startY - touchValue.endY < 0){
+                        delta = 120;
+                    }else{
+                        delta = -120;
+                    }
+                }else{
+                    return;
+                }
+               
+                fullPage(e , delta)
+            })
+
+            $(window).resize(function(){
+                $('.fullPage').stop().css('top' ,$(window).height() * -fullIdx)
+                moveTop = parseInt($('.fullPage').css('top'));
+            })
+
+            function fullPage(e , delta){
+                console.log($(e.target).position());
+                if(delta > 0){
+                    // 위로
+                 /*    if(fullIdx == 0){
+                        return;
+                    } */
+                    fullIdx--;
+                    if(fullIdx == 0){
+                        $('body').removeClass('test');
+                    }
+                    // moveTop = moveTop + $(window).height()
+                    moveTop = -($(e.target).prev().position().top)
+                }else{
+                    // 아래로
+                    /* if(fullIdx == ($('.fullPage').children().length - 1)){
+                        return;
+                    } */
+                    $('body').addClass('test');
+                    // moveTop = moveTop - $(window).height()
+                    moveTop = -($(e.target).next().position().top)
+                    fullIdx++;
+                    
+                }
+                
+                $('.fullPage').stop().animate({top : moveTop})
+            }
+        })
+    </script>
+    <style>
+        body{margin: 0;}
+        body.test{overflow: hidden;}
+        .wrap{overflow: hidden;height: 100%;}
+        .fullPage{position: fixed; left: 0; top: 0; width: 100%; }
+        .fullPage section{width: 100%; height: 100vh;  font-size: 30px; display: flex; flex-direction: column; justify-content: space-between;}
+        .fullPage section:nth-child(1){background-color: lightblue;}
+        .fullPage section:nth-child(2){background-color: aqua;}
+        .fullPage section:nth-child(3){background-color: antiquewhite;}
+        .fullPage section:nth-child(4){background-color: beige;}
+        .fullPage section:nth-child(5){background-color: lightcoral;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="fullPage">
+            <section class="test01"><span>1</span><span>1 - 1</span></section>
+            <section class="test02">2</section>
+            <section class="test03">3</section>
+            <section class="test04">4</section>
+            <section class="test05">5</section>
+        </div>
+    </div>
+</body>
+</html>
