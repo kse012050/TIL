@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 슬라이드 업 다운</title>
+    <style>
+        body{height: 100vh; display: flex; justify-content: center; align-items: center;}
+        ul{list-style: none; padding: 0; margin: 0;}
+        a{color: black; text-decoration: none; display: block;}
+        body > div{box-shadow: 0 0 3px black; width: 100px; border-radius: 10px; padding: 10px;}
+        body > div > ul > li > a{font-size: 20px; font-weight: 700;}
+        body > div > ul > li div{display: grid; grid-template-rows: 0fr; transition: 0.5s;}
+        body > div > ul > li div ul{overflow: hidden;}
+        body > div > ul > li > :is(a:hover + div, div:hover){grid-template-rows: 1fr;}
+        </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>
+                <a href="">홈</a>
+                <div>
+                    <ul>
+                        <li><a href="">홈 1</a></li>
+                        <li><a href="">홈 2</a></li>
+                        <li><a href="">홈 3</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="">서치</a>
+                <div>
+                    <ul>
+                        <li><a href="">서치 1</a></li>
+                        <li><a href="">서치 2</a></li>
+                        <li><a href="">서치 3</a></li>
+                        <li><a href="">서치 4</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
