@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS SVG 및 Javascript를 사용한 Liquid Blast 효과</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body{display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #1d2b3a; overflow: hidden; filter: url(#gooey);}
+        .circle{position: relative; width: 200px; height: 200px; background: linear-gradient(90deg, #f00, #0ff); border-radius: 50%; cursor: pointer;}
+        .particles{position: absolute; border-radius: 50%; background: linear-gradient(90deg, #f00, #0ff); animation: animate 2s ease forwards; z-index: -1;}
+        svg{width: 0; height: 0;}
+        @keyframes animate {
+            0%, 100%{transform: translate(0, 0);}
+            50%{transform: translate(var(--x), var(--y));}
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+    <svg>
+        <filter id="gooey">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
+            <feColorMatrix values="1 0 0 0 0
+                                   0 1 0 0 0
+                                   0 0 1 0 0
+                                   0 0 0 50 -10"/>
+        </filter>
+    </svg>
+    <script>
+        let circle = document.querySelector('.circle');
+        circle.addEventListener('click', function(){
+            for(let i = 0; i < 50; i++){                
+                let particles = document.createElement('i');
+                particles.classList.add('particles');
+                let randomX = (Math.random() - 0.5) * window.innerWidth;
+                let randomY = (Math.random() - 0.5) * window.innerHeight;
+
+                particles.style.setProperty('--x', randomX + 'px');
+                particles.style.setProperty('--y', randomY + 'px');
+
+                let randomSize = Math.random() * 60 + 10;
+                particles.style.width = randomSize + 'px';
+                particles.style.height = randomSize + 'px';
+
+                let duration = Math.random() * 3 + 2;
+                particles.style.animation = `animate ${duration}s ease forwards`
+
+                document.body.appendChild(particles)
+
+                setTimeout(function(){
+                    particles.remove();
+                },5000)
+            }
+        })
+    </script>
+</body>
+</html>
