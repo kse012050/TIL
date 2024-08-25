@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isolation 사용법</title>
+    <style>
+        *{margin: 0;}
+        div{padding: 50px; background: url(img.jpg) no-repeat center / cover; text-align: center; color: white; position: relative; isolation: isolate; text-wrap: balance;}
+        div::after{content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: -1;}
+        /* 
+            z-index: -1 를 줬을 때 
+                isolation이 없으면 body뒤에 배치 되기 때문에 안보이지만 
+                isolation: isolate으로 기준을 body에서 div으로 바꾸었기 때문에 z-index: -1을 해도 body뒤가 아닌 div공간 안에서 배치가 됩니다
+        */
+        div h2{margin-bottom: 25px;}
+    </style>
+</head>
+<body>
+    <div>
+        <h2>제목입니다</h2>
+        <p>내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다. 내용입니다.</p>
+    </div>
+</body>
+</html>
