@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dialog 사용법</title>
+    <style>
+        body{height: 3000px;}
+        dialog{
+            padding: 0;
+            /* position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); */
+            /* 
+                show()를 활용해서 열었을 때 뒷 배경 만들기
+                굳이 사용할 필요는 없다 showModal() 로 열면 된다 ( 자식요소가 %로 사용될 때 필요 할 듯 )
+            */
+        }
+        dialog[open]{display: flex;}
+        dialog::backdrop{background-color: rgba(0, 0, 0, 0.5);}
+        /* dialog에 생성 된 뒷 배경 색상 변경 ( showModal ) */
+        dialog div{
+            /* 
+                dialog가 크기를 가지고 있지 않고 :backdrop를 이용해서 배경을 넣고 있기 때문에 크기에ㅐ % 값 사용 불가 
+                %를 사용하고 싶다면 show()로 열고 뒷 배경을 넣어줘야 할 듯
+            */
+            width: 500px; aspect-ratio: 1; background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <button>팝업 열기</button>
+    <dialog id="favDialog">
+        <div>
+            팝업
+        </div>
+    </dialog>
+    <div id="idSelector"></div>
+    <script>
+        // console.log(idSelector);
+        // id 값은 document 선택자를 쓰지 않아도 쓸 수 있다
+
+        const dialog = document.getElementsByTagName('dialog')[0];
+
+        document.getElementsByTagName('button')[0].addEventListener("click", function() {
+            // console.log(dialog.__proto__);
+            
+            // dialog.show()
+            // 열리긴 하지안 backdrop이 생성되지 않아 뒷 배경이 없을 때 사용
+            
+            dialog.showModal();
+            // 열리면서 backdrop이 생성되며 뒷 배경이 생긴다
+        });
+
+        dialog.addEventListener('click', function(){
+            dialog.close()
+            // dialog 닫기
+        })
+
+        dialog.addEventListener('close', () => {
+            // dialog가 닫혔을 때 실행 되는 함수
+            console.log('Dialog closed');
+            console.log(dialog.children[0]);
+            
+        });
+
+        dialog.children[0].addEventListener('click', function(e){
+            e.stopPropagation();
+        })
+        // dialog 자식 요소 클릭 닫기 막기
+    </script>
+</body>
+</html>
