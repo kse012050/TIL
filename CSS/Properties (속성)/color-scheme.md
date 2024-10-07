@@ -68,20 +68,33 @@ footer {
 
 ~~~css
 :root {
-  color-scheme: light dark;
+    color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: light) {
-  .element {
-    color: black;
-    background-color: white;
-  }
+    .element {
+        color: black;
+        background-color: white;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
-  .element {
-    color: white;
-    background-color: black;
-  }
+    .element {
+        color: white;
+        background-color: black;
+    }
 }
 ~~~
+또는 실험적 ``light-dark()`` ``<color>`` 함수를 사용하여 더욱 컴팩트한 코드 구조를 통해 다양한 색상 구성표에 대한 전경색과 배경색을 설정합니다.
+
+~~~css
+:root {
+    color-scheme: light dark;
+}
+
+.element {
+    color: light-dark(black, white);
+    background-color: light-dark(white, black);
+}
+~~~
+[내용출처 MDN]
