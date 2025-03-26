@@ -1,0 +1,7 @@
+*{margin: 0; padding: 0; line-height: 0;}
+
+#canvas1{background-color: blue;}
+
+.controls{position: absolute; z-index: 100;}
+
+img{display: none;}
