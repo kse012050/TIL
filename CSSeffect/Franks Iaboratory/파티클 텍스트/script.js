@@ -1,4 +1,5 @@
 window.addEventListener('load', function(){
+    const textInput = document.getElementById('textInput');
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
 
@@ -19,16 +20,51 @@ window.addEventListener('load', function(){
     ctx.lineTo(canvas.width, canvas.height / 2);
     ctx.stroke();
 
-    const text = 'Hello';
-    const textX = canvas.width / 2;
-    const textY = canvas.height / 2;
+    // const text = 'Hello';
+    // const textX = canvas.width / 2;
+    // const textY = canvas.height / 2;
+
     ctx.fillStyle = 'yellow';
     ctx.strokeStyle = 'white';
     
     ctx.font = '80px Helvetica';
     ctx.textAlign = 'center'; // 글자 가로 배치
     ctx.textBaseline = 'middle'; // 글자 세로 배치
-    ctx.fillText(text, textX, textY);
-    ctx.strokeText(text, textX, textY)
+    // ctx.fillText(text, textX, textY);
+    // ctx.strokeText(text, textX, textY)
+
+    const maxTextWidth = canvas.width * 0.5;
+    const lineHeight = 80;
+
+    function wrapText(text){
+        let linesArray = [];
+        let lineCounter = 0;
+        let line = '';
+        let words = text.split(' ');
+        for(let i = 0; i < words.length; i++){
+            let testLine = line + words[i] + ' ';
+            console.log(ctx.measureText(testLine).width);
+            if(ctx.measureText(testLine).width > maxTextWidth){
+                line = words[i] + ' ';
+                lineCounter++;
+            }else{
+                line = testLine;
+            }
+            console.log(line);
+            
+            linesArray[lineCounter] = line;
+            // ctx.fillText(testLine, canvas.width / 2, canvas.height / 2 + i * 70);
+        }
+        let textHeight = lineHeight * lineCounter;
+        let textY = canvas.height / 2 - textHeight / 2;
+        linesArray.forEach((line, index) => {
+            ctx.fillText(line, canvas.width / 2, textY + (index * lineHeight));
+        })
+    }
     
+    // wrapText('Hello, how are you')
+    textInput.addEventListener('keyup', function(e){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        wrapText(e.target.value);
+    })
 })
