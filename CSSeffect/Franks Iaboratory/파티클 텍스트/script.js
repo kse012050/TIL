@@ -24,7 +24,12 @@ window.addEventListener('load', function(){
     // const textX = canvas.width / 2;
     // const textY = canvas.height / 2;
 
-    ctx.fillStyle = 'yellow';
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0.3, 'red')
+    gradient.addColorStop(0.5, 'fuchsia')
+    gradient.addColorStop(0.7, 'purple')
+    // ctx.fillStyle = 'yellow';
+    ctx.fillStyle = gradient;
     ctx.strokeStyle = 'white';
     
     ctx.font = '80px Helvetica';
