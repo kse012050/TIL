@@ -12,3 +12,8 @@ tab를 어떻게 사용할지 정합니다 (들려쓰기 or vscode 다음 키)
 
 ### CTRL + D
 현재 커서의 단어를 선택하고 여러번 눌렀을 때 동일한 텍스트를 같이 집어냅니다
+
+
+## 스니펫 수정 방법
+``Ctrl + Shift + P`` → ``Preferences: Configure User Snippets`` 선택  
+``javascriptreact.json`` 파일에서 수정
