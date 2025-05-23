@@ -17,3 +17,10 @@ tab를 어떻게 사용할지 정합니다 (들려쓰기 or vscode 다음 키)
 ## 스니펫 수정 방법
 ``Ctrl + Shift + P`` → ``Preferences: Configure User Snippets`` 선택  
 ``javascriptreact.json`` 파일에서 수정
+~~~js
+"reactFunction": {
+    "prefix": "rfc",
+    "body": "import React from 'react';\n\nexport default function ${1:${TM_FILENAME_BASE}}() {\n\treturn (\n\t\t<div>\n\t\t\t\n\t\t</div>\n\t);\n}\n\n",
+    "description": "Creates a React Function component"
+},
+~~~
