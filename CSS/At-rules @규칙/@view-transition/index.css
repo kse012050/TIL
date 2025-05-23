@@ -1,0 +1,65 @@
+@view-transition {
+    navigation: auto;
+}
+
+/* 사용자 지정 애니메이션 만들기 */
+@keyframes move-out {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes move-in {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+/* 이전 및 새 페이지 상태에 사용자 지정 애니메이션 적용 */
+::view-transition-old(root) {
+    animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(root) {
+    animation: 0.4s ease-in both move-in;
+}
+
+
+@keyframes move-out2 {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes move-in2 {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+
+/* 부분 지정 */
+::view-transition-old(select) {
+    animation: 0.4s ease-in both move-out2;
+}
+
+::view-transition-new(select) {
+    animation: 0.4s ease-in both move-in2;
+}
+div{view-transition-name: select;}
