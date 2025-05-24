@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('body > button.case01').click(function(){
+                // $('div').toggleClass('active');
+                if(!$(this).next('div').length){
+                    $(this).after('<div class="case01 active"></div>')
+                }else{
+                    $(this).next('div.case01').remove();
+                }
+            })
+
+            $('body > button.case02').click(function(){
+                $('div.case02').toggleClass('active');
+            })
+
+            $('ul li button').click(function(){
+                const idx = $(this).parent().index()
+                $('ol li.active').removeClass('active')
+                $('ol li').eq(idx).addClass('active')
+            })
+        })
+    </script>
+    <style>
+        div{display: none; width: 100px; opacity: 0; aspect-ratio: 1; background-color: rgba(0, 0, 0, 0.5); transition: 1s; transition-behavior: allow-discrete;}
+        div.active{display: block; opacity: 1;}
+        @starting-style{
+            div.active{opacity: 0;}
+        }
+
+        ul, ol{list-style: none; padding: 0; margin: 0;}
+        ul{display: flex;}
+        ol li{height: 100px; display: none; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.5); font-size: 30px; color: white; opacity: 0; transition: 0.5s; transition-behavior: allow-discrete;}
+        ol li.active{display: flex; opacity: 1; }
+
+        @starting-style{
+            ol li.active{opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <button class="case01">버튼</button>
+
+    
+    <button class="case02">버튼</button>
+    <div class="case02">
+
+    </div>
+    <ul>
+        <li><button>버튼</button></li>
+        <li><button>버튼</button></li>
+    </ul>
+    <ol>
+        <li class="active">1</li>
+        <li>2</li>
+    </ol>
+    <!-- <div>
+
+    </div> -->
+</body>
+</html>
