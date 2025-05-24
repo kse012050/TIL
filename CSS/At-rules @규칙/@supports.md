@@ -133,19 +133,21 @@ JavaScript에서, ``@supports``는 CSS 객체 모델 인터페이스 [CSSSupport
 }
 
 @supports not selector(:is(a, b)) {
-  /* :is()를 지원하지 않을 때 대체할 CSS */
-  ul > li,
-  ol > li {
-    … /* :is()를 지원하지 않을 때 적용할 CSS */
-  }
+    /* :is()를 지원하지 않을 때 대체할 CSS */
+    ul > li,
+    ol > li {
+        … /* :is()를 지원하지 않을 때 적용할 CSS */
+    }
 }
 
 @supports selector(:nth-child(1n of a, b)) {
-  /* @supports로 먼저 묶지 않으면 :nth-child()의 of 구문을
-     지원하지 않는 브라우저에서 스타일을 잘못 적용할 수 있음 */
-  :is(:nth-child(1n of ul, ol) a,
-  details > summary) {
-    … /* :is() 선택자와 :nth-child()의 of 구문을 지원할 때 적용할 CSS */
-  }
+    /* @supports로 먼저 묶지 않으면 :nth-child()의 of 구문을
+        지원하지 않는 브라우저에서 스타일을 잘못 적용할 수 있음 */
+    :is(:nth-child(1n of ul, ol) a,
+    details > summary) {
+        … /* :is() 선택자와 :nth-child()의 of 구문을 지원할 때 적용할 CSS */
+    }
 }
 ~~~
+
+[내용출처 MDN CSS 속성이 지원하지 않을 때, 대체 코드 작성](https://developer.mozilla.org/ko/docs/Web/CSS/@supports)
