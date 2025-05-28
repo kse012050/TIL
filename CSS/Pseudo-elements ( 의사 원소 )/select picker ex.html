@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test,
+        ::picker(select){
+            appearance: base-select;
+        }
+        .test{ height: 30px;
+            &:open{border: 1px solid red;}
+            &::picker(select){border: none; border: 1px solid blue; border-radius: 4px; margin-top: 10px;}
+            &::picker-icon{opacity: 0; height: 100px;}
+            option{border: none; padding: 10px; margin: 10px;
+                &:hover{background-color: lightgreen;}
+                &::checkmark{display: none;}
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <select class="test">
+        <option value="">테스트 1</option>
+        <option value="">테스트 2</option>
+        <option value="">테스트 3</option>
+    </select>
+    
+    <select>
+        <option value="">테스트 1</option>
+        <option value="">테스트 2</option>
+        <option value="">테스트 3</option>
+    </select>
+</body>
+</html>
