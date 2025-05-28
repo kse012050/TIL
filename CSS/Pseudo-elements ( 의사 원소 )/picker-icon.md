@@ -47,4 +47,4 @@ select:open::picker-icon {
 ~~~
 이 코드를 사용하는 전체 예제와 라이브 예제 렌더링을 보려면 선택기 아이콘 스타일 지정을 참조하세요.
 
-[내용출처 MDN]
+[내용출처 MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/::picker-icon)
