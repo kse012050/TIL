@@ -6,7 +6,7 @@ export default function Main() {
         <div>
             <Link to=''>메인</Link>
             <Link to='/state'>useState()</Link>
-            <Link to=''>메인</Link>
+            <Link to='/effect'>useEffect()</Link>
             <Link to=''>메인</Link>
             <Link to=''>메인</Link>
             <Link to=''>메인</Link>

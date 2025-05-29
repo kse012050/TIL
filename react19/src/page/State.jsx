@@ -32,7 +32,7 @@ export default function State() {
             <button onClick={curruntAdd}>현재 값으로 + 3 증가</button>
             <button onClick={prevAdd}>이전 값으로 + 3 증가</button>
             <br />
-            <h3>초기기값 설정 설명</h3>
+            <h3>초기값 설정 설명</h3>
             <p>
                 useState에서 초기값을 설정할 때 initailValue()와 () =&gt; initailValue()는 실행 타이밍과 호출 횟수가 다릅니다.
             </p>
