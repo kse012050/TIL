@@ -5,6 +5,7 @@ import State from '../page/State';
 import Effect from '../page/Effect';
 import LayoutEffect from '../page/LayoutEffect';
 import InsertionEffect from '../page/InsertionEffect';
+import Reducer from '../page/Reducer';
 
 export default function Routers() {
     return (
@@ -15,6 +16,7 @@ export default function Routers() {
                 <Route path="/effect" element={<Effect />} />
                 <Route path="/layoutEffect" element={<LayoutEffect />} />
                 <Route path="/insertionEffect" element={<InsertionEffect />} />
+                <Route path="/reducer" element={<Reducer />} />
             </Routes>
         </BrowserRouter>
     );

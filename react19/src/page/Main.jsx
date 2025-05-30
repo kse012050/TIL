@@ -9,7 +9,7 @@ export default function Main() {
             <Link to='/effect'>useEffect()</Link>
             <Link to='/layoutEffect'>useLayoutEffect()</Link>
             <Link to='/insertionEffect'>useInsertionEffect()</Link>
-            <Link to=''>메인</Link>
+            <Link to='/reducer'>useReducer()</Link>
             <Link to=''>메인</Link>
             <Link to=''>메인</Link>
         </div>
