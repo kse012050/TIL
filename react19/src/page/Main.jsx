@@ -4,13 +4,13 @@ import { Link } from 'react-router';
 export default function Main() {
     return (
         <div>
-            <Link to=''>메인</Link>
-            <Link to='/state'>useState()</Link>
-            <Link to='/effect'>useEffect()</Link>
-            <Link to='/layoutEffect'>useLayoutEffect()</Link>
-            <Link to='/insertionEffect'>useInsertionEffect()</Link>
-            <Link to='/reducer'>useReducer()</Link>
-            <Link to=''>메인</Link>
+            <Link to=''>메인</Link><br/>
+            <Link to='/state'>useState()</Link><br/>
+            <Link to='/effect'>useEffect()</Link><br/>
+            <Link to='/layoutEffect'>useLayoutEffect()</Link><br/>
+            <Link to='/insertionEffect'>useInsertionEffect()</Link><br/>
+            <Link to='/reducer'>useReducer()</Link><br/>
+            <Link to='/ref'>useRef()</Link><br/>
             <Link to=''>메인</Link>
         </div>
     );
