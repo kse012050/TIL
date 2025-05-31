@@ -6,3 +6,9 @@
         p{height: 10000px;}
     }
 }
+
+
+/* useTransition */
+.transitionPage{
+    ul{height: 100px; overflow: auto; border: 5px solid lightsalmon;}
+}

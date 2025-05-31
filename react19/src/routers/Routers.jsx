@@ -7,6 +7,7 @@ import LayoutEffect from '../page/LayoutEffect';
 import InsertionEffect from '../page/InsertionEffect';
 import Reducer from '../page/Reducer';
 import Ref from '../page/Ref';
+import Transition from '../page/Transition';
 
 export default function Routers() {
     return (
@@ -19,6 +20,7 @@ export default function Routers() {
                 <Route path="/insertionEffect" element={<InsertionEffect />} />
                 <Route path="/reducer" element={<Reducer />} />
                 <Route path="/ref" element={<Ref />} />
+                <Route path="/transition" element={<Transition />} />
             </Routes>
         </BrowserRouter>
     );
