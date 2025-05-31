@@ -12,6 +12,7 @@ export default function Main() {
             <Link to='/reducer'>useReducer()</Link><br/>
             <Link to='/ref'>useRef()</Link><br/>
             <Link to='/transition'>useTransition()</Link><br/>
+            <Link to='/id'>useId()</Link><br/>
             <Link to=''>메인</Link><br/>
         </div>
     );
