@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vw 테스트</title>
+    <style>
+        html{/* font-size: 0.833333vw; */
+            /* font-size: calc(0.0520835vw * 1em);
+            font-size: calc(100vw / 1920 * 1em); */
+            /* font-size: calc(100 / 100px); */
+            /* --test1: 1em;
+            --test2: 1vw;
+            font-size: calc(var(--test1) * var(--test2)); */
+            /* font-size: clamp(1em, 1em + calc(100vw / 1920), 2em); */
+
+            font-size: calc(100vw / 1920);
+        }
+        body{font-size: 16rem;}
+
+        div{background-color: lightsalmon; padding-bottom: 16rem;}
+    </style>
+</head>
+<body>
+    <div>안녕하세요.</div>
+    <script>
+        // const baseEmPx = parseFloat(getComputedStyle(document.documentElement).fontSize); // 1em이 몇 px인지
+        // const vw = window.innerWidth / 100;
+        // const fontSize = baseEmPx * vw / 19.2; // (1920px 기준)
+        // document.documentElement.style.setProperty('--font-size', `${fontSize}px`);
+    </script>
+</body>
+</html>
