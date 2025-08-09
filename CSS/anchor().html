@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .standard{anchor-name: --test; width: 300px; aspect-ratio: 3 / 1; background-color: lightsalmon; margin-inline: auto;}
+        .anchor{position: absolute; width: 100px; aspect-ratio: 1; background: lightblue; position-anchor: --test; top: anchor(50%); left: calc(anchor(left) + 10px);}
+    </style>
+</head>
+<body>
+    <div class="standard">
+        기준
+    </div>
+    <div class="anchor">
+
+    </div>
+</body>
+</html>
