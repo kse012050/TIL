@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS만으로 캐러셀 scroll-button()</title>
+    <style>
+        body{padding: 100px; align-items: center; --primary-color: lightskyblue; background-color: black; --brand-color: lightsalmon;}
+        .carousel{width: 100%; overflow-x: auto; margin: 3em auto; display: flex; gap: 1em; scroll-behavior: smooth; anchor-name: --carousel; scroll-snap-type: x mandatory; scroll-marker-group: after;}
+        .carousel::scroll-marker-group{display: flex; justify-content: center; gap: 0.5em;}
+        .carousel::-webkit-scrollbar{display: none;}
+        .carousel::scroll-button(right), .carousel::scroll-button(left){border: none; background-color: var(--brand-color); font-family: Consolas; font-size: 3rem; color: white; height: 60px; aspect-ratio: 1; border-radius: 50%; padding-bottom: .1em; cursor: pointer; position: fixed; position-anchor: --carousel;}
+        .carousel::scroll-button(right){content: '→'; right: 0; position-area: right center; translate: -50%;}
+        .carousel::scroll-button(left){content: '←'; left: 0; position-area: left center; translate: 50%;}
+        .carousel::scroll-button(right):disabled, .carousel::scroll-button(left):disabled{opacity: 0.5; cursor: auto;}
+        .card{scroll-snap-align: start; flex: 0 0 20em; aspect-ratio: 5 / 3; background-color: var(--primary-color); padding: 1em; border-radius: 0.5em; text-align: center; align-items: center; box-sizing: border-box;}
+        .card::scroll-marker{content: ''; height: 1em; width: 1em; background-color: var(--primary-color); border-radius: 50%;}
+        .card::scroll-marker:target-current{background-color: var(--brand-color);}
+        @media(max-width: 500px){
+            .card{flex: 0 0 100%;}
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="card"><h3>Card 1</h3></div>
+        <div class="card"><h3>Card 2</h3></div>
+        <div class="card"><h3>Card 3</h3></div>
+        <div class="card"><h3>Card 4</h3></div>
+        <div class="card"><h3>Card 5</h3></div>
+        <div class="card"><h3>Card 6</h3></div>
+        <div class="card"><h3>Card 7</h3></div>
+        <div class="card"><h3>Card 8</h3></div>
+        <div class="card"><h3>Card 9</h3></div>
+        <div class="card"><h3>Card 10</h3></div>
+        <div class="card"><h3>Card 11</h3></div>
+        <div class="card"><h3>Card 12</h3></div>
+    </div>
+</body>
+</html>
