@@ -7,7 +7,7 @@ const TOTAL = 150;
 const petalArray = [];
 
 const petalImg = new Image();
-petalImg.src = './petal.png '
+petalImg.src = './petal4.png '
 petalImg.onload = () =>{
     for(let a = 0; a < TOTAL; a++){
         petalArray.push(new Petal())
