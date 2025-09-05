@@ -9,6 +9,7 @@ import Reducer from '../page/Reducer';
 import Ref from '../page/Ref';
 import Transition from '../page/Transition';
 import Id from '../page/Id';
+import DeferredValue from '../page/DeferredValue';
 
 export default function Routers() {
     return (
@@ -23,6 +24,7 @@ export default function Routers() {
                 <Route path="/ref" element={<Ref />} />
                 <Route path="/transition" element={<Transition />} />
                 <Route path="/id" element={<Id />} />
+                <Route path="/deferredValue" element={<DeferredValue />} />
             </Routes>
         </BrowserRouter>
     );

@@ -53,6 +53,7 @@ export default function Transition() {
                 <b>isPending</b>: transition 안의 작업이 "진행 중"일 때 true<br/>
                 <b>startTransition(cb)</b>: 이 안에 넣은 상태 업데이트는 "덜 급한 것"으로 스케줄<br/>
             </p>
+            <Link to='/deferredValue'>useDeferredValue()와 차이점 보기</Link>
         </div>
     );
 }
