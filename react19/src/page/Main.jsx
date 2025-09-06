@@ -12,8 +12,11 @@ export default function Main() {
             <Link to='/reducer'>useReducer()</Link><br/>
             <Link to='/ref'>useRef()</Link><br/>
             <Link to='/id'>useId()</Link><br/>
+            <h2>기존 데이터를 가지고 작업</h2>
             <Link to='/transition'>useTransition()</Link><br/>
             <Link to='/deferredValue'>useDeferredValue()</Link><br/>
+            <h2>API 를 가지고 작업</h2>
+            <Link to='/optimistic'>useOptimistic()</Link><br/>
             <Link to=''>메인</Link><br/>
         </div>
     );

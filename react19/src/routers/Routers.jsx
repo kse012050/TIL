@@ -10,6 +10,7 @@ import Ref from '../page/Ref';
 import Transition from '../page/Transition';
 import Id from '../page/Id';
 import DeferredValue from '../page/DeferredValue';
+import Optimistic from '../page/Optimistic';
 
 export default function Routers() {
     return (
@@ -22,9 +23,10 @@ export default function Routers() {
                 <Route path="/insertionEffect" element={<InsertionEffect />} />
                 <Route path="/reducer" element={<Reducer />} />
                 <Route path="/ref" element={<Ref />} />
-                <Route path="/transition" element={<Transition />} />
                 <Route path="/id" element={<Id />} />
+                <Route path="/transition" element={<Transition />} />
                 <Route path="/deferredValue" element={<DeferredValue />} />
+                <Route path="/optimistic" element={<Optimistic />} />
             </Routes>
         </BrowserRouter>
     );
