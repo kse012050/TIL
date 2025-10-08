@@ -11,21 +11,28 @@
         }
         .test{ height: 30px;
             &:open{border: 1px solid red;}
-            &::picker(select){border: none; border: 1px solid blue; border-radius: 4px; margin-top: 10px;}
+            &::picker(select){border: none; border: 1px solid blue; border-radius: 4px; margin-top: 10px; opacity: 1; height: 300px; transform-origin: height, opacity; transition-delay: 0s, 0.15s; transition-duration: 0.3s, 0.1s; transition-timing-function: ease; transition-behavior: allow-discrete; overflow: hidden;}
+            &:not(:open)::picker(select){opacity: 0; height: 0px;}
             &::picker-icon{opacity: 0; height: 100px;}
             option{border: none; padding: 10px; margin: 10px;
                 &:hover{background-color: lightgreen;}
                 &::checkmark{display: none;}
+                &:checked{background-color: lightsalmon; font-size: 20px;}
             }
+        }
 
+        @starting-style{
+            .test{
+                &::picker(select){height: 0; opacity: 0;}
+            }
         }
     </style>
 </head>
 <body>
     <select class="test">
-        <option value="">테스트 1</option>
-        <option value="">테스트 2</option>
-        <option value="">테스트 3</option>
+        <option value="테스트 1">테스트 1</option>
+        <option value="테스트 2">테스트 2</option>
+        <option value="테스트 3">테스트 3</option>
     </select>
     
     <select>
