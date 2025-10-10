@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ant-spin">
+        <span class="ant-spin-dot ant-spin-dot-spin">
+            <i class="ant-spin-dot-item"></i>
+            <i class="ant-spin-dot-item"></i>
+            <i class="ant-spin-dot-item"></i>
+            <i class="ant-spin-dot-item"></i>
+        </span>
+    </div>
+    <style>
+        /* 회전 애니메이션 */
+        @keyframes antRotate {
+            to {
+                transform: rotate(405deg);
+            }
+        }
+
+        /* 점 깜빡임 */
+        @keyframes antSpinMove {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        /* 전체 컨테이너 */
+        .ant-spin {
+            display: inline-block;
+            position: relative;
+            color: red /* Spin 색상 */
+        }
+
+        /* 점 묶음 */
+        .ant-spin-dot {
+            position: relative;
+            display: inline-block;
+            font-size: 20px; /* 전체 크기 조절 */
+            width: 1em;
+            height: 1em;
+        }
+
+        /* 회전 애니메이션 적용 */
+        .ant-spin-dot-spin {
+            transform: rotate(45deg);
+            animation: antRotate 1.2s infinite linear;
+        }
+
+        /* 점 4개 공통 스타일 */
+        .ant-spin-dot-item {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            background-color: currentColor;
+            border-radius: 100%;
+            transform: scale(0.75);
+            opacity: 0.3;
+            animation: antSpinMove 1s infinite linear alternate;
+        }
+
+        /* 각 점의 위치 (대각선 꼭짓점 형태) */
+        .ant-spin-dot-item:nth-child(1) {
+            top: 0;
+            left: 0;
+            animation-delay: -0.45s;
+        }
+        .ant-spin-dot-item:nth-child(2) {
+            top: 0;
+            right: 0;
+            animation-delay: -0.3s;
+        }
+        .ant-spin-dot-item:nth-child(3) {
+            bottom: 0;
+            right: 0;
+            animation-delay: -0.15s;
+        }
+        .ant-spin-dot-item:nth-child(4) {
+            bottom: 0;
+            left: 0;
+            animation-delay: 0s;
+        }
+    </style>
+</body>
+</html>
