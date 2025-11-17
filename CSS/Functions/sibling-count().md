@@ -1,5 +1,7 @@
 # sibling-count()
-``sibling-count()`` CSS 함수는 해당 함수가 사용되는 부모 요소의 직계 자식 DOM 요소의 총 개수를 나타내는 정수를 반환합니다.
+``sibling-count()`` CSS 함수는 해당 함수가 사용되는 부모 요소의 직계 자식 DOM 요소의 총 개수를 나타내는 정수를 반환합니다.  
+  
+__lenght__ 처럼 1부터 ~ 총 갯수
 
 > __참고__: counter() 함수는 비슷한 결과를 제공하지만 ``<string>``을 반환하는 반면, ``sibling-count()``는 계산에 사용할 수 있는 ``<integer>``를 반환합니다.
 

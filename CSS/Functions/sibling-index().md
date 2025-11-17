@@ -1,5 +1,7 @@
 # sibling-index()
-__``brothers-index()``__ CSS 함수는 DOM 트리에서 현재 요소의 위치를 모든 형제 요소 대비 상대적인 정수로 반환합니다. 반환값은 부모 요소 내의 모든 형제 요소 중에서 컨텍스트 자식 요소의 위치를 나타내는 인덱스 번호이며, 첫 번째 자식 요소는 1을 반환하고 마지막 자식 요소는 Element.children.length를 반환합니다.
+__``brothers-index()``__ CSS 함수는 DOM 트리에서 현재 요소의 위치를 모든 형제 요소 대비 상대적인 정수로 반환합니다. 반환값은 부모 요소 내의 모든 형제 요소 중에서 컨텍스트 자식 요소의 위치를 나타내는 인덱스 번호이며, 첫 번째 자식 요소는 1을 반환하고 마지막 자식 요소는 Element.children.length를 반환합니다.  
+  
+__1__ 부터 시작
 
 ## Try it
 [예시](https://developer.mozilla.org/en-US/docs/Web/CSS/sibling-index#try_it)
