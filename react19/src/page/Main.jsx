@@ -17,7 +17,7 @@ export default function Main() {
             <Link to='/deferredValue'>useDeferredValue()</Link><br/>
             <h2>API 를 가지고 작업</h2>
             <Link to='/optimistic'>useOptimistic()</Link><br/>
-            <Link to=''>메인</Link><br/>
+            <Link to='/imperativeHandle'>useImperativeHandle()</Link><br/>
         </div>
     );
 }

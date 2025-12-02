@@ -27,7 +27,7 @@ export default function Optimistic() {
     return (
         <div>
             <Link to='/'>목록으로</Link>
-            <h2>useDeferredValue()</h2>
+            <h2>useOptimistic()</h2>
 
             <h3>설명</h3>
             <p>
