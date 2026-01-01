@@ -1,3 +1,4 @@
+import './editor.css'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import {
   ClassicEditor,
@@ -18,6 +19,11 @@ import {
   List,
   Indent,
   Alignment,
+  ImageToolbar,
+  ImageStyle,
+  ImageCaption,
+  ImageTextAlternative,
+  Base64UploadAdapter,
 } from 'ckeditor5';
 
 import coreTranslations from 'ckeditor5/translations/ko.js';
@@ -29,8 +35,8 @@ function Editor({ data, setInputs }: {data: string, setInputs: React.Dispatch<Re
       editor={ClassicEditor}
       data={data ? data.replace(/&quot;/g, '').replace(/\\/g, '') : ''}
       onChange={(e, editor) => {
-        const html = editor.getData();
-        setInputs((prev: any) => ({ ...prev, comment: html }));
+        // const html = editor.getData();
+        // setInputs((prev: any) => ({ ...prev, comment: html }));
       }}
       config={{
         licenseKey: 'GPL',
@@ -40,7 +46,14 @@ function Editor({ data, setInputs }: {data: string, setInputs: React.Dispatch<Re
           Bold, Italic, Font, Link,
           Image, ImageUpload, FileRepository,  // ✅ 포함
           Table, TableToolbar, MediaEmbed, List, Indent, Alignment,
-          MyCustomUploadAdapterPlugin,         // 커스텀 어댑터 플러그인
+          // 이미지 API 저장
+          // MyCustomUploadAdapterPlugin,
+          // 이미지 그냥 보이게 할 때
+          Base64UploadAdapter,
+          ImageToolbar,
+          ImageStyle,
+          ImageCaption,
+          ImageTextAlternative,
         ],
         toolbar: [
           'undo', 'redo',
@@ -54,6 +67,16 @@ function Editor({ data, setInputs }: {data: string, setInputs: React.Dispatch<Re
         ],
         translations: [coreTranslations],
         table: { contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'] },
+        image: {
+          toolbar: [
+            'imageStyle:alignLeft',
+            'imageStyle:alignCenter',
+            'imageStyle:alignRight',
+            '|',
+            'toggleImageCaption',
+            'imageTextAlternative'
+          ]
+        }
         // fontSize: {
         //   options: [8, 10, 12, 14, 16, 18, 20, 24, 32, 48],
         //   default: 12,           // ✅ 에디터 기본 폰트 크기 (px)
