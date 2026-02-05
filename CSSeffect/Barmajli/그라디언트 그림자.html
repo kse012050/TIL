@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라디언트 그림자</title>
+    <style>
+        body{margin: 0; height: 100vh; display: flex; gap: 50px; justify-content: center; align-items: center; background-color: #333;
+            div{width: 400px; height: 250px; position: relative; background-color: #333;
+                &::after{content: ''; position: absolute; inset: -5px; 
+                    background: conic-gradient(
+                        from 0deg at 50% 50%,
+                        #4f46e5 0deg,
+                        #06b6d4 90deg,
+                        #8b5cf6 180deg,
+                        #ec4899 270deg,
+                        #4f46e5 360deg
+                    );
+                    background-size: 200%;
+                    z-index: -1;
+                    filter: blur(30px);
+                    opacity: 0.8;
+                }
+                &:hover::after{
+                    animation: spin 5s linear infinite;
+                }
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .shadow {display: flex; justify-content: center; align-items: center; position: relative; color: #fff; text-align: center; font-size: 50px; font-weight: bold; width: 400px; height: 250px; background: linear-gradient(0deg, #000, #262626);
+            &::before, &:after{content: ""; position: absolute; inset: -2px; z-index: -1;
+                background: linear-gradient(
+                    45deg,
+                    #fb0094,
+                    #0000ff,
+                    #00ff00,
+                    #ffff00,
+                    #ff0000,
+                    #fb0094,
+                    #0000ff,
+                    #00ff00,
+                    #ffff00,
+                    #ff0000
+                );
+                background-size: 400%;
+            }
+            &::after{filter: blur(30px);}
+            &:hover::before, &:hover::after {
+                animation: animate 20s linear infinite forwards;
+            }
+        }
+
+        @keyframes animate {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 300% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="first">
+    </div>
+    
+    <div class="shadow">Welcome</div>
+</body>
+</html>
