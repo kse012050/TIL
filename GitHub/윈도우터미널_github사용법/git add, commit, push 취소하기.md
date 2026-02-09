@@ -52,6 +52,16 @@ log로 확인한 commit ID로도 삭제 가능하다
 ### github에서의 삭제
 > git push -f origin code_review
 
+### git 추적 제거
+git rm
+→ Git이 추적 중인 파일을 제거  
+  
+--cached
+→ 로컬 파일은 유지하고
+→ Git 인덱스(추적 목록)에서만 제거
+  
+> git rm --cached 파일명
+
 ## git reset 옵션
 ### -soft
 index 보존 ( add한 상태, staged상태 )
