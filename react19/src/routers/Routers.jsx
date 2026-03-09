@@ -13,6 +13,7 @@ import Id from '../page/Id';
 import DeferredValue from '../page/DeferredValue';
 import Optimistic from '../page/Optimistic';
 import ImperativeHandle from '../page/imperativeHandle';
+import ActionState from '../page/ActionState';
 
 export default function Routers() {
     return (
@@ -31,6 +32,7 @@ export default function Routers() {
                 <Route path="/deferredValue" element={<DeferredValue />} />
                 <Route path="/optimistic" element={<Optimistic />} />
                 <Route path="/imperativeHandle" element={<ImperativeHandle />} />
+                <Route path="/actionState" element={<ActionState />} />
             </Routes>
         </BrowserRouter>
     );
