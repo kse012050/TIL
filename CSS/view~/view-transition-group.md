@@ -11,12 +11,12 @@
 
 ~~~css
 :root::view-transition-group(*) {
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  animation-duration: 0.25s;
-  animation-fill-mode: both;
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
 }
 ~~~
 
@@ -34,7 +34,7 @@
 
 ~~~css
 ::view-transition-group([ <pt-name-selector> <pt-class-selector>? ] | <pt-class-selector>) {
-  /* ... */
+    /* ... */
 }
 ~~~
 
@@ -57,12 +57,12 @@
 
 ~~~css
 ::view-transition-group(embed-container) {
-  animation-duration: 0.3s;
-  animation-timing-function: ease;
-  z-index: 1;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    z-index: 1;
 }
 
 ::view-transition-group(.card) {
-  animation-duration: 1s;
+    animation-duration: 1s;
 }
 ~~~
