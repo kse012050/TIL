@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View Timeline Demo</title>
+    <style>
+        :root{font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f6f8f5; color: #16201b;}
+        *{box-sizing: border-box;}
+        body{margin: 0;}
+        .page{width: min(100% - 32px, 920px); margin: 0 auto;}
+        .hero{min-height: 72vh; display: grid; place-items: center; text-align: center;}
+        .hero__inner{max-width: 620px;}
+        h1, h2, p, pre{margin: 0;}
+        h1{font-size: clamp(2rem, 6vw, 4rem); line-height: 1.05;}
+        .lead{margin-top: 14px; color: #53645a; line-height: 1.7;}
+        .spacer{height: 38vh;}
+        .demo{display: grid; gap: 24px; margin-bottom: 38vh;}
+        .card{display: grid; gap: 18px; min-height: 360px; padding: 28px; border: 1px solid #d3ddd6; border-radius: 8px; background: #ffffff; box-shadow: 0 24px 60px rgb(38 54 45 / 0.12);}
+        .card__title{font-size: clamp(1.5rem, 4vw, 2.7rem); line-height: 1.1;}
+        .card__text{max-width: 56ch; color: #53645a; line-height: 1.7;}
+        .code{align-self: end; overflow-x: auto; padding: 16px; border-radius: 8px; background: #14211a; color: #dbeee4; font-size: 0.95rem; line-height: 1.6;}
+        .basic-card{view-timeline: --basic-reveal block; animation: reveal-card both; animation-timeline: --basic-reveal; animation-range: entry 0% cover 45%;}
+        .named-card{view-timeline-name: --named-reveal; view-timeline-axis: block; view-timeline-inset: 18% 12%; animation: reveal-card both; animation-timeline: --named-reveal; animation-range: entry 0% cover 45%;}
+        .axis-card{view-timeline: --axis-reveal block; animation: slide-meter both; animation-timeline: --axis-reveal; animation-range: entry 0% cover 50%;}
+        .meter{width: min(100%, 520px); height: 16px; border-radius: 999px; background: #dfe8e2; overflow: hidden;}
+        .meter__bar{display: block; width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2b806f, #d39a2d); transform: scaleX(.1); transform-origin: left center; animation: grow-meter both; animation-timeline: --axis-reveal; animation-range: entry 0% cover 50%;}
+        .tail{min-height: 70vh; display: grid; place-items: center; color: #53645a;}
+
+        @keyframes reveal-card{
+            from{
+                opacity: .2;
+                transform: translateY(80px) scale(.92);
+            }
+
+            to{
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes slide-meter{
+            from{
+                border-color: #d3ddd6;
+            }
+
+            to{
+                border-color: #2b806f;
+            }
+        }
+
+        @keyframes grow-meter{
+            from{
+                transform: scaleX(.1);
+            }
+
+            to{
+                transform: scaleX(1);
+            }
+        }
+
+        @media (max-width: 680px){
+            .hero{min-height: 64vh;}
+
+            .card{min-height: 320px; padding: 22px;}
+
+            .code{font-size: 0.82rem;}
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <section class="hero">
+            <div class="hero__inner">
+                <h1>view-timeline</h1>
+                <p class="lead">
+                    스크롤할 때 요소가 화면에 보이는 정도를 애니메이션 시간으로 쓰는 예제입니다.
+                    아래 카드들이 들어오면 CSS 애니메이션이 같이 진행됩니다.
+                </p>
+            </div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section class="demo" aria-label="view-timeline examples">
+            <article class="card basic-card">
+                <div>
+                    <h2 class="card__title">1. 단축 속성</h2>
+                    <p class="card__text">
+                        `view-timeline`은 타임라인 이름과 축을 한 번에 정합니다.
+                        이 카드가 화면에 들어오는 정도가 `--basic-reveal` 타임라인의 진행률이 됩니다.
+                    </p>
+                </div>
+                <pre class="code"><code>.basic-card{view-timeline: --basic-reveal block;}
+.basic-card{animation-timeline: --basic-reveal;}</code></pre>
+            </article>
+
+            <div class="spacer"></div>
+
+            <article class="card named-card">
+                <div>
+                    <h2 class="card__title">2. 속성 분해</h2>
+                    <p class="card__text">
+                        같은 내용을 `view-timeline-name`, `view-timeline-axis`,
+                        `view-timeline-inset`으로 나누어 쓸 수 있습니다.
+                    </p>
+                </div>
+                <pre class="code"><code>.named-card{view-timeline-name: --named-reveal;}
+.named-card{view-timeline-axis: block;}
+.named-card{view-timeline-inset: 18% 12%;}
+.named-card{animation-timeline: --named-reveal;}</code></pre>
+            </article>
+
+            <div class="spacer"></div>
+
+            <article class="card axis-card">
+                <div>
+                    <h2 class="card__title">3. 같은 타임라인 재사용</h2>
+                    <p class="card__text">
+                        카드가 만든 `--axis-reveal` 타임라인을 안쪽 막대도 같이 사용합니다.
+                        subject는 카드이고, 애니메이션 대상은 카드와 막대 둘 다입니다.
+                    </p>
+                </div>
+                <div class="meter" aria-hidden="true">
+                    <span class="meter__bar"></span>
+                </div>
+                <pre class="code"><code>.axis-card{view-timeline: --axis-reveal block;}
+.meter__bar{animation-timeline: --axis-reveal;}</code></pre>
+            </article>
+        </section>
+
+        <section class="tail">
+            <p>다시 위로 스크롤하면 애니메이션 진행률도 되돌아갑니다.</p>
+        </section>
+    </main>
+</body>
+</html>
